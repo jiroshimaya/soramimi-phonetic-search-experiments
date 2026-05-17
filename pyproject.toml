@@ -1,0 +1,37 @@
+[project]
+name = "soramimi-phonetic-search-experiments"
+version = "0.1.0"
+description = "Fine-grained leaderboard experiments for soramimi-phonetic-search-dataset"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "litellm>=1.83.0",
+    "openai>=2.30.0",
+    "pydantic>=2.11.4",
+    "pyopenjtalk-plus>=0.4.1.post8",
+    "python-dotenv>=1.0.1",
+    "soramimi-phonetic-search-dataset @ git+https://github.com/jiroshimaya/soramimi-phonetic-search-dataset.git@6072e13bed37dd2f8eb780e61b6154d21cff2e31",
+    "tqdm>=4.67.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.5",
+    "ruff>=0.11.5",
+    "taskipy>=1.14.1",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["reproduce_leaderboard"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.taskipy.tasks]
+test = "pytest"
+lint = "ruff check ."
+format = "ruff format ."
