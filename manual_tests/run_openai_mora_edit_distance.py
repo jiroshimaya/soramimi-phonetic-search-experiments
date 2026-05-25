@@ -14,6 +14,8 @@ from openai import OpenAI
 
 from analytics.mora_edit_distance_nonreasoning import (
     DEFAULT_MODEL,
+    DEFAULT_PROMPT_MODE,
+    PROMPT_MODES,
     build_mora_distance_pair,
     infer_distance,
 )
@@ -71,6 +73,13 @@ def parse_args() -> argparse.Namespace:
         default=32,
         help="Responses API の max_output_tokens。デフォルト: 32",
     )
+    parser.add_argument(
+        "--prompt_mode",
+        type=str,
+        default=DEFAULT_PROMPT_MODE,
+        choices=PROMPT_MODES,
+        help="入力の与え方。mora_spaced または kana_only。デフォルト: mora_spaced",
+    )
     return parser.parse_args()
 
 
@@ -91,6 +100,7 @@ def main() -> None:
             pair=pair,
             max_output_tokens=args.max_output_tokens,
             reasoning_effort=args.reasoning_effort,
+            prompt_mode=args.prompt_mode,
         )
         expected_distance = test_case.expected_distance
         predicted_distance = result["predicted_distance"]
@@ -105,6 +115,7 @@ def main() -> None:
                 "candidate": test_case.candidate,
                 "expected_distance": expected_distance,
                 "predicted_distance": predicted_distance,
+                "prompt_mode": args.prompt_mode,
                 "response_id": result["response_id"],
                 "usage": result["usage"],
             }
@@ -114,6 +125,7 @@ def main() -> None:
         json.dumps(
             {
                 "model": args.model,
+                "prompt_mode": args.prompt_mode,
                 "case_count": len(results),
                 "results": results,
             },
