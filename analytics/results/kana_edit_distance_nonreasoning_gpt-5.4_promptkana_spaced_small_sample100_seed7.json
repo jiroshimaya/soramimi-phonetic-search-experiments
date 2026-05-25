@@ -1,0 +1,2032 @@
+{
+  "parameters": {
+    "model": "gpt-5.4",
+    "sample_size": 100,
+    "seed": 7,
+    "wordlist_size": 100,
+    "reasoning_effort": "none",
+    "max_output_tokens": 64,
+    "prompt_mode": "kana_spaced",
+    "output_file_path": "/Users/jiro/development/workspace/soramimi-phonetic-search-experiments/analytics/results/kana_edit_distance_nonreasoning_gpt-5.4_promptkana_spaced_small_sample100_seed7.json"
+  },
+  "dataset": {
+    "name": "small_dataset_for_llm",
+    "total_pair_count": 1000
+  },
+  "metrics": {
+    "pair_count": 100,
+    "exact_match_rate": 0.95,
+    "mean_absolute_error": 0.05,
+    "average_exact_distance": 2.28,
+    "average_predicted_distance": 2.27,
+    "usage": {
+      "input_tokens": 22609,
+      "output_tokens": 1300,
+      "reasoning_tokens": 0,
+      "cached_input_tokens": 0,
+      "total_tokens": 23909
+    }
+  },
+  "pairs": [
+    {
+      "pair_id": "q00_c038",
+      "query_index": 0,
+      "candidate_index": 38,
+      "query": "アイ",
+      "candidate": "アルー",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0f5ddfae12e51bb1006a145b6067e48199a56b0421c35d4ccc",
+      "usage": {
+        "input_tokens": 227,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 240
+      }
+    },
+    {
+      "pair_id": "q00_c047",
+      "query_index": 0,
+      "candidate_index": 47,
+      "query": "アイ",
+      "candidate": "イシイ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_028da37c2d4db946006a145b61959081999358ac8673c69414",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q00_c049",
+      "query_index": 0,
+      "candidate_index": 49,
+      "query": "アイ",
+      "candidate": "イソ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_07880226fd6c8f0c006a145b628b68819aba23e71fa2013ac3",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q00_c050",
+      "query_index": 0,
+      "candidate_index": 50,
+      "query": "アイ",
+      "candidate": "イマイ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_00c6af33bf2d0d31006a145b6380c8819b9d42ec0208bd905a",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q00_c059",
+      "query_index": 0,
+      "candidate_index": 59,
+      "query": "アイ",
+      "candidate": "オギ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0c9dc94fc7348982006a145b6476fc8199959d7d136dad54ce",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q00_c060",
+      "query_index": 0,
+      "candidate_index": 60,
+      "query": "アイ",
+      "candidate": "オチ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_09c2e48c1c2cd30f006a145b657ed081998ec838eea3072696",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q00_c061",
+      "query_index": 0,
+      "candidate_index": 61,
+      "query": "アイ",
+      "candidate": "カイ",
+      "exact_distance": 1,
+      "predicted_distance": 1,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0444bc17b7bb3229006a145b668be0819983b56a4cfd68bae1",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q00_c063",
+      "query_index": 0,
+      "candidate_index": 63,
+      "query": "アイ",
+      "candidate": "カチ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0847050afaf1d25f006a145b67bfb88198a43a8cce416d9808",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q00_c064",
+      "query_index": 0,
+      "candidate_index": 64,
+      "query": "アイ",
+      "candidate": "カン",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0b3bbb4e41b3d084006a145b68acec8198b041a377822a2fee",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q00_c071",
+      "query_index": 0,
+      "candidate_index": 71,
+      "query": "アイ",
+      "candidate": "タイ",
+      "exact_distance": 1,
+      "predicted_distance": 1,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0a423a51f289008e006a145b69b69c819bbbbfb71e6761b446",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q00_c074",
+      "query_index": 0,
+      "candidate_index": 74,
+      "query": "アイ",
+      "candidate": "タギ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0eac20e94ed2cf2f006a145b6aa664819b85bbf3318801a9c1",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q00_c083",
+      "query_index": 0,
+      "candidate_index": 83,
+      "query": "アイ",
+      "candidate": "ハリ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_05ba0a8ccbb6d48f006a145b6bb96c81998d23b62191aa676e",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q00_c088",
+      "query_index": 0,
+      "candidate_index": 88,
+      "query": "アイ",
+      "candidate": "マキ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0599688ffd860b28006a145b6cdc0c819a90039c4cd6498ba6",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q00_c092",
+      "query_index": 0,
+      "candidate_index": 92,
+      "query": "アイ",
+      "candidate": "ヤギ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_04669e58041825ef006a145b709564819bbe2ed6430fac2abb",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q00_c096",
+      "query_index": 0,
+      "candidate_index": 96,
+      "query": "アイ",
+      "candidate": "リャオ",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_09abc50a61c0fb40006a145b71a9b4819baaa72c579f338470",
+      "usage": {
+        "input_tokens": 226,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 239
+      }
+    },
+    {
+      "pair_id": "q00_c099",
+      "query_index": 0,
+      "candidate_index": 99,
+      "query": "アイ",
+      "candidate": "ワン",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_02d14f92685fd9df006a145b72e5b48199b3b8986417e65859",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q01_c005",
+      "query_index": 1,
+      "candidate_index": 5,
+      "query": "アウマル",
+      "candidate": "アイザワ",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0a8ba410d70cde9f006a145b73d0c0819a8feba18f0fc1f001",
+      "usage": {
+        "input_tokens": 230,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 243
+      }
+    },
+    {
+      "pair_id": "q01_c020",
+      "query_index": 1,
+      "candidate_index": 20,
+      "query": "アウマル",
+      "candidate": "アクツ",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0c2f810e4384938b006a145b74f3a08198af2db526250e4766",
+      "usage": {
+        "input_tokens": 229,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 242
+      }
+    },
+    {
+      "pair_id": "q01_c026",
+      "query_index": 1,
+      "candidate_index": 26,
+      "query": "アウマル",
+      "candidate": "アズハタ",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0d42418bba571051006a145b7612e4819a91d89518e0ea1fa9",
+      "usage": {
+        "input_tokens": 230,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 243
+      }
+    },
+    {
+      "pair_id": "q01_c036",
+      "query_index": 1,
+      "candidate_index": 36,
+      "query": "アウマル",
+      "candidate": "アマノ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_00a333e36772b86d006a145b771cac819bac93366e8243f7e4",
+      "usage": {
+        "input_tokens": 228,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 241
+      }
+    },
+    {
+      "pair_id": "q01_c047",
+      "query_index": 1,
+      "candidate_index": 47,
+      "query": "アウマル",
+      "candidate": "アンザイ",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_07d1885edd8ce05c006a145b785c9c819a9cb0c9658067f0ab",
+      "usage": {
+        "input_tokens": 231,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 244
+      }
+    },
+    {
+      "pair_id": "q01_c054",
+      "query_index": 1,
+      "candidate_index": 54,
+      "query": "アウマル",
+      "candidate": "イケマツ",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_04bdf68e25f541cb006a145b79913481989b5655b030458115",
+      "usage": {
+        "input_tokens": 230,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 243
+      }
+    },
+    {
+      "pair_id": "q01_c084",
+      "query_index": 1,
+      "candidate_index": 84,
+      "query": "アウマル",
+      "candidate": "カネマル",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_038c79b49ec19013006a145b7aafac8198b1df5c3742ee1e85",
+      "usage": {
+        "input_tokens": 230,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 243
+      }
+    },
+    {
+      "pair_id": "q01_c085",
+      "query_index": 1,
+      "candidate_index": 85,
+      "query": "アウマル",
+      "candidate": "サコマル",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0a0aebdfe1cd9794006a145b7bd22c819b919c3d1f8d981208",
+      "usage": {
+        "input_tokens": 230,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 243
+      }
+    },
+    {
+      "pair_id": "q01_c092",
+      "query_index": 1,
+      "candidate_index": 92,
+      "query": "アウマル",
+      "candidate": "ナカムラ",
+      "exact_distance": 4,
+      "predicted_distance": 3,
+      "absolute_error": 1,
+      "is_exact_match": false,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_01563b8f64cad9e5006a145b7d290881988bf7c8be535507e1",
+      "usage": {
+        "input_tokens": 230,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 243
+      }
+    },
+    {
+      "pair_id": "q02_c010",
+      "query_index": 2,
+      "candidate_index": 10,
+      "query": "アケ",
+      "candidate": "アノ",
+      "exact_distance": 1,
+      "predicted_distance": 1,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0521ad1027d84ee6006a145b7ead58819aa7c7a32c33cbeb4f",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q02_c019",
+      "query_index": 2,
+      "candidate_index": 19,
+      "query": "アケ",
+      "candidate": "イケベ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_006a44481a19df55006a145b7fa2ec819ba043324da9763535",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q02_c026",
+      "query_index": 2,
+      "candidate_index": 26,
+      "query": "アケ",
+      "candidate": "イド",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_03e57a9e29b084bb006a145b80be10819995ac91edbfb69c7c",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q02_c028",
+      "query_index": 2,
+      "candidate_index": 28,
+      "query": "アケ",
+      "candidate": "イノ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_03346740c7f40c95006a145b81ffd081999d6086898e84af97",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q02_c046",
+      "query_index": 2,
+      "candidate_index": 46,
+      "query": "アケ",
+      "candidate": "エダ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_00858cfe546ae773006a145b830c748199bd693a7d8916d84e",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q02_c049",
+      "query_index": 2,
+      "candidate_index": 49,
+      "query": "アケ",
+      "candidate": "オウ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0829182c6ed48d3b006a145b8409cc8199b7b7ae9d809db849",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q02_c054",
+      "query_index": 2,
+      "candidate_index": 54,
+      "query": "アケ",
+      "candidate": "オカベ",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0a71eeebc6ee00bb006a145b8524888198816ba8464525b834",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q02_c094",
+      "query_index": 2,
+      "candidate_index": 94,
+      "query": "アケ",
+      "candidate": "フセ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_067b9e22ea3a7d39006a145b88c380819aa51996eea530fe55",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q02_c096",
+      "query_index": 2,
+      "candidate_index": 96,
+      "query": "アケ",
+      "candidate": "マエ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0c688c46176af956006a145b89fdc8819a9c5144818d999386",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q03_c006",
+      "query_index": 3,
+      "candidate_index": 6,
+      "query": "アシオト",
+      "candidate": "アイダ",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0f24336b20b129e2006a145b8b0628819b816e42d67919e645",
+      "usage": {
+        "input_tokens": 227,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 240
+      }
+    },
+    {
+      "pair_id": "q03_c007",
+      "query_index": 3,
+      "candidate_index": 7,
+      "query": "アシオト",
+      "candidate": "アイト",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_03ea3294f82303b0006a145b8c3e00819ba935b701dc94cb0d",
+      "usage": {
+        "input_tokens": 227,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 240
+      }
+    },
+    {
+      "pair_id": "q03_c015",
+      "query_index": 3,
+      "candidate_index": 15,
+      "query": "アシオト",
+      "candidate": "アキエダ",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0e7bb8700843cde1006a145b8f63e08199995c2c7051032bc7",
+      "usage": {
+        "input_tokens": 228,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 241
+      }
+    },
+    {
+      "pair_id": "q03_c021",
+      "query_index": 3,
+      "candidate_index": 21,
+      "query": "アシオト",
+      "candidate": "アキーノ",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_00a268fdc19b729d006a145b907f5c8198962181906971229f",
+      "usage": {
+        "input_tokens": 229,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 242
+      }
+    },
+    {
+      "pair_id": "q03_c031",
+      "query_index": 3,
+      "candidate_index": 31,
+      "query": "アシオト",
+      "candidate": "アソウ",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0d9b5dbe3340560e006a145b918ca0819abf5650033ab56804",
+      "usage": {
+        "input_tokens": 227,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 240
+      }
+    },
+    {
+      "pair_id": "q03_c051",
+      "query_index": 3,
+      "candidate_index": 51,
+      "query": "アシオト",
+      "candidate": "イシドウ",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0172d1c24bf07f20006a145b92bfb881999e00273fa6541fca",
+      "usage": {
+        "input_tokens": 228,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 241
+      }
+    },
+    {
+      "pair_id": "q03_c070",
+      "query_index": 3,
+      "candidate_index": 70,
+      "query": "アシオト",
+      "candidate": "イワオ",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_09919ed4ac5337a1006a145b95b8a88199a706f0c9b222073c",
+      "usage": {
+        "input_tokens": 227,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 240
+      }
+    },
+    {
+      "pair_id": "q03_c074",
+      "query_index": 3,
+      "candidate_index": 74,
+      "query": "アシオト",
+      "candidate": "ウチオ",
+      "exact_distance": 3,
+      "predicted_distance": 2,
+      "absolute_error": 1,
+      "is_exact_match": false,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0abb383684673199006a145b96be98819bbd3ec7504ccbcf02",
+      "usage": {
+        "input_tokens": 227,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 240
+      }
+    },
+    {
+      "pair_id": "q03_c081",
+      "query_index": 3,
+      "candidate_index": 81,
+      "query": "アシオト",
+      "candidate": "オシオ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_07af71e4c7464d39006a145b97fa048198bdde744271324db4",
+      "usage": {
+        "input_tokens": 227,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 240
+      }
+    },
+    {
+      "pair_id": "q04_c004",
+      "query_index": 4,
+      "candidate_index": 4,
+      "query": "アッテ",
+      "candidate": "アイト",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_05f0dbe0b72dd79d006a145b994e708198bc1b6a6ba1e479e7",
+      "usage": {
+        "input_tokens": 227,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 240
+      }
+    },
+    {
+      "pair_id": "q04_c006",
+      "query_index": 4,
+      "candidate_index": 6,
+      "query": "アッテ",
+      "candidate": "アイモト",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_02a0a90ef591bef6006a145b9a8fa08199907a314775b2f0b5",
+      "usage": {
+        "input_tokens": 228,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 241
+      }
+    },
+    {
+      "pair_id": "q04_c028",
+      "query_index": 4,
+      "candidate_index": 28,
+      "query": "アッテ",
+      "candidate": "アクネ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0c955b35c45eb700006a145b9b8d0c819a9e795973a6add11f",
+      "usage": {
+        "input_tokens": 227,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 240
+      }
+    },
+    {
+      "pair_id": "q04_c029",
+      "query_index": 4,
+      "candidate_index": 29,
+      "query": "アッテ",
+      "candidate": "アサイ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0ab1b4ddb3eabe3d006a145b9cae9c81998898cead469af606",
+      "usage": {
+        "input_tokens": 227,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 240
+      }
+    },
+    {
+      "pair_id": "q04_c034",
+      "query_index": 4,
+      "candidate_index": 34,
+      "query": "アッテ",
+      "candidate": "アサマ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_08ec980a453db8f6006a145b9fa4108199abf0f1d7c3a485c0",
+      "usage": {
+        "input_tokens": 227,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 240
+      }
+    },
+    {
+      "pair_id": "q04_c037",
+      "query_index": 4,
+      "candidate_index": 37,
+      "query": "アッテ",
+      "candidate": "アズセ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_043a078265813c6d006a145ba0a668819aa08d2f27866890fa",
+      "usage": {
+        "input_tokens": 228,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 241
+      }
+    },
+    {
+      "pair_id": "q04_c044",
+      "query_index": 4,
+      "candidate_index": 44,
+      "query": "アッテ",
+      "candidate": "アヅマ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0185be8c75a47461006a145ba1eb04819aaa68c0cd0b3fea8f",
+      "usage": {
+        "input_tokens": 228,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 241
+      }
+    },
+    {
+      "pair_id": "q04_c059",
+      "query_index": 4,
+      "candidate_index": 59,
+      "query": "アッテ",
+      "candidate": "ウィット",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0b0862796e3464bd006a145ba33c7881988468a94afea91f47",
+      "usage": {
+        "input_tokens": 230,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 243
+      }
+    },
+    {
+      "pair_id": "q04_c064",
+      "query_index": 4,
+      "candidate_index": 64,
+      "query": "アッテ",
+      "candidate": "オオエ",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0a89d6d4d12c4174006a145ba460788199b2726fd448cb1a82",
+      "usage": {
+        "input_tokens": 227,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 240
+      }
+    },
+    {
+      "pair_id": "q04_c076",
+      "query_index": 4,
+      "candidate_index": 76,
+      "query": "アッテ",
+      "candidate": "サンチェ",
+      "exact_distance": 4,
+      "predicted_distance": 4,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_056094856b1672f8006a145ba584608198927664fda1a80274",
+      "usage": {
+        "input_tokens": 230,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 243
+      }
+    },
+    {
+      "pair_id": "q05_c006",
+      "query_index": 5,
+      "candidate_index": 6,
+      "query": "アト",
+      "candidate": "アオノ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_040221028e800581006a145ba6a66881988276efaa377b1322",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q05_c008",
+      "query_index": 5,
+      "candidate_index": 8,
+      "query": "アト",
+      "candidate": "アキタ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_08a16923e1864b4c006a145ba7af5c819a9467830d0a4053ff",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q05_c019",
+      "query_index": 5,
+      "candidate_index": 19,
+      "query": "アト",
+      "candidate": "アワノ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_08dd477f384136e6006a145bac2664819997a0bea5780244b6",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q05_c024",
+      "query_index": 5,
+      "candidate_index": 24,
+      "query": "アト",
+      "candidate": "イタニ",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_028ec6740124083b006a145bad46b4819bb41a36a4bd90e0cf",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q05_c037",
+      "query_index": 5,
+      "candidate_index": 37,
+      "query": "アト",
+      "candidate": "イム",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0339152382974be5006a145bae4bd8819a9354053626f7eedd",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q05_c044",
+      "query_index": 5,
+      "candidate_index": 44,
+      "query": "アト",
+      "candidate": "ウダ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0ad73b3d0dcb5f2d006a145baf4b2c819ab63755181727ec98",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q05_c048",
+      "query_index": 5,
+      "candidate_index": 48,
+      "query": "アト",
+      "candidate": "ウノ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_06510740f3b7f9a8006a145bb228d0819baf2d641dad1d4408",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q05_c053",
+      "query_index": 5,
+      "candidate_index": 53,
+      "query": "アト",
+      "candidate": "エト",
+      "exact_distance": 1,
+      "predicted_distance": 1,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_02d8afb777640144006a145bb337f0819badcd897a66909e0d",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q05_c060",
+      "query_index": 5,
+      "candidate_index": 60,
+      "query": "アト",
+      "candidate": "オオト",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_05823b0c48a69737006a145bb44aec819bbe8d5159d071d3f0",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q05_c064",
+      "query_index": 5,
+      "candidate_index": 64,
+      "query": "アト",
+      "candidate": "オキ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_018bdf6acd971359006a145bb56984819b847a1890ee7eec6c",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q05_c070",
+      "query_index": 5,
+      "candidate_index": 70,
+      "query": "アト",
+      "candidate": "オト",
+      "exact_distance": 1,
+      "predicted_distance": 1,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0c77b5d5ba442089006a145bb6621c8198aa638f20caa22ad6",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q05_c073",
+      "query_index": 5,
+      "candidate_index": 73,
+      "query": "アト",
+      "candidate": "オホ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0ade21069cd597b6006a145bb769a4819b9dedffabc9878098",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q05_c077",
+      "query_index": 5,
+      "candidate_index": 77,
+      "query": "アト",
+      "candidate": "カノ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0a8c1b79204a0a74006a145bb88d98819bb531034f13636d02",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q05_c079",
+      "query_index": 5,
+      "candidate_index": 79,
+      "query": "アト",
+      "candidate": "サト",
+      "exact_distance": 1,
+      "predicted_distance": 1,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0f44a18bf41aaa4b006a145bb96cac81999dac97c099bf1cf3",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q05_c084",
+      "query_index": 5,
+      "candidate_index": 84,
+      "query": "アト",
+      "candidate": "タオ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_04df48f8207f9d28006a145bbc3384819bbfa7bd07ee843830",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q05_c088",
+      "query_index": 5,
+      "candidate_index": 88,
+      "query": "アト",
+      "candidate": "ナイト",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_033df7b6935a74ee006a145bbd59fc819aa314244248844a9b",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q05_c090",
+      "query_index": 5,
+      "candidate_index": 90,
+      "query": "アト",
+      "candidate": "ハタド",
+      "exact_distance": 3,
+      "predicted_distance": 2,
+      "absolute_error": 1,
+      "is_exact_match": false,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0cc16c31114830f1006a145bbe6474819abc201dc01848707e",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q05_c095",
+      "query_index": 5,
+      "candidate_index": 95,
+      "query": "アト",
+      "candidate": "ムト",
+      "exact_distance": 1,
+      "predicted_distance": 1,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0abc55852777780a006a145bbf61cc819bb4346f035075b120",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q05_c096",
+      "query_index": 5,
+      "candidate_index": 96,
+      "query": "アト",
+      "candidate": "ヤタ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0b22f2a94a105ca8006a145bc05ccc819b964fdf96e2f9fde7",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q05_c099",
+      "query_index": 5,
+      "candidate_index": 99,
+      "query": "アト",
+      "candidate": "リャオ",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0947ea172c9bc4a3006a145bc172b08199857cd811391cb9f7",
+      "usage": {
+        "input_tokens": 226,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 239
+      }
+    },
+    {
+      "pair_id": "q06_c023",
+      "query_index": 6,
+      "candidate_index": 23,
+      "query": "アノ",
+      "candidate": "イソノ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_043f595ecf71b9fc006a145bc26d80819a830fe1b45200fc6f",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q06_c033",
+      "query_index": 6,
+      "candidate_index": 33,
+      "query": "アノ",
+      "candidate": "イノコ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_06ea37f6a594ec10006a145bc362348198ae60e53bc7a2a559",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q06_c042",
+      "query_index": 6,
+      "candidate_index": 42,
+      "query": "アノ",
+      "candidate": "ウオ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_04ea2715761cfbb5006a145bc60068819a96e4af7a843f2d5d",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q06_c045",
+      "query_index": 6,
+      "candidate_index": 45,
+      "query": "アノ",
+      "candidate": "ウト",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0d6510b0f2ccd448006a145bc71a2c81998122a25730096ad3",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q06_c054",
+      "query_index": 6,
+      "candidate_index": 54,
+      "query": "アノ",
+      "candidate": "エト",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_002aadc3f758c18b006a145bc81180819883898f809169a2df",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q06_c066",
+      "query_index": 6,
+      "candidate_index": 66,
+      "query": "アノ",
+      "candidate": "オギノ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0a0668a915ad44df006a145bc924248198b96c59b22d57ce74",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q06_c096",
+      "query_index": 6,
+      "candidate_index": 96,
+      "query": "アノ",
+      "candidate": "ミノ",
+      "exact_distance": 1,
+      "predicted_distance": 1,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0cb887d90b4987fd006a145bca14148198add135529e543481",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q06_c098",
+      "query_index": 6,
+      "candidate_index": 98,
+      "query": "アノ",
+      "candidate": "ヤノ",
+      "exact_distance": 1,
+      "predicted_distance": 1,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_037febf35dd7484d006a145bcb2bd481988a996461de95fbe2",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q07_c015",
+      "query_index": 7,
+      "candidate_index": 15,
+      "query": "アレ",
+      "candidate": "イセ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_00b1155fe759f90a006a145bcc52348199ac73579efa425bc1",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q07_c029",
+      "query_index": 7,
+      "candidate_index": 29,
+      "query": "アレ",
+      "candidate": "イレイ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_05fd005cf1f18484006a145bcd54b881998d16ca46a601c934",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q07_c046",
+      "query_index": 7,
+      "candidate_index": 46,
+      "query": "アレ",
+      "candidate": "オ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_047d45ea4dd7f262006a145bce7fa0819abd1f9588b2bab4e6",
+      "usage": {
+        "input_tokens": 223,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 236
+      }
+    },
+    {
+      "pair_id": "q07_c095",
+      "query_index": 7,
+      "candidate_index": 95,
+      "query": "アレ",
+      "candidate": "マエダ",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_098b87b86d3510f6006a145bcf965c819aae4afc58bbe2c7b7",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q07_c098",
+      "query_index": 7,
+      "candidate_index": 98,
+      "query": "アレ",
+      "candidate": "ヤベ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_01708f223fd952c1006a145bd0d830819bae1761a7098e3541",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q08_c013",
+      "query_index": 8,
+      "candidate_index": 13,
+      "query": "アレ",
+      "candidate": "アン",
+      "exact_distance": 1,
+      "predicted_distance": 1,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_05d30c53f692dcb3006a145bd1c4d4819b8c9f3fc8a8999482",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q08_c035",
+      "query_index": 8,
+      "candidate_index": 35,
+      "query": "アレ",
+      "candidate": "ウチ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0dad68e4d8043365006a145bd2da2c81998032dc4bc3d27511",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q08_c040",
+      "query_index": 8,
+      "candidate_index": 40,
+      "query": "アレ",
+      "candidate": "ウラノ",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_08a826c1ade65e5b006a145bd41fc0819896a8001af7a83569",
+      "usage": {
+        "input_tokens": 225,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 238
+      }
+    },
+    {
+      "pair_id": "q08_c046",
+      "query_index": 8,
+      "candidate_index": 46,
+      "query": "アレ",
+      "candidate": "オ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_012bd21fd2d6c68a006a145bd5507c8199a90d664260c18909",
+      "usage": {
+        "input_tokens": 223,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 236
+      }
+    },
+    {
+      "pair_id": "q08_c079",
+      "query_index": 8,
+      "candidate_index": 79,
+      "query": "アレ",
+      "candidate": "サガ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0fcbd88d746cf59f006a145bd68ccc819a8d8e1c61cc3f346e",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q08_c096",
+      "query_index": 8,
+      "candidate_index": 96,
+      "query": "アレ",
+      "candidate": "マサ",
+      "exact_distance": 2,
+      "predicted_distance": 2,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_05c63c24348108cd006a145bd7aa988198b75f81cf81598d68",
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 237
+      }
+    },
+    {
+      "pair_id": "q09_c031",
+      "query_index": 9,
+      "candidate_index": 31,
+      "query": "アレクルウ",
+      "candidate": "アライ",
+      "exact_distance": 4,
+      "predicted_distance": 4,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_03c45deb3ebe9fbb006a145bd8cf0c8199b10219176bcf02b4",
+      "usage": {
+        "input_tokens": 229,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 242
+      }
+    },
+    {
+      "pair_id": "q09_c050",
+      "query_index": 9,
+      "candidate_index": 50,
+      "query": "アレクルウ",
+      "candidate": "アレン",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0075e38e7dd95ca5006a145bda2680819b9fe74a6b994d98b6",
+      "usage": {
+        "input_tokens": 230,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 243
+      }
+    },
+    {
+      "pair_id": "q09_c051",
+      "query_index": 9,
+      "candidate_index": 51,
+      "query": "アレクルウ",
+      "candidate": "アンシュウ",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_068ce0ce6e8fb696006a145bdb88a0819b98126e9443d992de",
+      "usage": {
+        "input_tokens": 233,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 246
+      }
+    },
+    {
+      "pair_id": "q09_c063",
+      "query_index": 9,
+      "candidate_index": 63,
+      "query": "アレクルウ",
+      "candidate": "イコウ",
+      "exact_distance": 4,
+      "predicted_distance": 5,
+      "absolute_error": 1,
+      "is_exact_match": false,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_074ceef2cb5355d1006a145bdcaf7c8199b54758debf6f2b6d",
+      "usage": {
+        "input_tokens": 229,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 242
+      }
+    },
+    {
+      "pair_id": "q09_c070",
+      "query_index": 9,
+      "candidate_index": 70,
+      "query": "アレクルウ",
+      "candidate": "イマクルス",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_08aed1bf20ae63e4006a145bddb56c8199824743eaa6f6de72",
+      "usage": {
+        "input_tokens": 232,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 245
+      }
+    },
+    {
+      "pair_id": "q09_c088",
+      "query_index": 9,
+      "candidate_index": 88,
+      "query": "アレクルウ",
+      "candidate": "デラクルス",
+      "exact_distance": 3,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_0de68fac9c6aeeb9006a145bdf3f04819988922b1faa890fb2",
+      "usage": {
+        "input_tokens": 232,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 245
+      }
+    },
+    {
+      "pair_id": "q09_c093",
+      "query_index": 9,
+      "candidate_index": 93,
+      "query": "アレクルウ",
+      "candidate": "マイクラム",
+      "exact_distance": 4,
+      "predicted_distance": 4,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_08ee37869f7acf8d006a145be0accc8199aa665ca787248b39",
+      "usage": {
+        "input_tokens": 232,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 245
+      }
+    },
+    {
+      "pair_id": "q09_c098",
+      "query_index": 9,
+      "candidate_index": 98,
+      "query": "アレクルウ",
+      "candidate": "レスリー",
+      "exact_distance": 4,
+      "predicted_distance": 5,
+      "absolute_error": 1,
+      "is_exact_match": false,
+      "prompt_mode": "kana_spaced",
+      "response_id": "resp_08c512d7001122ed006a145be21d3881988cc8caa9d198ab5c",
+      "usage": {
+        "input_tokens": 231,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 244
+      }
+    }
+  ]
+}

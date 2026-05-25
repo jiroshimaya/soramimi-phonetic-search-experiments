@@ -1,0 +1,165 @@
+{
+  "encoding_proxy": "o200k_base",
+  "analyses": [
+    {
+      "path": "analytics/results/mora_edit_distance_nonreasoning_gpt-5.4_small_sample100_seed7.json",
+      "encoding": "o200k_base",
+      "parameters": {
+        "model": "gpt-5.4",
+        "sample_size": 100,
+        "seed": 7,
+        "wordlist_size": 100,
+        "reasoning_effort": "none",
+        "max_output_tokens": 64,
+        "output_file_path": "/Users/jiro/development/workspace/soramimi-phonetic-search-experiments/analytics/results/mora_edit_distance_nonreasoning_gpt-5.4_small_sample100_seed7.json"
+      },
+      "summary": {
+        "pair_count": 100,
+        "strict_unit_token_match_pair_count": 65,
+        "strict_unit_token_match_rate": 0.65,
+        "boundary_aligned_pair_count": 65,
+        "boundary_aligned_pair_rate": 0.65,
+        "exact_match_rate": 0.99,
+        "exact_match_on_misaligned_pair_count": 34,
+        "exact_match_on_misaligned_pair_rate": 0.34,
+        "non_exact_on_strict_match_pair_count": 0,
+        "hypothesis_all_misaligned_fail_exact_match": false,
+        "hypothesis_all_strict_match_succeed": true,
+        "example_exact_match_on_misaligned_pairs": [
+          {
+            "pair_id": "q00_c038",
+            "query": "アイ",
+            "candidate": "アルー"
+          },
+          {
+            "pair_id": "q00_c064",
+            "query": "アイ",
+            "candidate": "カン"
+          },
+          {
+            "pair_id": "q00_c096",
+            "query": "アイ",
+            "candidate": "リャオ"
+          },
+          {
+            "pair_id": "q00_c099",
+            "query": "アイ",
+            "candidate": "ワン"
+          },
+          {
+            "pair_id": "q01_c005",
+            "query": "アウマル",
+            "candidate": "アイザワ"
+          }
+        ]
+      }
+    },
+    {
+      "path": "analytics/results/kana_edit_distance_nonreasoning_gpt-5.4_small_sample100_seed7.json",
+      "encoding": "o200k_base",
+      "parameters": {
+        "model": "gpt-5.4",
+        "sample_size": 100,
+        "seed": 7,
+        "wordlist_size": 100,
+        "reasoning_effort": "none",
+        "max_output_tokens": 64,
+        "output_file_path": "/Users/jiro/development/workspace/soramimi-phonetic-search-experiments/analytics/results/kana_edit_distance_nonreasoning_gpt-5.4_small_sample100_seed7.json"
+      },
+      "summary": {
+        "pair_count": 100,
+        "strict_unit_token_match_pair_count": 64,
+        "strict_unit_token_match_rate": 0.64,
+        "boundary_aligned_pair_count": 64,
+        "boundary_aligned_pair_rate": 0.64,
+        "exact_match_rate": 0.72,
+        "exact_match_on_misaligned_pair_count": 21,
+        "exact_match_on_misaligned_pair_rate": 0.21,
+        "non_exact_on_strict_match_pair_count": 13,
+        "hypothesis_all_misaligned_fail_exact_match": false,
+        "hypothesis_all_strict_match_succeed": false,
+        "example_exact_match_on_misaligned_pairs": [
+          {
+            "pair_id": "q00_c038",
+            "query": "アイ",
+            "candidate": "アルー"
+          },
+          {
+            "pair_id": "q00_c049",
+            "query": "アイ",
+            "candidate": "イソ"
+          },
+          {
+            "pair_id": "q00_c050",
+            "query": "アイ",
+            "candidate": "イマイ"
+          },
+          {
+            "pair_id": "q00_c059",
+            "query": "アイ",
+            "candidate": "オギ"
+          },
+          {
+            "pair_id": "q00_c060",
+            "query": "アイ",
+            "candidate": "オチ"
+          }
+        ]
+      }
+    },
+    {
+      "path": "analytics/results/kana_edit_distance_nonreasoning_gpt-5.4_promptkana_spaced_small_sample100_seed7.json",
+      "encoding": "o200k_base",
+      "parameters": {
+        "model": "gpt-5.4",
+        "sample_size": 100,
+        "seed": 7,
+        "wordlist_size": 100,
+        "reasoning_effort": "none",
+        "max_output_tokens": 64,
+        "prompt_mode": "kana_spaced",
+        "output_file_path": "/Users/jiro/development/workspace/soramimi-phonetic-search-experiments/analytics/results/kana_edit_distance_nonreasoning_gpt-5.4_promptkana_spaced_small_sample100_seed7.json"
+      },
+      "summary": {
+        "pair_count": 100,
+        "strict_unit_token_match_pair_count": 65,
+        "strict_unit_token_match_rate": 0.65,
+        "boundary_aligned_pair_count": 65,
+        "boundary_aligned_pair_rate": 0.65,
+        "exact_match_rate": 0.95,
+        "exact_match_on_misaligned_pair_count": 32,
+        "exact_match_on_misaligned_pair_rate": 0.32,
+        "non_exact_on_strict_match_pair_count": 2,
+        "hypothesis_all_misaligned_fail_exact_match": false,
+        "hypothesis_all_strict_match_succeed": false,
+        "example_exact_match_on_misaligned_pairs": [
+          {
+            "pair_id": "q00_c038",
+            "query": "アイ",
+            "candidate": "アルー"
+          },
+          {
+            "pair_id": "q00_c064",
+            "query": "アイ",
+            "candidate": "カン"
+          },
+          {
+            "pair_id": "q00_c096",
+            "query": "アイ",
+            "candidate": "リャオ"
+          },
+          {
+            "pair_id": "q00_c099",
+            "query": "アイ",
+            "candidate": "ワン"
+          },
+          {
+            "pair_id": "q01_c005",
+            "query": "アウマル",
+            "candidate": "アイザワ"
+          }
+        ]
+      }
+    }
+  ]
+}
