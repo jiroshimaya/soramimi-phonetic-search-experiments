@@ -35,6 +35,8 @@ except ImportError:  # pragma: no cover - current pinned dataset does not export
 DEFAULT_MODEL = "gpt-5.4"
 DEFAULT_SAMPLE_SIZE = 3
 DEFAULT_SEED = 7
+DEFAULT_PROMPT_MODE = "mora_spaced"
+PROMPT_MODES = ["mora_spaced", "kana_only", "kana_only_with_mora_hint"]
 
 
 class DistanceOutput(BaseModel):
@@ -156,8 +158,9 @@ def select_pairs(
     return sorted(selected, key=lambda pair: (pair.query_index, pair.candidate_index))
 
 
-def build_system_prompt() -> str:
-    return """
+def build_system_prompt(prompt_mode: str) -> str:
+    if prompt_mode == "mora_spaced":
+        return """
 あなたはモーラ列どうしの編集距離を整数で返す判定器です。
 
 - 比較対象はスペース区切りで与えられるモーラ列です
@@ -165,10 +168,34 @@ def build_system_prompt() -> str:
 - 説明や途中経過は出さず、JSON object だけを返してください
 - 出力は {"distance": 整数} のみ
 """.strip()
+    if prompt_mode == "kana_only":
+        return """
+あなたはカタカナ文字列どうしのモーラ編集距離を整数で返す判定器です。
+
+- 比較対象は元のカタカナ文字列だけです
+- 内部では各文字列をモーラ列として比較すると考えてください
+- 1 モーラの挿入・削除・置換のコストはすべて 1 とします
+- 説明や途中経過は出さず、JSON object だけを返してください
+- 出力は {"distance": 整数} のみ
+""".strip()
+    if prompt_mode == "kana_only_with_mora_hint":
+        return """
+あなたはカタカナ文字列どうしのモーラ編集距離を整数で返す判定器です。
+
+- 比較対象は元のカタカナ文字列だけです
+- 1 モーラの挿入・削除・置換のコストはすべて 1 とします
+- モーラの数え方はシンプルに考えてください
+- ン / ー / ッ はそれぞれ 1 モーラです
+- ジャ や シュ のような拗音も 1 モーラです
+- 説明や途中経過は出さず、JSON object だけを返してください
+- 出力は {"distance": 整数} のみ
+""".strip()
+    raise ValueError(f"Unsupported prompt_mode: {prompt_mode}")
 
 
-def build_user_prompt(pair: MoraDistancePair) -> str:
-    return f"""
+def build_user_prompt(pair: MoraDistancePair, prompt_mode: str) -> str:
+    if prompt_mode == "mora_spaced":
+        return f"""
 元の文字列A: {pair.query}
 元の文字列B: {pair.candidate}
 モーラ列A: {' '.join(pair.query_moras)}
@@ -176,6 +203,21 @@ def build_user_prompt(pair: MoraDistancePair) -> str:
 
 モーラ編集距離を整数で返してください。
 """.strip()
+    if prompt_mode == "kana_only":
+        return f"""
+文字列A: {pair.query}
+文字列B: {pair.candidate}
+
+モーラ編集距離を整数で返してください。
+""".strip()
+    if prompt_mode == "kana_only_with_mora_hint":
+        return f"""
+文字列A: {pair.query}
+文字列B: {pair.candidate}
+
+モーラ編集距離を整数で返してください。
+""".strip()
+    raise ValueError(f"Unsupported prompt_mode: {prompt_mode}")
 
 
 def usage_to_dict(response: Any) -> dict[str, Any] | None:
@@ -201,11 +243,12 @@ def infer_distance(
     pair: MoraDistancePair,
     max_output_tokens: int,
     reasoning_effort: str,
+    prompt_mode: str,
 ) -> dict[str, Any]:
     request_kwargs: dict[str, Any] = {
         "model": model_name,
-        "instructions": build_system_prompt(),
-        "input": build_user_prompt(pair),
+        "instructions": build_system_prompt(prompt_mode),
+        "input": build_user_prompt(pair, prompt_mode),
         "text_format": DistanceOutput,
         "max_output_tokens": max_output_tokens,
     }
@@ -224,6 +267,7 @@ def infer_distance(
         "predicted_distance": predicted_distance,
         "absolute_error": absolute_error,
         "is_exact_match": predicted_distance == pair.exact_distance,
+        "prompt_mode": prompt_mode,
         "response_id": response.id,
         "usage": usage_to_dict(response),
     }
@@ -293,14 +337,23 @@ def compute_metrics(records: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
-def build_default_output_path(*, model_name: str, sample_size: int, seed: int) -> Path:
+def build_default_output_path(
+    *,
+    model_name: str,
+    sample_size: int,
+    seed: int,
+    prompt_mode: str,
+) -> Path:
     model_name_safe = model_name.replace("/", "-")
+    prompt_mode_suffix = (
+        "" if prompt_mode == DEFAULT_PROMPT_MODE else f"_prompt{prompt_mode}"
+    )
     return (
         Path(__file__).resolve().parent
         / "results"
         / (
             "mora_edit_distance_nonreasoning_"
-            f"{model_name_safe}_small_sample{sample_size}_seed{seed}.json"
+            f"{model_name_safe}{prompt_mode_suffix}_small_sample{sample_size}_seed{seed}.json"
         )
     )
 
@@ -349,6 +402,13 @@ def parse_args() -> argparse.Namespace:
         help="Responses API の max_output_tokens。デフォルト: 64",
     )
     parser.add_argument(
+        "--prompt_mode",
+        type=str,
+        default=DEFAULT_PROMPT_MODE,
+        choices=PROMPT_MODES,
+        help="入力の与え方。mora_spaced または kana_only。デフォルト: mora_spaced",
+    )
+    parser.add_argument(
         "-o",
         "--output_file_path",
         type=Path,
@@ -370,6 +430,7 @@ def main() -> None:
         model_name=args.model,
         sample_size=args.sample_size,
         seed=args.seed,
+        prompt_mode=args.prompt_mode,
     )
     output_file_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -381,6 +442,7 @@ def main() -> None:
             pair=pair,
             max_output_tokens=args.max_output_tokens,
             reasoning_effort=args.reasoning_effort,
+            prompt_mode=args.prompt_mode,
         )
         for pair in sampled_pairs
     ]
@@ -393,6 +455,7 @@ def main() -> None:
             "wordlist_size": args.wordlist_size,
             "reasoning_effort": args.reasoning_effort,
             "max_output_tokens": args.max_output_tokens,
+            "prompt_mode": args.prompt_mode,
             "output_file_path": str(output_file_path),
         },
         "dataset": {
