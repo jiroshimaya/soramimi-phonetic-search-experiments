@@ -187,3 +187,21 @@ def test_common_reranker_rank_by_llm_accepts_explicit_prompt_inputs(monkeypatch)
     assert captured_messages[0][0]["content"] == "Custom instructions\n\nCustom example"
     assert captured_messages[0][1]["content"] == "Q: アケ\nW:\n0. アベ\n1. カケイ\nN: 10\nA:"
     assert reranked == [["カケイ", "アベ"]]
+
+
+def test_build_rerank_messages_uses_built_in_prompt_template():
+    messages = reranker.build_rerank_messages(
+        query_texts=["アケ"],
+        wordlist_texts=[["アベ", "カケイ"]],
+        topn=5,
+        prompt_template="step_by_step",
+    )
+
+    assert "以下の手順で判断してください。" in messages[0][0]["content"]
+    assert messages[0][1]["content"] == "\n".join(
+        ["", "Query: アケ", "Wordlist:", "0. アベ", "1. カケイ", "Top N: 5", "Reranked:", ""]
+    )
+
+
+def test_prompt_template_requires_thoughts_for_nonreasoning_cot():
+    assert reranker.prompt_template_requires_thoughts("nonreasoning_cot") is True
