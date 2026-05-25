@@ -56,6 +56,30 @@ class MoraDistancePair:
     is_positive: bool
 
 
+def build_mora_distance_pair(
+    *,
+    pair_id: str,
+    query: str,
+    candidate: str,
+    query_index: int = -1,
+    candidate_index: int = -1,
+    is_positive: bool = False,
+) -> MoraDistancePair:
+    query_moras = to_moras(query)
+    candidate_moras = to_moras(candidate)
+    return MoraDistancePair(
+        pair_id=pair_id,
+        query_index=query_index,
+        candidate_index=candidate_index,
+        query=query,
+        candidate=candidate,
+        query_moras=query_moras,
+        candidate_moras=candidate_moras,
+        exact_distance=sequence_edit_distance(query_moras, candidate_moras),
+        is_positive=is_positive,
+    )
+
+
 def load_small_dataset_for_llm(*, wordlist_size: int = DEFAULT_LLM_WORDLIST_SIZE):
     if _package_load_small_dataset_for_llm is not None:
         return _package_load_small_dataset_for_llm(wordlist_size=wordlist_size)
@@ -102,22 +126,14 @@ def build_all_pairs(*, wordlist_size: int) -> list[MoraDistancePair]:
     pairs: list[MoraDistancePair] = []
     for query_index, query_with_wordlist in enumerate(dataset.queries):
         positive_words = set(query_with_wordlist.positive_words)
-        query_moras = to_moras(query_with_wordlist.query)
         for candidate_index, candidate in enumerate(query_with_wordlist.wordlist):
-            candidate_moras = to_moras(candidate)
             pairs.append(
-                MoraDistancePair(
+                build_mora_distance_pair(
                     pair_id=f"q{query_index:02d}_c{candidate_index:03d}",
                     query_index=query_index,
                     candidate_index=candidate_index,
                     query=query_with_wordlist.query,
                     candidate=candidate,
-                    query_moras=query_moras,
-                    candidate_moras=candidate_moras,
-                    exact_distance=sequence_edit_distance(
-                        query_moras,
-                        candidate_moras,
-                    ),
                     is_positive=candidate in positive_words,
                 )
             )

@@ -17,6 +17,18 @@ def test_mora_conversion_and_distance_handle_basic_cases():
     assert module.mora_edit_distance("ア", "") == 1
 
 
+def test_build_mora_distance_pair_populates_mora_fields():
+    pair = module.build_mora_distance_pair(
+        pair_id="demo",
+        query="アイ",
+        candidate="アオ",
+    )
+
+    assert pair.query_moras == ["ア", "イ"]
+    assert pair.candidate_moras == ["ア", "オ"]
+    assert pair.exact_distance == 1
+
+
 def test_build_all_pairs_and_metrics_work():
     pairs = module.build_all_pairs(wordlist_size=100)
     sampled_pairs = module.select_pairs(pairs, sample_size=3, seed=7)
