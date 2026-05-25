@@ -1,0 +1,130 @@
+{
+  "parameters": {
+    "model": "gpt-5.4",
+    "sample_size": 3,
+    "seed": 7,
+    "wordlist_size": 100,
+    "reasoning_effort": "none",
+    "max_output_tokens": 32,
+    "output_file_path": "/Users/jiro/development/workspace/soramimi-phonetic-search-experiments/analytics/results/mora_edit_distance_nonreasoning_gpt-5.4_small_sample3_seed7.json"
+  },
+  "dataset": {
+    "name": "small_dataset_for_llm",
+    "query_count": 10,
+    "total_pair_count": 1000
+  },
+  "metrics": {
+    "pair_count": 3,
+    "exact_match_rate": 1.0,
+    "mean_absolute_error": 0.0,
+    "average_exact_distance": 3.0,
+    "average_predicted_distance": 3.0,
+    "pearson_correlation": null,
+    "usage": {
+      "input_tokens": 666,
+      "output_tokens": 39,
+      "reasoning_tokens": 0,
+      "cached_input_tokens": 0,
+      "total_tokens": 705
+    }
+  },
+  "pairs": [
+    {
+      "pair_id": "q01_c054",
+      "query_index": 1,
+      "candidate_index": 54,
+      "query": "アウマル",
+      "candidate": "イケマツ",
+      "query_moras": [
+        "ア",
+        "ウ",
+        "マ",
+        "ル"
+      ],
+      "candidate_moras": [
+        "イ",
+        "ケ",
+        "マ",
+        "ツ"
+      ],
+      "exact_distance": 3,
+      "is_positive": false,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "response_id": "resp_0b4d4b098766f731006a1438a03d34819991e40ccbd8dddcaa",
+      "usage": {
+        "input_tokens": 222,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 235
+      }
+    },
+    {
+      "pair_id": "q03_c031",
+      "query_index": 3,
+      "candidate_index": 31,
+      "query": "アシオト",
+      "candidate": "アソウ",
+      "query_moras": [
+        "ア",
+        "シ",
+        "オ",
+        "ト"
+      ],
+      "candidate_moras": [
+        "ア",
+        "ソ",
+        "ウ"
+      ],
+      "exact_distance": 3,
+      "is_positive": false,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "response_id": "resp_0c0dd8512a555500006a1438a1885081988bc606072a4df76d",
+      "usage": {
+        "input_tokens": 218,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 231
+      }
+    },
+    {
+      "pair_id": "q09_c070",
+      "query_index": 9,
+      "candidate_index": 70,
+      "query": "アレクルウ",
+      "candidate": "イマクルス",
+      "query_moras": [
+        "ア",
+        "レ",
+        "ク",
+        "ル",
+        "ウ"
+      ],
+      "candidate_moras": [
+        "イ",
+        "マ",
+        "ク",
+        "ル",
+        "ス"
+      ],
+      "exact_distance": 3,
+      "is_positive": false,
+      "predicted_distance": 3,
+      "absolute_error": 0,
+      "is_exact_match": true,
+      "response_id": "resp_01440ff6602bb653006a1438a2a304819b805d98ab76987827",
+      "usage": {
+        "input_tokens": 226,
+        "output_tokens": 13,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0,
+        "total_tokens": 239
+      }
+    }
+  ]
+}

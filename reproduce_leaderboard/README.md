@@ -7,7 +7,6 @@
 - `008_*`: gpt-5.4 の prompt / input variation
 - `010_*`: gpt-5.4 reasoning effort `medium` の比較
 - `011_*`: structured outputs / gpt-5.1 medium の検証
-
 `008_llm_rerank_gpt54.py` と `010_03_llm_rerank_gpt54_medium_step_by_step.py` も比較用の基準として残しています。
 
 ## インストール
@@ -57,4 +56,3 @@ sh run_all.sh
 - dataset 本体と評価関数は `soramimi-phonetic-search-dataset` 依存です
 - `openai_batch` backend を使う実験では request JSONL や state JSON が追加生成されます
 - API キーは `OPENAI_API_KEY` / `GEMINI_API_KEY` などを使って設定してください
-
