@@ -280,8 +280,8 @@ def compute_metrics(records: list[dict[str, Any]]) -> dict[str, Any]:
 def build_default_output_path(*, model_name: str, sample_size: int, seed: int) -> Path:
     model_name_safe = model_name.replace("/", "-")
     return (
-        Path(__file__).resolve().parents[1]
-        / "results_ablation"
+        Path(__file__).resolve().parent
+        / "results"
         / (
             "mora_edit_distance_nonreasoning_"
             f"{model_name_safe}_small_sample{sample_size}_seed{seed}.json"
@@ -336,7 +336,7 @@ def parse_args() -> argparse.Namespace:
         "-o",
         "--output_file_path",
         type=Path,
-        help="結果 JSON の保存先。省略時は results_ablation/ 以下へ保存",
+        help="結果 JSON の保存先。省略時は analytics/results/ 以下へ保存",
     )
     return parser.parse_args()
 

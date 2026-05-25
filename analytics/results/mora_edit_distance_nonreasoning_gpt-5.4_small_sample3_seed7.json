@@ -6,7 +6,7 @@
     "wordlist_size": 100,
     "reasoning_effort": "none",
     "max_output_tokens": 32,
-    "output_file_path": "/Users/jiro/development/workspace/soramimi-phonetic-search-experiments/reproduce_leaderboard/results_ablation/mora_edit_distance_nonreasoning_gpt-5.4_small_sample3_seed7.json"
+    "output_file_path": "/Users/jiro/development/workspace/soramimi-phonetic-search-experiments/analytics/results/mora_edit_distance_nonreasoning_gpt-5.4_small_sample3_seed7.json"
   },
   "dataset": {
     "name": "small_dataset_for_llm",

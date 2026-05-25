@@ -1,4 +1,4 @@
-from reproduce_leaderboard.ablations import mora_edit_distance_nonreasoning as module
+from analytics import mora_edit_distance_nonreasoning as module
 
 
 def test_load_small_dataset_for_llm_returns_expected_shape():

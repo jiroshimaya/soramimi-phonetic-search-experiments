@@ -7,8 +7,6 @@
 - `008_*`: gpt-5.4 の prompt / input variation
 - `010_*`: gpt-5.4 reasoning effort `medium` の比較
 - `011_*`: structured outputs / gpt-5.1 medium の検証
-- `ablations/`: 個別要素を切り出して確かめる小実験
-
 `008_llm_rerank_gpt54.py` と `010_03_llm_rerank_gpt54_medium_step_by_step.py` も比較用の基準として残しています。
 
 ## インストール
@@ -36,7 +34,6 @@ uv run methods/010_02_llm_rerank_gpt54_medium_detailed.py
 uv run methods/010_03_llm_rerank_gpt54_medium_step_by_step.py
 uv run methods/011_01_probe_cot_structured_outputs.py
 uv run methods/011_03_llm_rerank_gpt51_medium_step_by_step.py
-uv run ablations/mora_edit_distance_nonreasoning.py
 ```
 
 まとめて流す場合:
@@ -50,7 +47,6 @@ sh run_all.sh
 
 - `results/`: full dataset の結果
 - `results_small/`: small dataset の結果
-- `results_ablation/`: アブレーション実験の結果
 - `*_cost_estimate.json`: small run から full dataset へ外挿したコスト試算
 
 `011_03_llm_rerank_gpt51_medium_step_by_step.json` は OpenAI Batch API の実測値を含みます。

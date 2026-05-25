@@ -25,7 +25,7 @@ OpenAI や Gemini を使う実験を再現する場合は、必要な API キー
 ## 構成
 
 - `reproduce_leaderboard/methods/`: 実験スクリプト
-- `reproduce_leaderboard/ablations/`: アブレーション用の実験スクリプト
+- `analytics/`: leaderboard 再現とは別の分析・probe 用スクリプト
 - `reproduce_leaderboard/results/`: full dataset の結果
 - `reproduce_leaderboard/results_small/`: small dataset の結果
 - `reproduce_leaderboard/methods/common/`: 実験用の共通補助コード
