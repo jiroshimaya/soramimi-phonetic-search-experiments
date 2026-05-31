@@ -134,6 +134,8 @@ def get_prompt_config(prompt_template: str = "default") -> RerankPromptConfig:
 def transform_text_for_rerank(text: str, input_transform: str = "none") -> str:
     if input_transform == "none":
         return text
+    if input_transform == "kana_spaced":
+        return " ".join(text)
     if input_transform == "pyopenjtalk_romaji":
         phonemes = pyopenjtalk.g2p(text)
         phoneme_text = phonemes if isinstance(phonemes, str) else " ".join(phonemes)
