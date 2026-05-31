@@ -329,12 +329,7 @@ def main():
     parser.add_argument(
         "--rerank_input_transform",
         type=str,
-        choices=[
-            "none",
-            "kana_spaced",
-            "pyopenjtalk_romaji",
-            "kana_and_pyopenjtalk_romaji",
-        ],
+        choices=["none", "pyopenjtalk_romaji", "kana_and_pyopenjtalk_romaji"],
         default="none",
         help="Transform query/candidates before reranking",
     )
