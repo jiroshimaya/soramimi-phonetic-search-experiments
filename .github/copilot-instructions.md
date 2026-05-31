@@ -1,5 +1,5 @@
-# Copilot instructions
+# Copilot 向け指示
 
-- Before running commands that need `OPENAI_API_KEY`, use `zsh -lc 'source ~/.zshrc && <command>'` so the key is loaded from the user's shell config.
-- Avoid `source ~/.zshrc` directly inside Bash; `.zshrc` may contain Zsh-only setup like `autoload` and `compinit`.
-- Create pull requests and issues in Japanese.
+- `OPENAI_API_KEY` が必要なコマンドを実行する前に、`zsh -lc 'source ~/.zshrc && <command>'` を使って、ユーザーのシェル設定からキーを読み込むこと。
+- Bash の中で直接 `source ~/.zshrc` しないこと。`.zshrc` には `autoload` や `compinit` のような Zsh 専用設定が含まれている場合がある。
+- Pull Request と Issue は日本語で作成すること。
