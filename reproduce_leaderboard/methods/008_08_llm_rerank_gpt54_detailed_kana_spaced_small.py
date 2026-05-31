@@ -46,6 +46,10 @@ Reranked: 6, 4, 5, 7, 2
 """
 
 
+def kana_spaced(text: str) -> str:
+    return " ".join(text)
+
+
 def build_rerank_metrics_metadata(model_name: str) -> dict[str, object]:
     token_usage = get_last_token_usage()
     token_cost = calculate_token_cost(model_name, token_usage)
@@ -71,16 +75,20 @@ def build_ranking_function():
         query_texts: list[str],
         wordlists: list[list[str]],
     ) -> RankingFunctionOutput:
+        spaced_queries = [kana_spaced(query) for query in query_texts]
+        spaced_wordlists = [
+            [kana_spaced(word) for word in wordlist] for wordlist in wordlists
+        ]
         ranked_wordlists = rank_by_llm(
-            query_texts=query_texts,
-            wordlist_texts=wordlists,
+            query_texts=spaced_queries,
+            wordlist_texts=spaced_wordlists,
             topn=TOPN,
             model_name=MODEL_NAME,
             reasoning_effort="none",
             prompt_template=PROMPT_TEMPLATE,
             prompt_instructions=PROMPT_INSTRUCTIONS,
             prompt_example_suffix=PROMPT_EXAMPLE_SUFFIX,
-            input_transform=INPUT_TRANSFORM,
+            input_transform="none",
             batch_size=RERANK_BATCH_SIZE,
             rerank_interval=RERANK_INTERVAL,
         )
