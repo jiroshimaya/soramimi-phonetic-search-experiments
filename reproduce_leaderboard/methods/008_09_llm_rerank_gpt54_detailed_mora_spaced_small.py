@@ -33,16 +33,18 @@ PROMPT_INSTRUCTIONS = """
 """
 PROMPT_EXAMPLE_SUFFIX = """
 Example:
-Query: リャ オ
+Query: タ ロ ウ
 Wordlist:
-0. リ オ
-1. リャ ク
-2. リョ ウ
-3. リャ オ
-4. リャ ン
-5. リ オ ウ
+0. ア オ
+1. ア オ ウ ヅ
+2. ア ノ ウ
+3. タ キョ ウ
+4. タ ド
+5. タ ノ
+6. タ ロ ウ
+7. タ ン ノ
 Top N: 5
-Reranked: 3, 0, 2, 4, 5
+Reranked: 6, 4, 5, 7, 2
 """
 
 
