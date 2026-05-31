@@ -50,6 +50,10 @@ def kana_spaced(text: str) -> str:
     return " ".join(text)
 
 
+def strip_spaces(text: str) -> str:
+    return text.replace(" ", "")
+
+
 def build_rerank_metrics_metadata(model_name: str) -> dict[str, object]:
     token_usage = get_last_token_usage()
     token_cost = calculate_token_cost(model_name, token_usage)
@@ -92,8 +96,12 @@ def build_ranking_function():
             batch_size=RERANK_BATCH_SIZE,
             rerank_interval=RERANK_INTERVAL,
         )
+        normalized_ranked_wordlists = [
+            [strip_spaces(word) for word in ranked_wordlist]
+            for ranked_wordlist in ranked_wordlists
+        ]
         return RankingFunctionOutput(
-            ranked_wordlists=ranked_wordlists,
+            ranked_wordlists=normalized_ranked_wordlists,
             metrics_metadata=build_rerank_metrics_metadata(MODEL_NAME),
         )
 
