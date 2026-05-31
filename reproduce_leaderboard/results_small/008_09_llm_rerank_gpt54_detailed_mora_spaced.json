@@ -1,0 +1,236 @@
+{
+  "parameters": {
+    "topn": 10,
+    "rank_func": "vowel_consonant",
+    "execution_timestamp": "2026-05-31T22:39:18.162135",
+    "metadata": {
+      "vowel_ratio": 0.5,
+      "rerank": true,
+      "rerank_backend": "litellm",
+      "rerank_input_size": 100,
+      "rerank_batch_size": 10,
+      "rerank_interval": 0,
+      "rerank_model_name": "gpt-5.4",
+      "rerank_reasoning_effort": "none",
+      "rerank_prompt_template": "detailed",
+      "rerank_prompt_instructions": "クエリ（Query）と単語一覧（Wordlist）が与えられます。\nクエリと発音が似ている順に、単語一覧を並び替えてください。\n- Query と Wordlist のカタカナはモーラごとにスペース区切りで与えられます\n- 子音より母音の一致を優先してください\n- クエリとモーラ数が同じであることを優先してください。ただし促音（ッ）、撥音（ン）、長音（「ー」や直前のカナの母音と同じ単母音モーラ、エ段のカナの直後のイ、オ段のカナの直後のウなど）の挿入や削除は許容されます\n- 文字単位ではなく、モーラ単位での対応を重視してください\n出力は上位Top N件のインデックスのみ返してください。",
+      "rerank_prompt_example_suffix": "Example:\nQuery: リャ オ\nWordlist:\n0. リ オ\n1. リャ ク\n2. リョ ウ\n3. リャ オ\n4. リャ ン\n5. リ オ ウ\nTop N: 5\nReranked: 3, 0, 2, 4, 5",
+      "rerank_input_transform": "mora_spaced",
+      "dataset_size": "small",
+      "dataset_loader": "default_dataset_for_llm(query_limit=SMALL_DATASET_QUERY_COUNT)"
+    }
+  },
+  "metrics": {
+    "recall": 0.65,
+    "execution_time": 2.584825038909912,
+    "metadata": {
+      "model_name": "gpt-5.4",
+      "token_usage": {
+        "input_tokens": 9901,
+        "output_tokens": 340,
+        "reasoning_tokens": 0,
+        "total_tokens": 10241
+      },
+      "cost": {
+        "input_cost": 0.024752500000000004,
+        "output_cost": 0.0051,
+        "reasoning_cost": 0.0,
+        "total_cost": 0.029852500000000004
+      }
+    }
+  },
+  "results": [
+    {
+      "query": "アイ",
+      "ranked_words": [
+        "アイ",
+        "イ",
+        "カイ",
+        "タイ",
+        "ダイ",
+        "ケイ",
+        "メイ",
+        "レイ",
+        "ツァイ",
+        "イマイ"
+      ],
+      "positive_words": [
+        "アイ"
+      ],
+      "metadata": null
+    },
+    {
+      "query": "アウマル",
+      "ranked_words": [
+        "アニマル",
+        "アキマル",
+        "カネマル",
+        "サコマル",
+        "マルク",
+        "アダム",
+        "タムラ",
+        "サムラ",
+        "アサムラ",
+        "アリムラ"
+      ],
+      "positive_words": [
+        "タクマル"
+      ],
+      "metadata": null
+    },
+    {
+      "query": "アケ",
+      "ranked_words": [
+        "カケイ",
+        "ミケ",
+        "カケフ",
+        "カセ",
+        "カイ",
+        "サカ",
+        "タカ",
+        "イケダ",
+        "イケノ",
+        "イケベ"
+      ],
+      "positive_words": [
+        "アベ",
+        "カケイ"
+      ],
+      "metadata": null
+    },
+    {
+      "query": "アシオト",
+      "ranked_words": [
+        "シオタ",
+        "オシオ",
+        "アシダ",
+        "アシカガ",
+        "アシカリ",
+        "アシザワ",
+        "イシド",
+        "アオト",
+        "アイト",
+        "アサオ"
+      ],
+      "positive_words": [
+        "ハシモト"
+      ],
+      "metadata": null
+    },
+    {
+      "query": "アッテ",
+      "ranked_words": [
+        "ダテ",
+        "アダチ",
+        "アツタ",
+        "イダテ",
+        "カッタ",
+        "ハッタ",
+        "アオト",
+        "オモテ",
+        "ガント",
+        "マルテ"
+      ],
+      "positive_words": [
+        "マルテ"
+      ],
+      "metadata": null
+    },
+    {
+      "query": "アト",
+      "ranked_words": [
+        "オト",
+        "アトリ",
+        "エト",
+        "ウト",
+        "サト",
+        "ソト",
+        "アキト",
+        "アイト",
+        "アツタ",
+        "イトイ"
+      ],
+      "positive_words": [
+        "カトウ"
+      ],
+      "metadata": null
+    },
+    {
+      "query": "アノ",
+      "ranked_words": [
+        "アノ",
+        "アオノ",
+        "アサノ",
+        "アワノ",
+        "アマノ",
+        "イノ",
+        "オノ",
+        "カンノ",
+        "タンノ",
+        "ダンノ"
+      ],
+      "positive_words": [
+        "アノ"
+      ],
+      "metadata": null
+    },
+    {
+      "query": "アレ",
+      "ranked_words": [
+        "アレン",
+        "アベ",
+        "エダ",
+        "エレラ",
+        "アリメ",
+        "イレイ",
+        "タベ",
+        "アイ",
+        "アノ",
+        "フセ"
+      ],
+      "positive_words": [
+        "アレン",
+        "アベ"
+      ],
+      "metadata": null
+    },
+    {
+      "query": "アレ",
+      "ranked_words": [
+        "アレン",
+        "アベ",
+        "エダ",
+        "エレラ",
+        "アイ",
+        "アズセ",
+        "イベ",
+        "イレイ",
+        "マエ",
+        "エト"
+      ],
+      "positive_words": [
+        "アレン"
+      ],
+      "metadata": null
+    },
+    {
+      "query": "アレクルウ",
+      "ranked_words": [
+        "アレックス",
+        "レルー",
+        "デラクルーズ",
+        "デラクルス",
+        "ダレルメイ",
+        "アルシア",
+        "アルトマン",
+        "アルー",
+        "カルロス",
+        "ラルー"
+      ],
+      "positive_words": [
+        "アレックス"
+      ],
+      "metadata": null
+    }
+  ]
+}
