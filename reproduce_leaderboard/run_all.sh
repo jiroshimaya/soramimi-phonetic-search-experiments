@@ -16,6 +16,7 @@ uv run methods/008_06_llm_rerank_gpt54_detailed_kana_and_pyopenjtalk_romaji.py
 uv run methods/008_06_llm_rerank_gpt54_detailed_kana_and_pyopenjtalk_romaji_small.py
 uv run methods/008_07_llm_rerank_gpt54_nonreasoning_cot_small.py
 uv run methods/008_08_llm_rerank_gpt54_detailed_kana_spaced_small.py
+uv run methods/008_09_llm_rerank_gpt54_detailed_mora_spaced_small.py
 
 echo "=== 010 reasoning medium variants ==="
 uv run methods/010_01_llm_rerank_gpt54_medium_simple.py
