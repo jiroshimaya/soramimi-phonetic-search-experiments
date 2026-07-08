@@ -816,6 +816,7 @@ def retrieve_openai_batch_rerank_job(
     return OpenAIBatchRerankResult(
         reranked_wordlists=reranked_wordlists,
         structured_outputs=structured_outputs,
+        token_usage=token_usage,
         batch_id=state["batch_id"],
         batch_status=batch_status,
         execution_time=_get_batch_execution_time(batch),
