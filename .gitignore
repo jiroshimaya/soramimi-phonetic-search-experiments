@@ -8,3 +8,7 @@ __pycache__/
 *.jsonl
 *_openai_batch_state.json
 
+
+# OS / derived caches
+.DS_Store
+analytics/results/baseball_with_subset.json
