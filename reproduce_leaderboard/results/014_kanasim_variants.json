@@ -1,0 +1,212 @@
+{
+  "parameters": {
+    "topn": 10,
+    "rank_func": "kanasim",
+    "kanasim_version": "0.0.11",
+    "execution_timestamp": "2026-07-08T15:51:25.919570"
+  },
+  "results": [
+    {
+      "variant": "baseline vr0.8",
+      "kanasim_kwargs": {
+        "vowel_ratio": 0.8
+      },
+      "recall": 0.8305555555555555,
+      "execution_time": 60.22175312042236
+    },
+    {
+      "variant": "baseline vr0.6",
+      "kanasim_kwargs": {
+        "vowel_ratio": 0.6
+      },
+      "recall": 0.8005555555555556,
+      "execution_time": 60.368618965148926
+    },
+    {
+      "variant": "baseline vr0.7",
+      "kanasim_kwargs": {
+        "vowel_ratio": 0.7
+      },
+      "recall": 0.8138888888888889,
+      "execution_time": 61.57007312774658
+    },
+    {
+      "variant": "baseline vr0.9",
+      "kanasim_kwargs": {
+        "vowel_ratio": 0.9
+      },
+      "recall": 0.8005555555555556,
+      "execution_time": 60.54962396621704
+    },
+    {
+      "variant": "symmetric vr0.8",
+      "kanasim_kwargs": {
+        "vowel_ratio": 0.8,
+        "symmetric": true
+      },
+      "recall": 0.8205555555555555,
+      "execution_time": 60.82769799232483
+    },
+    {
+      "variant": "normalize vr0.6",
+      "kanasim_kwargs": {
+        "vowel_ratio": 0.6,
+        "normalize": true
+      },
+      "recall": 0.7316666666666667,
+      "execution_time": 60.127362966537476
+    },
+    {
+      "variant": "normalize vr0.7",
+      "kanasim_kwargs": {
+        "vowel_ratio": 0.7,
+        "normalize": true
+      },
+      "recall": 0.7988888888888889,
+      "execution_time": 60.77706599235535
+    },
+    {
+      "variant": "normalize vr0.8",
+      "kanasim_kwargs": {
+        "vowel_ratio": 0.8,
+        "normalize": true
+      },
+      "recall": 0.8205555555555555,
+      "execution_time": 60.05007219314575
+    },
+    {
+      "variant": "normalize vr0.9",
+      "kanasim_kwargs": {
+        "vowel_ratio": 0.9,
+        "normalize": true
+      },
+      "recall": 0.8322222222222222,
+      "execution_time": 59.8339159488678
+    },
+    {
+      "variant": "normalize+symmetric vr0.8",
+      "kanasim_kwargs": {
+        "vowel_ratio": 0.8,
+        "normalize": true,
+        "symmetric": true
+      },
+      "recall": 0.7955555555555556,
+      "execution_time": 60.151365995407104
+    },
+    {
+      "variant": "vowel_binary+normalize vr0.3",
+      "kanasim_kwargs": {
+        "vowel_ratio": 0.3,
+        "vowel_binary": true,
+        "normalize": true
+      },
+      "recall": 0.8261111111111111,
+      "execution_time": 60.59389019012451
+    },
+    {
+      "variant": "vowel_binary+normalize vr0.4",
+      "kanasim_kwargs": {
+        "vowel_ratio": 0.4,
+        "vowel_binary": true,
+        "normalize": true
+      },
+      "recall": 0.8061111111111111,
+      "execution_time": 59.19712209701538
+    },
+    {
+      "variant": "vowel_binary+normalize vr0.5",
+      "kanasim_kwargs": {
+        "vowel_ratio": 0.5,
+        "vowel_binary": true,
+        "normalize": true
+      },
+      "recall": 0.7961111111111111,
+      "execution_time": 59.21038198471069
+    },
+    {
+      "variant": "vowel_binary+normalize vr0.6",
+      "kanasim_kwargs": {
+        "vowel_ratio": 0.6,
+        "vowel_binary": true,
+        "normalize": true
+      },
+      "recall": 0.7827777777777778,
+      "execution_time": 59.3362991809845
+    },
+    {
+      "variant": "vowel_binary+normalize vr0.8",
+      "kanasim_kwargs": {
+        "vowel_ratio": 0.8,
+        "vowel_binary": true,
+        "normalize": true
+      },
+      "recall": 0.7694444444444445,
+      "execution_time": 59.459927797317505
+    },
+    {
+      "variant": "vowel_binary+normalize+symmetric vr0.8",
+      "kanasim_kwargs": {
+        "vowel_ratio": 0.8,
+        "vowel_binary": true,
+        "normalize": true,
+        "symmetric": true
+      },
+      "recall": 0.7727777777777778,
+      "execution_time": 59.77883505821228
+    },
+    {
+      "variant": "mono_avg vr0.8",
+      "kanasim_kwargs": {
+        "vowel_ratio": 0.8,
+        "phoneme_unit": "mono"
+      },
+      "recall": 0.7894444444444445,
+      "execution_time": 60.18409276008606
+    },
+    {
+      "variant": "mono_avg vowel_binary+normalize vr0.8",
+      "kanasim_kwargs": {
+        "vowel_ratio": 0.8,
+        "phoneme_unit": "mono",
+        "vowel_binary": true,
+        "normalize": true
+      },
+      "recall": 0.7444444444444445,
+      "execution_time": 59.98460912704468
+    },
+    {
+      "variant": "features+normalize vr0.6",
+      "kanasim_kwargs": {
+        "vowel_ratio": 0.6,
+        "phoneme_unit": "mono",
+        "consonant_distance": "features",
+        "normalize": true
+      },
+      "recall": 0.6716666666666666,
+      "execution_time": 60.12505507469177
+    },
+    {
+      "variant": "features+normalize vr0.8",
+      "kanasim_kwargs": {
+        "vowel_ratio": 0.8,
+        "phoneme_unit": "mono",
+        "consonant_distance": "features",
+        "normalize": true
+      },
+      "recall": 0.7994444444444445,
+      "execution_time": 60.23723888397217
+    },
+    {
+      "variant": "features vowel_binary+normalize vr0.8",
+      "kanasim_kwargs": {
+        "vowel_ratio": 0.8,
+        "phoneme_unit": "mono",
+        "consonant_distance": "features",
+        "vowel_binary": true,
+        "normalize": true
+      },
+      "recall": 0.7444444444444445,
+      "execution_time": 59.34131908416748
+    }
+  ]
+}

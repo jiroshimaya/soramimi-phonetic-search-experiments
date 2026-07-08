@@ -53,6 +53,45 @@ sh run_all.sh
 
 `011_03_llm_rerank_gpt51_medium_step_by_step.json` は OpenAI Batch API の実測値を含みます。
 
+## 014: kanasim 変種の leaderboard（LLMなし）
+
+kanasim 0.0.11 で追加された距離オプション（normalize / symmetric / phoneme_unit /
+consonant_distance / vowel_binary）の変種を full dataset で評価した結果
+（`methods/014_kanasim_variants.py`、詳細は `results/014_kanasim_variants.json`）。
+
+| 設定 | Recall@10 |
+|---|--:|
+| **baseline: biphone 非対称, vowel_ratio=0.8（leaderboard 掲載値の再現）** | **0.831** |
+| normalize, vr=0.9 | 0.832 |
+| vowel_binary+normalize, vr=0.3 | 0.826 |
+| symmetric, vr=0.8 | 0.821 |
+| normalize, vr=0.8 | 0.821 |
+| baseline, vr=0.7 | 0.814 |
+| vowel_binary+normalize, vr=0.4 | 0.806 |
+| baseline, vr=0.6 / vr=0.9 | 0.801 |
+| features+normalize, vr=0.8 | 0.799 |
+| normalize, vr=0.7 | 0.799 |
+| normalize+symmetric, vr=0.8 | 0.796 |
+| vowel_binary+normalize, vr=0.5 | 0.796 |
+| mono_avg, vr=0.8 | 0.789 |
+| vowel_binary+normalize, vr=0.6 | 0.783 |
+| vowel_binary+normalize+symmetric, vr=0.8 | 0.773 |
+| vowel_binary+normalize, vr=0.8 | 0.769 |
+| mono_avg vowel_binary+normalize, vr=0.8 | 0.744 |
+| features vowel_binary+normalize, vr=0.8 | 0.744 |
+| normalize, vr=0.6 | 0.732 |
+| features+normalize, vr=0.6 | 0.672 |
+
+読み取り:
+
+- 新変種はどれも既存の 0.831 を明確には超えない（normalize vr0.9 の 0.832 は誤差の範囲）
+- normalize / vowel_binary を使う場合は最適 vowel_ratio が生スケールと大きく変わる
+  （normalize は高め 0.9、vowel_binary は低め 0.3 が最適）。オプションと重みはセットで調整が必要
+- 母音の 0/1 化（vowel_binary）はチューニングしても連続母音距離に届かず、
+  母音の段階的な近さ（ア-オ < ア-イ）がこのタスクの識別に効いていることを示唆
+- 対称化（symmetric）はこのタスクでは微減。歌唱ASR誤りマッチング（songasr 側の
+  gold 653 評価）では逆に改善しており、タスク依存
+
 ## 注意
 
 - dataset 本体と評価関数は `soramimi-phonetic-search-dataset` 依存です
