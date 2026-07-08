@@ -761,14 +761,15 @@ wheels = [
 
 [[package]]
 name = "kanasim"
-version = "0.0.4"
+version = "0.0.11"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
+    { name = "editdistance" },
     { name = "jamorasep" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/54/76/9653238c9da536f4614e25adec5797b1a2cf5415864b3595fe32ffc00c25/kanasim-0.0.4.tar.gz", hash = "sha256:6edb943f031a838389ab80f88104df1e23a7305b4534b752e329fae2b79d27e6", size = 1941673, upload-time = "2025-02-16T12:38:32.417Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/0a/9b/8c0ddc719df33672908eccdfc1cc4d4bec0eb50e10ded0fc2ab5ccc367ad/kanasim-0.0.11.tar.gz", hash = "sha256:6b87d727804c78dc4bc930a496f137b0ae2746ead965ddf386c0d5623d18e495", size = 2004603, upload-time = "2026-07-07T23:59:53.708Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/35/18/3e3eccbcf5f6b0c9e1215b85f09d3624848e5f6582eee7e98b54490302e4/kanasim-0.0.4-py3-none-any.whl", hash = "sha256:cb71ea0ba4a5397f6e8d31bd1cc62618ec5e62fbd74bb453009776b628c54ae5", size = 1719567, upload-time = "2025-02-16T12:38:30.101Z" },
+    { url = "https://files.pythonhosted.org/packages/cd/38/b922d49209ff323d42f96fde3ca31a3a6a346a48f4cfffbf8099d179623f/kanasim-0.0.11-py3-none-any.whl", hash = "sha256:4aa2a5948803c5944ac78970bc7a9b66101f260549cec9012118c1eb6e08c853", size = 1746875, upload-time = "2026-07-07T23:59:51.886Z" },
 ]
 
 [[package]]
@@ -1809,6 +1810,7 @@ name = "soramimi-phonetic-search-experiments"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "kanasim" },
     { name = "litellm" },
     { name = "openai" },
     { name = "pydantic" },
@@ -1827,6 +1829,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "kanasim", specifier = ">=0.0.11" },
     { name = "litellm", specifier = ">=1.83.0" },
     { name = "openai", specifier = ">=2.30.0" },
     { name = "pydantic", specifier = ">=2.11.4" },

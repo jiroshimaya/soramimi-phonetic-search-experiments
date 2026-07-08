@@ -5,6 +5,7 @@ description = "Fine-grained leaderboard experiments for soramimi-phonetic-search
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "kanasim>=0.0.11",
     "litellm>=1.83.0",
     "openai>=2.30.0",
     "pydantic>=2.11.4",
