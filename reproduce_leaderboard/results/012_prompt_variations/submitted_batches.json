@@ -1,0 +1,122 @@
+[
+  {
+    "condition": "simple",
+    "variant": "v2",
+    "batch_id": "batch_6a4d24e62cbc8190a6c0a599170510ed",
+    "status": "validating"
+  },
+  {
+    "condition": "simple",
+    "variant": "v3",
+    "batch_id": "batch_6a4d24e7a81c81908ca4117d7e213322",
+    "status": "validating"
+  },
+  {
+    "condition": "simple",
+    "variant": "v4",
+    "batch_id": "batch_6a4d24ea3700819082db5a609aa9293c",
+    "status": "validating"
+  },
+  {
+    "condition": "simple",
+    "variant": "v5",
+    "batch_id": "batch_6a4d24eb4b108190a56b2c98e704b50f",
+    "status": "validating"
+  },
+  {
+    "condition": "detailed",
+    "variant": "v2",
+    "batch_id": "batch_6a4d24ec88b0819084eb7f32a1161c00",
+    "status": "validating"
+  },
+  {
+    "condition": "detailed",
+    "variant": "v3",
+    "batch_id": "batch_6a4d24ee0250819081db8f4d442fa966",
+    "status": "validating"
+  },
+  {
+    "condition": "detailed",
+    "variant": "v4",
+    "batch_id": "batch_6a4d24eee90c81909de1b03f9115a8f5",
+    "status": "validating"
+  },
+  {
+    "condition": "detailed",
+    "variant": "v5",
+    "batch_id": "batch_6a4d24effcd08190ae053b5d0c1ad976",
+    "status": "validating"
+  },
+  {
+    "condition": "step_by_step",
+    "variant": "v2",
+    "batch_id": "batch_6a4d24f1324481908ff50551cdc9c228",
+    "status": "validating"
+  },
+  {
+    "condition": "step_by_step",
+    "variant": "v3",
+    "batch_id": "batch_6a4d24f27b04819094bd01991d08c6d6",
+    "status": "validating"
+  },
+  {
+    "condition": "step_by_step",
+    "variant": "v4",
+    "batch_id": "batch_6a4d24f3a2a08190972b2c8b8b6115e2",
+    "status": "validating"
+  },
+  {
+    "condition": "step_by_step",
+    "variant": "v5",
+    "batch_id": "batch_6a4d24f4b1348190ac4023758bd98024",
+    "status": "validating"
+  },
+  {
+    "condition": "detailed_romaji",
+    "variant": "v2",
+    "batch_id": "batch_6a4d24f6db688190be0ffb4e198b2ddb",
+    "status": "validating"
+  },
+  {
+    "condition": "detailed_romaji",
+    "variant": "v3",
+    "batch_id": "batch_6a4d24f827648190a398bca97941f505",
+    "status": "validating"
+  },
+  {
+    "condition": "detailed_romaji",
+    "variant": "v4",
+    "batch_id": "batch_6a4d24f962288190a15ed6dc4b2cdc0f",
+    "status": "validating"
+  },
+  {
+    "condition": "detailed_romaji",
+    "variant": "v5",
+    "batch_id": "batch_6a4d24faac78819092fe7d45d4068f18",
+    "status": "validating"
+  },
+  {
+    "condition": "detailed_kana_romaji",
+    "variant": "v2",
+    "batch_id": "batch_6a4d24fc349481908a1da48c1bb96f8f",
+    "status": "validating"
+  },
+  {
+    "condition": "detailed_kana_romaji",
+    "variant": "v3",
+    "batch_id": "batch_6a4d24fe1af8819085f5096c5a450ad1",
+    "status": "validating"
+  },
+  {
+    "condition": "detailed_kana_romaji",
+    "variant": "v4",
+    "batch_id": "batch_6a4d24ff61c88190a3d8a77f48ccce83",
+    "status": "validating"
+  },
+  {
+    "condition": "detailed_kana_romaji",
+    "variant": "v5",
+    "batch_id": "batch_6a4d25008ae8819094eda3870a057acd",
+    "status": "validating"
+  }
+]

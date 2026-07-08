@@ -1,0 +1,74 @@
+[
+  {
+    "condition": "simple",
+    "variant": "v2",
+    "batch_id": "batch_6a4d7ada71f88190ace13f9cc691b779",
+    "status": "validating"
+  },
+  {
+    "condition": "simple",
+    "variant": "v3",
+    "batch_id": "batch_6a4d7adcb9c8819089ff5b67f21a671d",
+    "status": "validating"
+  },
+  {
+    "condition": "simple",
+    "variant": "v4",
+    "batch_id": "batch_6a4d7ade6a4c8190a5bbab02324211cd",
+    "status": "validating"
+  },
+  {
+    "condition": "simple",
+    "variant": "v5",
+    "batch_id": "batch_6a4d7adffecc8190b212a82b2c7d24f6",
+    "status": "validating"
+  },
+  {
+    "condition": "detailed",
+    "variant": "v2",
+    "batch_id": "batch_6a4d7ae1705c81908cf8ec70fa79a067",
+    "status": "validating"
+  },
+  {
+    "condition": "detailed",
+    "variant": "v3",
+    "batch_id": "batch_6a4d7ae3242c8190b8da8ebf06cc563f",
+    "status": "validating"
+  },
+  {
+    "condition": "detailed",
+    "variant": "v4",
+    "batch_id": "batch_6a4d7ae4b60c81909e23a8e95aad2ed4",
+    "status": "validating"
+  },
+  {
+    "condition": "detailed",
+    "variant": "v5",
+    "batch_id": "batch_6a4d7ae61b20819082e5ce97438dc14a",
+    "status": "validating"
+  },
+  {
+    "condition": "step_by_step",
+    "variant": "v2",
+    "batch_id": "batch_6a4d7ae762408190aa9a812f2856ed53",
+    "status": "validating"
+  },
+  {
+    "condition": "step_by_step",
+    "variant": "v3",
+    "batch_id": "batch_6a4d7ae83b288190915022344d0d4a60",
+    "status": "validating"
+  },
+  {
+    "condition": "step_by_step",
+    "variant": "v4",
+    "batch_id": "batch_6a4d7ae97b64819088dbfc80f1434e0e",
+    "status": "validating"
+  },
+  {
+    "condition": "step_by_step",
+    "variant": "v5",
+    "batch_id": "batch_6a4d7aeac2588190a525a9d9e010a218",
+    "status": "validating"
+  }
+]
