@@ -97,3 +97,19 @@ consonant_distance / vowel_binary）の変種を full dataset で評価した結
 - dataset 本体と評価関数は `soramimi-phonetic-search-dataset` 依存です
 - `openai_batch` backend を使う実験では request JSONL や state JSON が追加生成されます
 - API キーは `OPENAI_API_KEY` / `GEMINI_API_KEY` などを使って設定してください
+
+## 5種類の言い換えを含むモデル比較
+
+`016_paper_model_comparison.py` は、GPT-5.6の3モデルについて、指示文3種類（simple / detailed / step_by_step）、reasoning effort 2種類（none / medium）、言い換え5種類（v1–v5）の全90試行を準備します。各試行は固定の150クエリ・100候補から上位10件を返します。既存の008・010・012・013系と同じ入力文・候補・評価方法を使い、入力変換は行いません。
+
+```bash
+# リポジトリ直下で実行。計画の作成だけではAPIを呼び出しません。
+uv run reproduce_leaderboard/methods/016_paper_model_comparison.py --output /path/to/manifest.json
+
+# 完了した試行からJSON・Markdown・LaTeXの比較表を作成します。
+uv run analytics/paper_model_comparison_stats.py --results-dir /path/to/results --output-dir /path/to/summary
+```
+
+reasoning effortは明示的に指定し、出力上限はnoneで1,000、mediumで24,000トークンです。実行は同期APIを使用するため、既存のBatch API実験とは実行方式が異なります。比較表は各条件の5試行が揃ってから、Recall@10の平均と標本標準偏差（ddof=1）を出力します。難易度別の件数はeasy 65・medium 47・hard 38で、全体150件も併記します。未完了の条件はpendingと表示します。
+
+`common/daily_free_reranker.py` は確認済みの日次枠と進捗を読み、完了したリクエストを再送せずに実行を再開します。利用条件の確認が必要なモデルは実行対象に含めません。結果ファイルは150件が完了した試行単位で保存します。
