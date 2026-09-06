@@ -308,3 +308,53 @@ def test_stops_before_midnight_without_automatic_reset(
     )
     assert result["sent"] == 0
     assert result["status"] == "waiting_new_verified_UTC_baseline"
+
+
+def test_unsettled_reservation_covers_lag_and_can_clear_when_usage_settles(
+    manifest, baseline
+):
+    state = runner.reconcile_state(manifest, baseline, None)
+    state["requests"]["completed-small"] = {
+        "status": "completed",
+        "date": baseline["date"],
+        "group": "small",
+        "actual_tokens": 120,
+    }
+    state["days"][baseline["date"]]["accounted_usage"]["small"] = 120
+    baseline["groups"]["small"].update(used=60, unsettled_usage_reservation=120)
+    runner.validate_baseline(baseline, NOW)
+    state = runner.reconcile_state(manifest, baseline, state)
+    assert state["days"][baseline["date"]]["accounted_usage"]["small"] == 180
+    # The previous conservative bound may decrease as the overlap becomes known.
+    baseline["groups"]["small"].update(used=120, unsettled_usage_reservation=0)
+    state = runner.reconcile_state(manifest, baseline, state)
+    assert state["days"][baseline["date"]]["accounted_usage"]["small"] == 120
+
+
+def test_observed_usage_regression_fails_even_with_large_reservation(
+    manifest, baseline
+):
+    baseline["groups"]["small"]["used"] = 100
+    state = runner.reconcile_state(manifest, baseline, None)
+    baseline["groups"]["small"].update(used=99, unsettled_usage_reservation=1000)
+    with pytest.raises(ValueError, match="Observed organization usage rollback"):
+        runner.reconcile_state(manifest, baseline, state)
+
+
+@pytest.mark.parametrize("reservation", [-1, True, False, 1.5, "120"])
+def test_invalid_unsettled_reservations_fail_closed(baseline, reservation):
+    baseline["groups"]["premium"]["unsettled_usage_reservation"] = reservation
+    with pytest.raises(ValueError, match="Unexpected daily cap or organization usage"):
+        runner.validate_baseline(baseline, NOW)
+
+
+def test_local_receipts_from_previous_day_do_not_inflate_today(manifest, baseline):
+    state = runner.reconcile_state(manifest, baseline, None)
+    state["requests"]["yesterday"] = {
+        "status": "completed",
+        "date": "2026-09-04",
+        "group": "premium",
+        "actual_tokens": 900_000,
+    }
+    state = runner.reconcile_state(manifest, baseline, state)
+    assert state["days"][baseline["date"]]["accounted_usage"]["premium"] == 0

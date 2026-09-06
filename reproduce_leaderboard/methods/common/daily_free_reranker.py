@@ -7,6 +7,7 @@ Pending or ambiguous calls require manual reconciliation; they are never retried
 
 import argparse
 from contextlib import contextmanager
+from copy import deepcopy
 from datetime import datetime, timedelta, timezone
 import fcntl
 import hashlib
@@ -144,10 +145,13 @@ def validate_baseline(baseline, now):
         raise ValueError("Both free token groups are required")
     for group, cap in CAPS.items():
         values = baseline["groups"][group]
+        unsettled = values.get("unsettled_usage_reservation", 0)
         if (
             values["cap"] != cap
             or type(values["used"]) is not int
             or not 0 <= values["used"] <= cap
+            or type(unsettled) is not int
+            or unsettled < 0
         ):
             raise ValueError("Unexpected daily cap or organization usage")
 
@@ -175,11 +179,28 @@ def reconcile_state(manifest, baseline, state):
         raise ValueError("UTC day rollback refused")
     previous = state["days"].get(baseline["date"])
     used = {group: baseline["groups"][group]["used"] for group in CAPS}
-    if previous and any(used[g] < previous["accounted_usage"][g] for g in CAPS):
+    if previous and any(
+        used[g] < previous["baseline"]["groups"][g]["used"] for g in CAPS
+    ):
+        raise ValueError("Observed organization usage rollback refused")
+    accounted = {
+        group: used[group]
+        + baseline["groups"][group].get("unsettled_usage_reservation", 0)
+        for group in CAPS
+    }
+    local_completed = {group: 0 for group in CAPS}
+    for row in state["requests"].values():
+        if row["date"] == baseline["date"]:
+            local_completed[row["group"]] += row["actual_tokens"]
+    if any(accounted[g] < local_completed[g] for g in CAPS):
         raise ValueError(
-            "Organization usage rollback refused; refresh usage after accounting settles"
+            "Organization usage rollback refused: observed usage plus unsettled "
+            "reservation is below locally confirmed tokens"
         )
-    state["days"][baseline["date"]] = {"baseline": baseline, "accounted_usage": used}
+    state["days"][baseline["date"]] = {
+        "baseline": deepcopy(baseline),
+        "accounted_usage": accounted,
+    }
     return state
 
 
