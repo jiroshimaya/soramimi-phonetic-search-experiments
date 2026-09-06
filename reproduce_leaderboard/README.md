@@ -113,3 +113,18 @@ uv run analytics/paper_model_comparison_stats.py --results-dir /path/to/results 
 reasoning effortは明示的に指定し、出力上限はnoneで1,000、mediumで24,000トークンです。実行は同期APIを使用するため、既存のBatch API実験とは実行方式が異なります。比較表は各条件の5試行が揃ってから、Recall@10の平均と標本標準偏差（ddof=1）を出力します。難易度別の件数はeasy 65・medium 47・hard 38で、全体150件も併記します。未完了の条件はpendingと表示します。
 
 `common/daily_free_reranker.py` は確認済みの日次枠と進捗を読み、完了したリクエストを再送せずに実行を再開します。利用条件の確認が必要なモデルは実行対象に含めません。結果ファイルは150件が完了した試行単位で保存します。
+
+### 日次枠に合わせた並列実行
+
+`--concurrency` で同時実行数を指定できます（省略時は1）。例えば、確認済みの利用枠と保存済みの進捗を使い、最大6件を並列に実行するには次のように指定します。
+
+```bash
+uv run reproduce_leaderboard/methods/common/daily_free_reranker.py \
+  --manifest /path/to/manifest.json \
+  --baseline /path/to/baseline.json \
+  --checkpoint /path/to/state.json \
+  --output-dir /path/to/results \
+  --concurrency 6 --max-requests 30
+```
+
+実行中のリクエストの最大出力量も含めて日次枠を確保し、残量に収まる分だけ送信します。残量が少なくなると同時実行数も減ります。並列数を変更しても、入力文・候補順・評価条件と完了済みの結果は引き継がれます。エラー時は新しい送信を止め、すでに送信した分の結果を保存します。成否が不明なリクエストは自動で再送しません。

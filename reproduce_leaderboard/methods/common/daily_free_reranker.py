@@ -6,6 +6,7 @@ Pending or ambiguous calls require manual reconciliation; they are never retried
 """
 
 import argparse
+from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 from contextlib import contextmanager
 from copy import deepcopy
 from datetime import datetime, timedelta, timezone
@@ -405,30 +406,56 @@ def export_complete(manifest, state, output_dir):
         atomic_json(Path(output_dir) / filename, result)
 
 
+def call_with_receipt(client, body, response_path):
+    """Workers only call the provider and preserve their distinct raw receipt."""
+    started = time.monotonic()
+    response = client.chat.completions.create(**body)
+    duration = time.monotonic() - started
+    raw = response.model_dump(mode="json")
+    atomic_json(response_path, raw)
+    return raw, duration
+
+
 def run(
-    manifest, baseline, checkpoint, output_dir, client, max_requests=None, models=None
+    manifest,
+    baseline,
+    checkpoint,
+    output_dir,
+    client,
+    max_requests=None,
+    models=None,
+    concurrency=1,
 ):
+    if type(concurrency) is not int or not 1 <= concurrency <= 16:
+        raise ValueError("Concurrency must be an integer between 1 and 16")
+    if max_requests is not None and (
+        type(max_requests) is not int or max_requests <= 0
+    ):
+        raise ValueError("Maximum requests must be a positive integer")
     checkpoint = Path(checkpoint)
     selected = set(ELIGIBLE if models is None else models)
     if not selected or not selected.issubset(ELIGIBLE):
         raise ValueError("Select only approved eligible models")
     validate_manifest(manifest)
     validate_baseline(baseline, utc_now())
+    verified = datetime.fromisoformat(baseline["verified_at"].replace("Z", "+00:00"))
     with exclusive_lock(checkpoint.with_suffix(".lock")):
         state = json.loads(checkpoint.read_text()) if checkpoint.exists() else None
         state = reconcile_state(manifest, baseline, state)
         atomic_json(checkpoint, state)
+        day = state["days"][baseline["date"]]
+        remaining = [
+            request
+            for request in manifest["requests"]
+            if request["body"]["model"] in selected
+            and request["request_id"] not in state["requests"]
+        ]
+        inflight = {}
         sent = 0
-        waiting = set()
         status = "complete_eligible_models"
-        for request in manifest["requests"]:
-            model = request["body"]["model"]
-            if model not in selected or request["request_id"] in state["requests"]:
-                continue
-            if max_requests is not None and sent >= max_requests:
-                status = "paused_request_limit"
-                break
-            now = utc_now()
+        first_error = None
+
+        def admission_pause(now):
             reset = (now + timedelta(days=1)).replace(
                 hour=0, minute=0, second=0, microsecond=0
             )
@@ -436,39 +463,18 @@ def run(
                 now.date().isoformat() != baseline["date"]
                 or (reset - now).total_seconds() <= 660
             ):
-                status = "waiting_new_verified_UTC_baseline"
-                break
-            group = ELIGIBLE[model]
-            body = {**request["body"], "service_tier": "default"}
-            reservation = len(canonical(body)) + 1024 + body["max_completion_tokens"]
-            day = state["days"][baseline["date"]]
-            if day["accounted_usage"][group] + reservation > CAPS[group]:
-                waiting.add(group)
-                continue
-            record = {
-                "status": "pending",
-                "job_id": request_job_id(manifest, request),
-                "date": baseline["date"],
-                "model": model,
-                "group": group,
-                "reservation": reservation,
-                "started_at": now.isoformat(),
-            }
-            state["requests"][request["request_id"]] = record
-            day["accounted_usage"][group] += reservation
-            atomic_json(checkpoint, state)
+                return "waiting_new_verified_UTC_baseline"
+            if not 0 <= (now - verified).total_seconds() <= 900:
+                return "waiting_fresh_account_baseline"
+            return None
+
+        def settle(future):
+            # Only the coordinator updates the ledger and request records.
+            request, record, body, response_path = inflight.pop(future)
             try:
-                started = time.monotonic()
-                response = client.chat.completions.create(**body)
-                duration = time.monotonic() - started
-                raw = response.model_dump(mode="json")
-                response_path = (
-                    checkpoint.parent
-                    / (checkpoint.stem + "_responses")
-                    / (request["request_id"] + ".json")
-                )
-                atomic_json(response_path, raw)
+                raw, duration = future.result()
                 record["response_path"] = str(response_path)
+                model = body["model"]
                 if raw.get("model") != model and not str(
                     raw.get("model", "")
                 ).startswith(model + "-"):
@@ -483,16 +489,19 @@ def run(
                 ranked, actual = parsed_result(
                     raw, manifest["queries"][request["query_index"]]
                 )
-                if actual > reservation:
+                if actual > record["reservation"]:
                     raise ValueError(
                         "Actual token usage exceeded conservative reservation"
                     )
             except Exception as exc:
+                if response_path.exists():
+                    record["response_path"] = str(response_path)
                 record.update(status="unknown", error_type=type(exc).__name__)
                 atomic_json(checkpoint, state)
-                raise RuntimeError(
-                    "Request unresolved; reserved quota retained. Manual reconciliation required."
-                ) from None
+                return exc
+            except BaseException as exc:
+                # An interrupted call retains its durable pending reservation.
+                return exc
             record.update(
                 status="completed",
                 ranked_words=ranked,
@@ -501,9 +510,8 @@ def run(
                 returned_model=raw["model"],
                 duration_seconds=duration,
             )
-            day["accounted_usage"][group] -= reservation - actual
+            day["accounted_usage"][record["group"]] -= record["reservation"] - actual
             atomic_json(checkpoint, state)
-            sent += 1
             print(
                 json.dumps(
                     {
@@ -517,9 +525,126 @@ def run(
                 ),
                 flush=True,
             )
-        if waiting and status == "complete_eligible_models":
-            status = "waiting_next_UTC_reset_and_verified_baseline"
-        elif status == "complete_eligible_models" and selected != set(ELIGIBLE):
+            return None
+
+        with ThreadPoolExecutor(max_workers=concurrency) as executor:
+            try:
+                while remaining or inflight:
+                    # Harvest all completed calls before considering more work.
+                    for future in list(inflight):
+                        if future.done():
+                            error = settle(future)
+                            if first_error is None:
+                                first_error = error
+                    if first_error is not None:
+                        break
+                    if status != "complete_eligible_models":
+                        break
+                    if not remaining:
+                        if inflight:
+                            wait(inflight, return_when=FIRST_COMPLETED)
+                        continue
+                    if max_requests is not None and sent >= max_requests:
+                        status = "paused_request_limit"
+                        break
+                    now = utc_now()
+                    pause = admission_pause(now)
+                    if pause:
+                        status = pause
+                        break
+                    if len(inflight) >= concurrency:
+                        wait(inflight, return_when=FIRST_COMPLETED)
+                        continue
+                    admitted = False
+                    for index, request in enumerate(remaining):
+                        model = request["body"]["model"]
+                        group = ELIGIBLE[model]
+                        body = {**request["body"], "service_tier": "default"}
+                        reservation = (
+                            len(canonical(body)) + 1024 + body["max_completion_tokens"]
+                        )
+                        if day["accounted_usage"][group] + reservation > CAPS[group]:
+                            continue
+                        # Reconsider completed workers before reserving another call.
+                        if any(future.done() for future in inflight):
+                            admitted = True
+                            break
+                        record = {
+                            "status": "pending",
+                            "job_id": request_job_id(manifest, request),
+                            "date": baseline["date"],
+                            "model": model,
+                            "group": group,
+                            "reservation": reservation,
+                            "started_at": now.isoformat(),
+                        }
+                        state["requests"][request["request_id"]] = record
+                        day["accounted_usage"][group] += reservation
+                        atomic_json(checkpoint, state)
+                        # Disk persistence can take time. A completed peer must be
+                        # inspected, and time bounds must still hold, before submit.
+                        pause = admission_pause(utc_now())
+                        if pause or any(future.done() for future in inflight):
+                            del state["requests"][request["request_id"]]
+                            day["accounted_usage"][group] -= reservation
+                            atomic_json(checkpoint, state)
+                            if pause:
+                                status = pause
+                            admitted = True
+                            break
+                        response_path = (
+                            checkpoint.parent
+                            / (checkpoint.stem + "_responses")
+                            / (request["request_id"] + ".json")
+                        )
+                        future = executor.submit(
+                            call_with_receipt, client, body, response_path
+                        )
+                        inflight[future] = (request, record, body, response_path)
+                        sent += 1
+                        remaining.pop(index)
+                        admitted = True
+                        break
+                    if not admitted:
+                        if inflight:
+                            # Actual usage releases reservations; retry deferred work.
+                            wait(inflight, return_when=FIRST_COMPLETED)
+                        else:
+                            status = "waiting_next_UTC_reset_and_verified_baseline"
+                            break
+            except BaseException as exc:
+                first_error = exc
+            finally:
+                # Submitted calls are never cancelled or retried. Preserve every
+                # outcome, even after a peer fails or the coordinator is interrupted.
+                while inflight:
+                    try:
+                        done, _ = wait(inflight, return_when=FIRST_COMPLETED)
+                    except BaseException as exc:
+                        if first_error is None:
+                            first_error = exc
+                        continue
+                    for future in done:
+                        try:
+                            error = settle(future)
+                        except BaseException as exc:
+                            error = exc
+                        if first_error is None:
+                            first_error = error
+        if first_error is not None:
+            if not isinstance(first_error, Exception):
+                raise first_error
+            raise RuntimeError(
+                "Request unresolved; reserved quota retained. Manual reconciliation required."
+            ) from None
+        waiting = set()
+        for request in remaining:
+            body = {**request["body"], "service_tier": "default"}
+            group = ELIGIBLE[body["model"]]
+            reservation = len(canonical(body)) + 1024 + body["max_completion_tokens"]
+            if day["accounted_usage"][group] + reservation > CAPS[group]:
+                waiting.add(group)
+        if status == "complete_eligible_models" and selected != set(ELIGIBLE):
             status = "complete_selected_models"
         state["status"] = status
         state["waiting_groups"] = sorted(waiting)
@@ -551,6 +676,7 @@ def main():
     parser.add_argument("--checkpoint", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--max-requests", type=int)
+    parser.add_argument("--concurrency", type=int, choices=range(1, 17), default=1)
     parser.add_argument("--models", choices=list(ELIGIBLE), nargs="+")
     args = parser.parse_args()
     if args.max_requests is not None and args.max_requests <= 0:
@@ -575,6 +701,7 @@ def main():
                 client,
                 args.max_requests,
                 args.models,
+                args.concurrency,
             )
         )
     )
