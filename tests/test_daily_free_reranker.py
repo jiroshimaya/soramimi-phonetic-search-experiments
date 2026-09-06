@@ -457,3 +457,31 @@ def test_paper_export_keeps_variants_separate(paper_manifest, tmp_path):
     summary = stats.summarize(tmp_path)
     assert summary["completed_cells"] == 0
     assert sum(c["completed_variants"] for c in summary["cells"]) == 1
+
+
+@pytest.mark.parametrize("change", ["messages", "prompt_hash", "prompt_metadata"])
+def test_paper_prompt_identity_is_verified(paper_manifest, change):
+    plan = deepcopy(paper_manifest)
+    request = plan["requests"][0]
+    if change == "messages":
+        request["body"]["messages"] = next(
+            r["body"]["messages"]
+            for r in plan["requests"]
+            if "__medium__simple__v1__q0000" in r["request_id"]
+        )
+        request["body_sha256"] = runner.sha256(request["body"])
+    elif change == "prompt_hash":
+        plan["jobs"][0]["prompt_sha256"] = "0" * 64
+    else:
+        plan["jobs"][0]["prompt_instructions"] = "Changed instructions"
+        fields = {
+            key: plan["jobs"][0][key]
+            for key in (
+                "prompt_instructions",
+                "prompt_example_suffix",
+                "user_prompt_template",
+            )
+        }
+        plan["jobs"][0]["prompt_sha256"] = runner.sha256(fields)
+    with pytest.raises(ValueError, match="prompt metadata|messages differ"):
+        runner.validate_manifest(plan)

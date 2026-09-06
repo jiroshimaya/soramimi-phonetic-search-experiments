@@ -134,6 +134,35 @@ def validate_manifest(manifest):
             raise ValueError("Query hash mismatch")
     seen = set()
     jobs = job_definitions(manifest)
+    expected_messages = {}
+    if manifest.get("schema_version", 1) == 2:
+        from prompt_variations import PROMPT_VARIATIONS
+        from reranker import build_rerank_messages, get_prompt_config
+
+        for key, job in jobs.items():
+            config = get_prompt_config(job["prompt_template"])
+            instructions = (
+                config.prompt_instructions
+                if job["prompt_variant"] == "v1"
+                else PROMPT_VARIATIONS[job["prompt_template"]][job["prompt_variant"]]
+            )
+            fields = {
+                "prompt_instructions": instructions.strip(),
+                "prompt_example_suffix": config.prompt_example_suffix.strip(),
+                "user_prompt_template": config.user_prompt_template,
+            }
+            if any(job[name] != value for name, value in fields.items()) or (
+                job["prompt_sha256"] != sha256(fields)
+            ):
+                raise ValueError("Comparison job prompt metadata mismatch")
+            expected_messages[key] = build_rerank_messages(
+                [q["query"] for q in manifest["queries"]],
+                [q["candidate_words"] for q in manifest["queries"]],
+                topn=10,
+                prompt_template=job["prompt_template"],
+                input_transform="none",
+                **fields,
+            )
     counts = {key: 0 for key in jobs}
     for request in manifest["requests"]:
         body = request["body"]
@@ -157,6 +186,11 @@ def validate_manifest(manifest):
         ):
             raise ValueError("Noncanonical comparison request identifier")
         query = manifest["queries"][request["query_index"]]
+        if (
+            expected_messages
+            and body["messages"] != expected_messages[key][request["query_index"]]
+        ):
+            raise ValueError("Request messages differ from comparison job")
         identity = (key, request["query_index"])
         if identity in seen or request["query_sha256"] != query["sha256"]:
             raise ValueError("Duplicate or mismatched request")
