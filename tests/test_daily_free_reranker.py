@@ -358,3 +358,102 @@ def test_local_receipts_from_previous_day_do_not_inflate_today(manifest, baselin
     }
     state = runner.reconcile_state(manifest, baseline, state)
     assert state["days"][baseline["date"]]["accounted_usage"]["premium"] == 0
+
+
+@pytest.fixture(scope="module")
+def paper_manifest():
+    return load_module(
+        "paper_runner_plan", METHODS / "016_paper_model_comparison.py"
+    ).build_manifest()
+
+
+def test_runner_validates_full_paper_matrix(paper_manifest):
+    runner.validate_manifest(paper_manifest)
+
+
+@pytest.mark.parametrize(
+    "change", ["missing_job", "effort", "cap", "model", "index", "id"]
+)
+def test_invalid_paper_matrix_is_rejected(paper_manifest, change):
+    plan = deepcopy(paper_manifest)
+    request = plan["requests"][0]
+    if change == "missing_job":
+        plan["jobs"].pop()
+    elif change == "effort":
+        request["body"]["reasoning_effort"] = "none"
+    elif change == "cap":
+        request["body"]["max_completion_tokens"] = 1000
+    elif change == "model":
+        request["body"]["model"] = "gpt-6-astra"
+    elif change == "index":
+        request["query_index"] = -1
+    else:
+        request["request_id"] += "changed"
+    request["body_sha256"] = runner.sha256(request["body"])
+    with pytest.raises(ValueError):
+        runner.validate_manifest(plan)
+
+
+@pytest.mark.parametrize("reasoning_tokens", [0, 10])
+def test_paper_nonreasoning_execution(
+    paper_manifest, baseline, tmp_path, reasoning_tokens
+):
+    plan = deepcopy(paper_manifest)
+    plan["requests"].sort(key=lambda r: r["body"]["reasoning_effort"] != "none")
+
+    def create(**body):
+        assert body["reasoning_effort"] == "none"
+        assert body["max_completion_tokens"] == 1000
+        raw = response(body["model"])
+        raw["usage"]["completion_tokens_details"]["reasoning_tokens"] = reasoning_tokens
+        return SimpleNamespace(model_dump=lambda **kwargs: raw)
+
+    args = (
+        plan,
+        baseline,
+        tmp_path / "state.json",
+        tmp_path / "results",
+        client(create),
+    )
+    if reasoning_tokens:
+        with pytest.raises(RuntimeError, match="Manual reconciliation"):
+            runner.run(*args, max_requests=1)
+    else:
+        assert runner.run(*args, max_requests=1)["completed"] == 1
+
+
+def test_paper_export_keeps_variants_separate(paper_manifest, tmp_path):
+    state = {"manifest_sha256": runner.sha256(paper_manifest), "requests": {}}
+    complete_job = paper_manifest["jobs"][0]["job_id"]
+    partial_job = paper_manifest["jobs"][3]["job_id"]
+    for request in paper_manifest["requests"]:
+        if request["job_id"] not in (complete_job, partial_job):
+            continue
+        if request["job_id"] == partial_job and request["query_index"] == 149:
+            continue
+        query = paper_manifest["queries"][request["query_index"]]
+        ranked = query["positive_words"] + [
+            word
+            for word in query["candidate_words"]
+            if word not in query["positive_words"]
+        ]
+        state["requests"][request["request_id"]] = {
+            "status": "completed",
+            "ranked_words": ranked[:10],
+            "usage": response()["usage"],
+            "actual_tokens": 120,
+            "duration_seconds": 1,
+        }
+    runner.export_complete(paper_manifest, state, tmp_path)
+    assert [p.name for p in tmp_path.glob("*.json")] == [f"016_{complete_job}.json"]
+    result = json.loads((tmp_path / f"016_{complete_job}.json").read_text())
+    assert len(result["results"]) == 150
+    assert result["metrics"]["recall"] == 1.0
+    assert result["parameters"]["metadata"]["rerank_prompt_variant"] == "v1"
+    stats = load_module(
+        "runner_paper_stats",
+        METHODS.parents[1] / "analytics/paper_model_comparison_stats.py",
+    )
+    summary = stats.summarize(tmp_path)
+    assert summary["completed_cells"] == 0
+    assert sum(c["completed_variants"] for c in summary["cells"]) == 1
