@@ -485,3 +485,33 @@ def test_paper_prompt_identity_is_verified(paper_manifest, change):
         plan["jobs"][0]["prompt_sha256"] = runner.sha256(fields)
     with pytest.raises(ValueError, match="prompt metadata|messages differ"):
         runner.validate_manifest(plan)
+
+
+@pytest.mark.parametrize("tail", [[], [80], [0, None, {"ignored": True}]])
+def test_parsed_result_uses_first_ten_in_returned_order(tail):
+    raw = response()
+    indices = [69, 8, 9, 24, 45, 51, 61, 53, 98, 7]
+    raw["choices"][0]["message"]["content"] = json.dumps({"reranked": indices + tail})
+    query = {"candidate_words": [f"word-{i}" for i in range(100)]}
+    ranked, tokens = runner.parsed_result(raw, query)
+    assert ranked == [f"word-{i}" for i in indices]
+    assert tokens == 120
+
+
+@pytest.mark.parametrize(
+    "indices",
+    [
+        list(range(9)),
+        list(range(9)) + [0, 10],
+        list(range(9)) + [100, 10],
+        list(range(9)) + [True, 10],
+        list(range(9)) + [[9], 10],
+        "0123456789",
+        {str(i): i for i in range(10)},
+    ],
+)
+def test_parsed_result_rejects_invalid_top_ten(indices):
+    raw = response()
+    raw["choices"][0]["message"]["content"] = json.dumps({"reranked": indices})
+    with pytest.raises(ValueError):
+        runner.parsed_result(raw, {"candidate_words": list(range(100))})

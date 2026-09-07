@@ -318,10 +318,12 @@ def parsed_result(raw, query):
     if choice["finish_reason"] != "stop" or choice["message"].get("refusal"):
         raise ValueError("Incomplete or refused response")
     indices = json.loads(choice["message"]["content"])["reranked"]
+    if not isinstance(indices, list) or len(indices) < 10:
+        raise ValueError("Expected at least ten candidate indices")
+    indices = indices[:10]
     if (
-        len(indices) != 10
+        any(type(i) is not int or not 0 <= i < 100 for i in indices)
         or len(set(indices)) != 10
-        or any(type(i) is not int or not 0 <= i < 100 for i in indices)
     ):
         raise ValueError("Expected ten distinct valid candidate indices")
     return [query["candidate_words"][i] for i in indices], prompt + completion
