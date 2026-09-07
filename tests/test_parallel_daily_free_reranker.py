@@ -255,7 +255,7 @@ def test_out_of_order_results_stay_aligned_and_resume_skips_both(
 
 
 @pytest.mark.parametrize("failure", [TimeoutError, KeyboardInterrupt])
-def test_failure_stops_admission_and_drains_successful_peer(
+def test_failure_isolates_request_and_drains_successful_peer(
     manifest, baseline, tmp_path, monkeypatch, failure
 ):
     checkpoint = tmp_path / "state.json"
@@ -289,17 +289,12 @@ def test_failure_stops_admission_and_drains_successful_peer(
         assert failure_observed.wait(timeout=5)
         return SimpleNamespace(model_dump=lambda **kwargs: response(body["model"]))
 
-    expected_error = RuntimeError if failure is TimeoutError else KeyboardInterrupt
-    with pytest.raises(expected_error):
-        runner.run(
-            manifest,
-            baseline,
-            checkpoint,
-            tmp_path / "results",
-            client(create),
-            max_requests=5,
-            concurrency=2,
-        )
+    args = (manifest, baseline, checkpoint, tmp_path / "results", client(create))
+    if failure is KeyboardInterrupt:
+        with pytest.raises(KeyboardInterrupt):
+            runner.run(*args, max_requests=2, concurrency=2)
+    else:
+        assert runner.run(*args, max_requests=2, concurrency=2)["completed"] == 1
     assert len(calls) == 2
     state = json.loads(checkpoint.read_text())
     first, second = [state["requests"][r["request_id"]] for r in selected]
@@ -309,15 +304,12 @@ def test_failure_stops_admission_and_drains_successful_peer(
         state["days"][baseline["date"]]["accounted_usage"][first["group"]]
         >= first["reservation"]
     )
-    with pytest.raises(ValueError, match="manual reconciliation"):
-        runner.run(
-            manifest,
-            baseline,
-            checkpoint,
-            tmp_path / "results",
-            client(lambda **kwargs: pytest.fail("Retried unresolved call")),
-            concurrency=2,
-        )
+    for group, usage in state["days"][baseline["date"]]["accounted_usage"].items():
+        baseline["groups"][group]["used"] = usage
+    assert (
+        runner.reconcile_state(manifest, baseline, state)["requests"]
+        == state["requests"]
+    )
 
 
 @pytest.mark.parametrize("boundary", ["midnight", "stale"])
@@ -402,23 +394,21 @@ def test_peer_failure_during_reservation_write_prevents_submission(
         assert allow_failure.wait(timeout=5)
         raise TimeoutError("provider failure")
 
-    with pytest.raises(RuntimeError, match="Manual reconciliation"):
-        runner.run(
-            manifest,
-            baseline,
-            checkpoint,
-            tmp_path / "results",
-            client(create),
-            concurrency=2,
-        )
-    assert len(calls) == 1
+    runner.run(
+        manifest,
+        baseline,
+        checkpoint,
+        tmp_path / "results",
+        client(create),
+        concurrency=2,
+        max_requests=2,
+    )
+    assert len(calls) == 2
     saved = json.loads(checkpoint.read_text())
-    assert len(saved["requests"]) == 1
-    row = next(iter(saved["requests"].values()))
-    assert row["status"] == "unknown"
-    assert (
-        sum(saved["days"][baseline["date"]]["accounted_usage"].values())
-        == row["reservation"]
+    assert len(saved["requests"]) == 2
+    assert all(row["status"] == "unknown" for row in saved["requests"].values())
+    assert sum(saved["days"][baseline["date"]]["accounted_usage"].values()) == sum(
+        row["reservation"] for row in saved["requests"].values()
     )
 
 
