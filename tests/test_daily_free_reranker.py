@@ -124,7 +124,7 @@ def test_waits_without_calls_when_reservations_cannot_fit(manifest, baseline, tm
     assert result["sent"] == 0
 
 
-def test_failure_retains_reservation_and_restart_refuses_retry(
+def test_failure_retains_reservation_and_restart_skips_unknown(
     manifest, baseline, tmp_path
 ):
     checkpoint = tmp_path / "state.json"
@@ -132,24 +132,20 @@ def test_failure_retains_reservation_and_restart_refuses_retry(
     def fail(**kwargs):
         raise TimeoutError("sensitive exception must not be logged")
 
-    with pytest.raises(RuntimeError, match="Manual reconciliation") as error:
-        runner.run(manifest, baseline, checkpoint, tmp_path, client(fail))
-    assert "sensitive" not in str(error.value)
+    runner.run(manifest, baseline, checkpoint, tmp_path, client(fail), max_requests=1)
     state = json.loads(checkpoint.read_text())
     row = next(iter(state["requests"].values()))
     assert row["status"] == "unknown"
+    assert "sensitive" not in checkpoint.read_text()
     assert (
         state["days"][baseline["date"]]["accounted_usage"][row["group"]]
         == row["reservation"]
     )
-    with pytest.raises(ValueError, match="manual reconciliation"):
-        runner.run(
-            manifest,
-            baseline,
-            checkpoint,
-            tmp_path,
-            client(lambda **kwargs: pytest.fail("Retried")),
-        )
+    baseline["groups"][row["group"]]["unsettled_usage_reservation"] = row["reservation"]
+    runner.run(manifest, baseline, checkpoint, tmp_path, client(fail), max_requests=1)
+    resumed = json.loads(checkpoint.read_text())
+    assert len(resumed["requests"]) == 2
+    assert next(iter(resumed["requests"].values())) == row
 
 
 def test_resume_uses_fresh_org_usage_once_and_skips_completed(
@@ -220,15 +216,23 @@ def test_manifest_change_and_pending_crash_are_not_replayed(
         next(iter(json.loads(checkpoint.read_text())["requests"].values()))["status"]
         == "pending"
     )
-    with pytest.raises(ValueError, match="manual reconciliation"):
-        runner.run(manifest, baseline, checkpoint, tmp_path, client(crash))
+    saved = json.loads(checkpoint.read_text())
+    row = next(iter(saved["requests"].values()))
+    baseline["groups"][row["group"]]["unsettled_usage_reservation"] = row["reservation"]
+    assert (
+        runner.reconcile_state(manifest, baseline, saved)["requests"]
+        == saved["requests"]
+    )
     altered = deepcopy(manifest)
     altered["prompt"]["variant"] = "different"
     with pytest.raises(ValueError, match="manifest"):
         runner.run(altered, baseline, checkpoint, tmp_path, client(crash))
 
 
-def test_complete_model_exports_full_macro_recall_only(manifest, baseline, tmp_path):
+@pytest.mark.parametrize("prior_failures", [0, 2])
+def test_complete_model_exports_full_macro_recall_only(
+    manifest, baseline, tmp_path, prior_failures
+):
     state = runner.reconcile_state(manifest, baseline, None)
     model = "gpt-5.6-sol"
     for request in manifest["requests"]:
@@ -247,13 +251,28 @@ def test_complete_model_exports_full_macro_recall_only(manifest, baseline, tmp_p
             "actual_tokens": 120,
             "duration_seconds": 1,
         }
+    state["attempt_history"] = {
+        next(iter(state["requests"])): [
+            {
+                "status": "output_failed",
+                "usage": response()["usage"],
+                "actual_tokens": 120,
+                "duration_seconds": 2,
+            }
+            for _ in range(prior_failures)
+        ]
+    }
     runner.export_complete(manifest, state, tmp_path)
     files = list(tmp_path.glob("*.json"))
     assert len(files) == 1
     result = json.loads(files[0].read_text())
     assert len(result["results"]) == 150
     assert result["metrics"]["recall"] == 1.0
-    assert result["metrics"]["metadata"]["token_usage"]["total_tokens"] == 18_000
+    metadata = result["metrics"]["metadata"]
+    assert metadata["token_usage"]["total_tokens"] == 18_000 + 120 * prior_failures
+    assert metadata["attempt_count"] == 150 + prior_failures
+    assert metadata["failed_attempt_count"] == prior_failures
+    assert result["metrics"]["execution_time"] == 150 + 2 * prior_failures
 
 
 def test_process_lock_rejects_second_runner(tmp_path):
@@ -270,16 +289,22 @@ def test_model_selection_and_returned_model_mismatch(manifest, baseline, tmp_pat
         calls.append(body["model"])
         return SimpleNamespace(model_dump=lambda **kwargs: response("gpt-6-astra"))
 
-    with pytest.raises(RuntimeError, match="Manual reconciliation"):
-        runner.run(
-            manifest,
-            baseline,
-            tmp_path / "state.json",
-            tmp_path,
-            client(create),
-            max_requests=1,
-            models=["gpt-5.6-sol"],
-        )
+    result = runner.run(
+        manifest,
+        baseline,
+        tmp_path / "state.json",
+        tmp_path,
+        client(create),
+        max_requests=1,
+        models=["gpt-5.6-sol"],
+    )
+    assert result["completed"] == 0
+    assert (
+        next(
+            iter(json.loads((tmp_path / "state.json").read_text())["requests"].values())
+        )["status"]
+        == "unknown"
+    )
     assert calls == ["gpt-5.6-sol"]
     assert list((tmp_path / "state_responses").glob("*.json"))
     with pytest.raises(ValueError, match="eligible models"):
@@ -416,8 +441,17 @@ def test_paper_nonreasoning_execution(
         client(create),
     )
     if reasoning_tokens:
-        with pytest.raises(RuntimeError, match="Manual reconciliation"):
-            runner.run(*args, max_requests=1)
+        assert runner.run(*args, max_requests=1)["completed"] == 0
+        assert (
+            next(
+                iter(
+                    json.loads((tmp_path / "state.json").read_text())[
+                        "requests"
+                    ].values()
+                )
+            )["status"]
+            == "unknown"
+        )
     else:
         assert runner.run(*args, max_requests=1)["completed"] == 1
 
@@ -515,3 +549,26 @@ def test_parsed_result_rejects_invalid_top_ten(indices):
     raw["choices"][0]["message"]["content"] = json.dumps({"reranked": indices})
     with pytest.raises(ValueError):
         runner.parsed_result(raw, {"candidate_words": list(range(100))})
+
+
+def test_usage_overrun_is_fully_reserved_and_isolated(manifest, baseline, tmp_path):
+    def create(**body):
+        raw = response(body["model"])
+        raw["usage"]["completion_tokens"] = 100_000
+        return SimpleNamespace(model_dump=lambda **kwargs: raw)
+
+    result = runner.run(
+        manifest,
+        baseline,
+        tmp_path / "state.json",
+        tmp_path / "results",
+        client(create),
+        max_requests=1,
+    )
+    assert result["completed"] == 0
+    state = json.loads((tmp_path / "state.json").read_text())
+    row = next(iter(state["requests"].values()))
+    assert row["status"] == "unknown"
+    assert row["reservation"] == 100_100
+    assert row["submitted_reservation"] < row["reservation"]
+    assert state["days"][baseline["date"]]["accounted_usage"][row["group"]] == 100_100

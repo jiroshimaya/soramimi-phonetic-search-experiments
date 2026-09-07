@@ -2,7 +2,8 @@
 
 The caller must verify enrollment, eligible models and organization-wide usage.
 Reservations use UTF-8 bytes plus framing, not a proven provider token bound.
-Pending or ambiguous calls require manual reconciliation; they are never retried.
+Individual failures are isolated. Known output failures have bounded retries;
+ambiguous calls keep their reservations and are never automatically retried.
 """
 
 import argparse
@@ -28,6 +29,23 @@ PIN = "6072e13bed37dd2f8eb780e61b6154d21cff2e31"
 PROMPTS = ("simple", "detailed", "step_by_step")
 EFFORT_CAPS = {"none": 1000, "medium": 24_000}
 VARIANTS = ("v1", "v2", "v3", "v4", "v5")
+MAX_ATTEMPTS = 3
+
+
+class OutputValidationError(ValueError):
+    """The response has known usage but no usable ranking."""
+
+
+def attempt_records(state):
+    for records in state.get("attempt_history", {}).values():
+        yield from records
+    yield from state["requests"].values()
+
+
+def retryable(record):
+    return (
+        record["status"] == "output_failed" and record.get("attempt", 1) < MAX_ATTEMPTS
+    )
 
 
 def utc_now():
@@ -276,10 +294,9 @@ def reconcile_state(manifest, baseline, state):
         or state["project_id"] != baseline["project_id"]
     ):
         raise ValueError("Checkpoint manifest or organization mismatch")
-    if any(row["status"] != "completed" for row in state["requests"].values()):
-        raise ValueError(
-            "Unresolved request requires manual reconciliation; nothing retried"
-        )
+    for row in attempt_records(state):
+        if row["status"] not in {"completed", "output_failed", "unknown", "pending"}:
+            raise ValueError("Unsupported request status")
     if state["days"] and baseline["date"] < max(state["days"]):
         raise ValueError("UTC day rollback refused")
     previous = state["days"].get(baseline["date"])
@@ -294,9 +311,13 @@ def reconcile_state(manifest, baseline, state):
         for group in CAPS
     }
     local_completed = {group: 0 for group in CAPS}
-    for row in state["requests"].values():
+    for row in attempt_records(state):
         if row["date"] == baseline["date"]:
-            local_completed[row["group"]] += row["actual_tokens"]
+            local_completed[row["group"]] += (
+                row["actual_tokens"]
+                if row["status"] in {"completed", "output_failed"}
+                else row["reservation"]
+            )
     if any(accounted[g] < local_completed[g] for g in CAPS):
         raise ValueError(
             "Organization usage rollback refused: observed usage plus unsettled "
@@ -309,24 +330,32 @@ def reconcile_state(manifest, baseline, state):
     return state
 
 
-def parsed_result(raw, query):
+def response_tokens(raw):
     usage = raw["usage"]
     prompt, completion = usage["prompt_tokens"], usage["completion_tokens"]
     if any(type(value) is not int or value < 0 for value in (prompt, completion)):
         raise ValueError("Invalid response token usage")
-    choice = raw["choices"][0]
-    if choice["finish_reason"] != "stop" or choice["message"].get("refusal"):
-        raise ValueError("Incomplete or refused response")
-    indices = json.loads(choice["message"]["content"])["reranked"]
-    if not isinstance(indices, list) or len(indices) < 10:
-        raise ValueError("Expected at least ten candidate indices")
-    indices = indices[:10]
-    if (
-        any(type(i) is not int or not 0 <= i < 100 for i in indices)
-        or len(set(indices)) != 10
-    ):
-        raise ValueError("Expected ten distinct valid candidate indices")
-    return [query["candidate_words"][i] for i in indices], prompt + completion
+    return prompt + completion
+
+
+def parsed_result(raw, query):
+    actual = response_tokens(raw)
+    try:
+        choice = raw["choices"][0]
+        if choice["finish_reason"] != "stop" or choice["message"].get("refusal"):
+            raise ValueError("Incomplete or refused response")
+        indices = json.loads(choice["message"]["content"])["reranked"]
+        if not isinstance(indices, list) or len(indices) < 10:
+            raise ValueError("Expected at least ten candidate indices")
+        indices = indices[:10]
+        if (
+            any(type(i) is not int or not 0 <= i < 100 for i in indices)
+            or len(set(indices)) != 10
+        ):
+            raise ValueError("Expected ten distinct valid candidate indices")
+    except (ValueError, KeyError, IndexError, TypeError, AttributeError) as exc:
+        raise OutputValidationError("Response has no valid top-ten ranking") from exc
+    return [query["candidate_words"][i] for i in indices], actual
 
 
 def export_complete(manifest, state, output_dir):
@@ -348,6 +377,13 @@ def export_complete(manifest, state, output_dir):
             not row or row["status"] != "completed" for row in records
         ):
             continue
+        attempts = [
+            attempt
+            for request in requests
+            for attempt in state.get("attempt_history", {}).get(
+                request["request_id"], []
+            )
+        ] + records
         rows = [
             {
                 "query": q["query"],
@@ -371,6 +407,7 @@ def export_complete(manifest, state, output_dir):
                     "rerank_input_size": 100,
                     "rerank_backend": "openai_sync",
                     "max_completion_tokens": EFFORT_CAPS[job["reasoning_effort"]],
+                    "max_attempts": MAX_ATTEMPTS,
                     "returned_models": sorted(
                         {r.get("returned_model", model) for r in records}
                     ),
@@ -385,17 +422,19 @@ def export_complete(manifest, state, output_dir):
                     [r["positive_words"] for r in rows],
                     topn=10,
                 ),
-                "execution_time": sum(r["duration_seconds"] for r in records),
+                "execution_time": sum(r["duration_seconds"] for r in attempts),
                 "metadata": {
+                    "attempt_count": len(attempts),
+                    "failed_attempt_count": len(attempts) - len(records),
                     "token_usage": {
                         "input_tokens": sum(
-                            r["usage"]["prompt_tokens"] for r in records
+                            r["usage"]["prompt_tokens"] for r in attempts
                         ),
                         "completion_tokens": sum(
-                            r["usage"]["completion_tokens"] for r in records
+                            r["usage"]["completion_tokens"] for r in attempts
                         ),
-                        "total_tokens": sum(r["actual_tokens"] for r in records),
-                    }
+                        "total_tokens": sum(r["actual_tokens"] for r in attempts),
+                    },
                 },
             },
             "results": rows,
@@ -452,6 +491,13 @@ def run(
             if request["body"]["model"] in selected
             and request["request_id"] not in state["requests"]
         ]
+        remaining.extend(
+            request
+            for request in manifest["requests"]
+            if request["body"]["model"] in selected
+            and request["request_id"] in state["requests"]
+            and retryable(state["requests"][request["request_id"]])
+        )
         inflight = {}
         sent = 0
         status = "complete_eligible_models"
@@ -473,6 +519,7 @@ def run(
         def settle(future):
             # Only the coordinator updates the ledger and request records.
             request, record, body, response_path = inflight.pop(future)
+            actual = None
             try:
                 raw, duration = future.result()
                 record["response_path"] = str(response_path)
@@ -488,19 +535,43 @@ def run(
                     != 0
                 ):
                     raise ValueError("Nonreasoning request returned reasoning tokens")
-                ranked, actual = parsed_result(
-                    raw, manifest["queries"][request["query_index"]]
-                )
+                actual = response_tokens(raw)
                 if actual > record["reservation"]:
                     raise ValueError(
                         "Actual token usage exceeded conservative reservation"
                     )
+                ranked, actual = parsed_result(
+                    raw, manifest["queries"][request["query_index"]]
+                )
+            except OutputValidationError:
+                record.update(
+                    status="output_failed",
+                    actual_tokens=actual,
+                    usage=raw["usage"],
+                    returned_model=raw["model"],
+                    duration_seconds=duration,
+                    error_type="OutputValidationError",
+                )
+                day["accounted_usage"][record["group"]] -= (
+                    record["reservation"] - actual
+                )
+                atomic_json(checkpoint, state)
+                if retryable(record):
+                    remaining.append(request)
+                return None
             except Exception as exc:
+                if actual is not None and actual > record["reservation"]:
+                    # A surprising provider usage report must not free capacity.
+                    record["submitted_reservation"] = record["reservation"]
+                    day["accounted_usage"][record["group"]] += (
+                        actual - record["reservation"]
+                    )
+                    record["reservation"] = actual
                 if response_path.exists():
                     record["response_path"] = str(response_path)
                 record.update(status="unknown", error_type=type(exc).__name__)
                 atomic_json(checkpoint, state)
-                return exc
+                return None
             except BaseException as exc:
                 # An interrupted call retains its durable pending reservation.
                 return exc
@@ -571,8 +642,15 @@ def run(
                         if any(future.done() for future in inflight):
                             admitted = True
                             break
+                        previous_record = state["requests"].get(request["request_id"])
+                        attempt = (
+                            previous_record.get("attempt", 1) + 1
+                            if previous_record
+                            else 1
+                        )
                         record = {
                             "status": "pending",
+                            "attempt": attempt,
                             "job_id": request_job_id(manifest, request),
                             "date": baseline["date"],
                             "model": model,
@@ -580,6 +658,10 @@ def run(
                             "reservation": reservation,
                             "started_at": now.isoformat(),
                         }
+                        if previous_record:
+                            state.setdefault("attempt_history", {}).setdefault(
+                                request["request_id"], []
+                            ).append(previous_record)
                         state["requests"][request["request_id"]] = record
                         day["accounted_usage"][group] += reservation
                         atomic_json(checkpoint, state)
@@ -587,7 +669,13 @@ def run(
                         # inspected, and time bounds must still hold, before submit.
                         pause = admission_pause(utc_now())
                         if pause or any(future.done() for future in inflight):
-                            del state["requests"][request["request_id"]]
+                            if previous_record:
+                                state["requests"][request["request_id"]] = (
+                                    previous_record
+                                )
+                                state["attempt_history"][request["request_id"]].pop()
+                            else:
+                                del state["requests"][request["request_id"]]
                             day["accounted_usage"][group] -= reservation
                             atomic_json(checkpoint, state)
                             if pause:
@@ -597,7 +685,11 @@ def run(
                         response_path = (
                             checkpoint.parent
                             / (checkpoint.stem + "_responses")
-                            / (request["request_id"] + ".json")
+                            / (
+                                request["request_id"]
+                                + (f"__attempt{attempt}" if attempt > 1 else "")
+                                + ".json"
+                            )
                         )
                         future = executor.submit(
                             call_with_receipt, client, body, response_path
@@ -646,8 +738,14 @@ def run(
             reservation = len(canonical(body)) + 1024 + body["max_completion_tokens"]
             if day["accounted_usage"][group] + reservation > CAPS[group]:
                 waiting.add(group)
-        if status == "complete_eligible_models" and selected != set(ELIGIBLE):
-            status = "complete_selected_models"
+        if status == "complete_eligible_models":
+            if any(
+                r["model"] in selected and r["status"] != "completed"
+                for r in state["requests"].values()
+            ):
+                status = "needs_review_selected_models"
+            elif selected != set(ELIGIBLE):
+                status = "complete_selected_models"
         state["status"] = status
         state["waiting_groups"] = sorted(waiting)
         unavailable = {
