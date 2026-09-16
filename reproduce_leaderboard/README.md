@@ -114,6 +114,16 @@ reasoning effortは明示的に指定し、出力上限はnoneで1,000、medium�
 
 `common/daily_free_reranker.py` は確認済みの日次枠と進捗を読み、完了したリクエストを再送せずに実行を再開します。利用条件の確認が必要なモデルは実行対象に含めません。結果ファイルは150件が完了した試行単位で保存します。
 
+全90試行の結果は [`results/016_paper_model_comparison/`](results/016_paper_model_comparison/) に、難易度別の集計は [`../analytics/results/016_paper_model_comparison/`](../analytics/results/016_paper_model_comparison/) に保存しています。各モデルで最も高かった条件は medium / step_by_step でした。
+
+| Model | Easy (65) | Medium (47) | Hard (38) | Overall |
+|---|---:|---:|---:|---:|
+| gpt-5.6-luna | 0.960 ± 0.015 | 0.702 ± 0.047 | 0.625 ± 0.041 | 0.794 ± 0.024 |
+| gpt-5.6-terra | 0.969 ± 0.011 | 0.787 ± 0.051 | 0.752 ± 0.035 | 0.857 ± 0.010 |
+| gpt-5.6-sol | 0.975 ± 0.008 | 0.893 ± 0.032 | 0.862 ± 0.052 | 0.921 ± 0.022 |
+
+値は Recall@10 の平均 ± 標本標準偏差（言い換え5試行）です。全18条件の表は [`paper_model_comparison.md`](../analytics/results/016_paper_model_comparison/paper_model_comparison.md) を参照してください。
+
 ### 日次枠に合わせた並列実行
 
 `--concurrency` で同時実行数を指定できます（省略時は1）。例えば、確認済みの利用枠と保存済みの進捗を使い、最大6件を並列に実行するには次のように指定します。
