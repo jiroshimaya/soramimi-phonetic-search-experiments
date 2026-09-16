@@ -124,6 +124,15 @@ reasoning effortは明示的に指定し、出力上限はnoneで1,000、medium�
 
 値は Recall@10 の平均 ± 標本標準偏差（言い換え5試行）です。全18条件の表は [`paper_model_comparison.md`](../analytics/results/016_paper_model_comparison/paper_model_comparison.md) を参照してください。
 
+GPT-6 Astra は `none` をサポートしないため、medium / step_by_step / v1 の1試行だけを同じ入150クエリで追加評価しました。結果は [`015_gpt-6-astra_medium_step_by_step.json`](results/015_gpt-6-astra_medium_step_by_step.json) です。
+
+| Model | Easy (65) | Medium (47) | Hard (38) | Overall |
+|---|---:|---:|---:|---:|
+| gpt-5.6-sol (v1) | 0.985 | 0.922 | 0.895 | 0.942 |
+| gpt-6-astra (v1) | 0.985 | 0.922 | 0.921 | 0.949 |
+
+この表は言い換え1試行の比較であり、上の5試行平均と標本標準偏差とは区別しています。
+
 ### 日次枠に合わせた並列実行
 
 `--concurrency` で同時実行数を指定できます（省略時は1）。例えば、確認済みの利用枠と保存済みの進捗を使い、最大6件を並列に実行するには次のように指定します。
