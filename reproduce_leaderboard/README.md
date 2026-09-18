@@ -124,14 +124,14 @@ reasoning effortは明示的に指定し、出力上限はnoneで1,000、medium�
 
 値は Recall@10 の平均 ± 標本標準偏差（言い換え5試行）です。全18条件の表は [`paper_model_comparison.md`](../analytics/results/016_paper_model_comparison/paper_model_comparison.md) を参照してください。
 
-GPT-6 Astra は `none` をサポートしないため、medium / step_by_step / v1 の1試行だけを同じ入150クエリで追加評価しました。結果は [`015_gpt-6-astra_medium_step_by_step.json`](results/015_gpt-6-astra_medium_step_by_step.json) です。
+GPT-6 Astra は `none` をサポートしないため、medium / step_by_step を同じ150クエリと5種類の言い換えで追加評価しました。各試行は [`results/016_paper_model_comparison/`](results/016_paper_model_comparison/) に、集計は [`../analytics/results/016_gpt6_medium_step_by_step/`](../analytics/results/016_gpt6_medium_step_by_step/) に保存しています。初回v1の [`015_gpt-6-astra_medium_step_by_step.json`](results/015_gpt-6-astra_medium_step_by_step.json) も互換用に残しています。
 
 | Model | Easy (65) | Medium (47) | Hard (38) | Overall |
 |---|---:|---:|---:|---:|
-| gpt-5.6-sol (v1) | 0.985 | 0.922 | 0.895 | 0.942 |
-| gpt-6-astra (v1) | 0.985 | 0.922 | 0.921 | 0.949 |
+| gpt-5.6-sol | 0.975 ± 0.008 | 0.893 ± 0.032 | 0.862 ± 0.052 | 0.921 ± 0.022 |
+| gpt-6-astra | 0.994 ± 0.008 | 0.949 ± 0.018 | 0.905 ± 0.030 | 0.957 ± 0.011 |
 
-この表は言い換え1試行の比較であり、上の5試行平均と標本標準偏差とは区別しています。
+この表も Recall@10 の平均 ± 標本標準偏差（言い換え5試行）です。
 
 ### 日次枠に合わせた並列実行
 
