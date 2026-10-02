@@ -133,6 +133,16 @@ GPT-6 Astra は `none` をサポートしないため、medium / step_by_step �
 
 この表も Recall@10 の平均 ± 標本標準偏差（言い換え5試行）です。
 
+GPT-6 Astra の medium / simple と medium / detailed も、同じ150クエリ・5種類の言い換えで評価しました。3種類の指示文の集計は [`gpt6_medium_prompts.md`](../analytics/results/016_gpt6_medium_prompts/gpt6_medium_prompts.md) に、各試行は [`results/016_paper_model_comparison/`](results/016_paper_model_comparison/) に保存しています。
+
+| Prompt | Easy (65) | Medium (47) | Hard (38) | Overall |
+|---|---:|---:|---:|---:|
+| simple | 1.000 ± 0.000 | 0.620 ± 0.024 | 0.460 ± 0.020 | 0.744 ± 0.011 |
+| detailed | 0.997 ± 0.007 | 0.966 ± 0.013 | 0.842 ± 0.025 | 0.948 ± 0.009 |
+| step_by_step | 0.994 ± 0.008 | 0.949 ± 0.018 | 0.905 ± 0.030 | 0.957 ± 0.011 |
+
+値は Recall@10 の平均 ± 標本標準偏差（言い換え5試行）です。
+
 ### 日次枠に合わせた並列実行
 
 `--concurrency` で同時実行数を指定できます（省略時は1）。例えば、確認済みの利用枠と保存済みの進捗を使い、最大6件を並列に実行するには次のように指定します。

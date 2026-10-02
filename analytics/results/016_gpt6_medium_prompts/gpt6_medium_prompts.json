@@ -1,0 +1,360 @@
+{
+  "metric": "macro Recall@10",
+  "query_count": 150,
+  "dataset_commit": "6072e13bed37dd2f8eb780e61b6154d21cff2e31",
+  "subsets": {
+    "source": {
+      "repository": "https://github.com/jiroshimaya/soramimi-phonetic-search-dataset",
+      "commit": "35bf9075f885b74df55ad7a2415861939ccdcf7c",
+      "path": "src/soramimi_phonetic_search_dataset/data/baseball.json",
+      "sha256": "63a2f38bbca9954f08a40def8525b705997764a2a8f524d897e748b536f7adac"
+    },
+    "counts": {
+      "easy": 65,
+      "medium": 47,
+      "hard": 38
+    },
+    "query_to_subset": {
+      "アイ": "easy",
+      "アウマル": "medium",
+      "アケ": "hard",
+      "アシオト": "medium",
+      "アッテ": "hard",
+      "アト": "hard",
+      "アノ": "easy",
+      "アレ": "easy",
+      "アレクルウ": "medium",
+      "アレホド": "medium",
+      "イキ": "easy",
+      "イキテ": "medium",
+      "イコウ": "easy",
+      "イタノ": "easy",
+      "イチ": "medium",
+      "イッタ": "easy",
+      "イツカ": "medium",
+      "イツモ": "medium",
+      "イマ": "medium",
+      "イヤ": "medium",
+      "イヨッ": "medium",
+      "イラ": "hard",
+      "イラナイ": "medium",
+      "イロイロ": "hard",
+      "ウバッテ": "medium",
+      "オアト": "hard",
+      "オサキ": "easy",
+      "オサキマシロキ": "medium",
+      "オサキモ": "medium",
+      "オモテ": "easy",
+      "オヤ": "easy",
+      "カクシテ": "hard",
+      "カミ": "medium",
+      "ガッサン": "hard",
+      "ガンガン": "easy",
+      "キタ": "easy",
+      "キミ": "hard",
+      "キミガ": "medium",
+      "キミト": "easy",
+      "キミノ": "easy",
+      "キミワ": "medium",
+      "キラリ": "medium",
+      "キレイナ": "medium",
+      "ギゾウ": "medium",
+      "クルウ": "hard",
+      "クレ": "easy",
+      "コエデ": "hard",
+      "ココニ": "medium",
+      "コノ": "easy",
+      "コンヤモ": "medium",
+      "サイゴ": "hard",
+      "サガシ": "easy",
+      "サガシテタ": "hard",
+      "サケブ": "easy",
+      "サラリ": "medium",
+      "シカク": "hard",
+      "シテ": "medium",
+      "シャン": "easy",
+      "シラ": "easy",
+      "ジョシテキ": "hard",
+      "スギデ": "easy",
+      "ステ": "medium",
+      "スベテガ": "medium",
+      "スル": "easy",
+      "ズット": "easy",
+      "セキデ": "easy",
+      "ソウ": "easy",
+      "ソウダ": "easy",
+      "ソウナ": "easy",
+      "ソバデ": "hard",
+      "ソレ": "easy",
+      "ソー": "easy",
+      "タイヨウ": "easy",
+      "タマッ": "hard",
+      "タメニ": "easy",
+      "ダレ": "hard",
+      "チン": "easy",
+      "チントン": "medium",
+      "ツネニ": "easy",
+      "ツヨイ": "easy",
+      "ツレ": "hard",
+      "デモ": "hard",
+      "トウメイ": "easy",
+      "トキ": "hard",
+      "トナリ": "easy",
+      "トマッテ": "medium",
+      "トワニ": "medium",
+      "トン": "easy",
+      "ドウキ": "easy",
+      "ドオリ": "easy",
+      "ドコ": "hard",
+      "ドコニ": "hard",
+      "ドコマデモ": "hard",
+      "ドレ": "hard",
+      "ドレホド": "medium",
+      "ナイタ": "easy",
+      "ナイママボクワ": "medium",
+      "ナイン": "hard",
+      "ナカオ": "easy",
+      "ナカデ": "easy",
+      "ナカモ": "easy",
+      "ナクテモ": "hard",
+      "ナニ": "easy",
+      "ナニガ": "medium",
+      "ナンデモ": "medium",
+      "ナンノ": "easy",
+      "ハイ": "easy",
+      "ハイテ": "easy",
+      "ハイニ": "easy",
+      "ハイミンナ": "hard",
+      "ハクチュウム": "medium",
+      "ハナシ": "easy",
+      "ヒト": "hard",
+      "ヒトツモ": "medium",
+      "ヒトミ": "easy",
+      "ヒビモ": "easy",
+      "フタリ": "easy",
+      "フッテ": "hard",
+      "ホイ": "easy",
+      "ホントウ": "easy",
+      "ホントウオ": "easy",
+      "ボクモ": "medium",
+      "ボクラ": "hard",
+      "ボクワ": "medium",
+      "マタ": "medium",
+      "マッテ": "easy",
+      "ママ": "hard",
+      "マル": "easy",
+      "ミテキタ": "medium",
+      "ミリョク": "hard",
+      "メント": "hard",
+      "モグリ": "hard",
+      "モドラ": "medium",
+      "モドラナイ": "medium",
+      "ヤー": "medium",
+      "ユウヒ": "easy",
+      "ユウヒノ": "medium",
+      "ユク": "hard",
+      "ヨウニ": "hard",
+      "ヨカ": "easy",
+      "ヨシ": "hard",
+      "ヨット": "easy",
+      "ワカリ": "easy",
+      "ワカリアウ": "medium",
+      "ワタシ": "easy",
+      "ワタシモ": "medium",
+      "ワライタイ": "easy",
+      "ワラッ": "medium"
+    }
+  },
+  "standard_deviation_ddof": 1,
+  "status": "complete",
+  "completed_cells": 3,
+  "expected_cells": 3,
+  "cells": [
+    {
+      "model": "gpt-6-astra",
+      "reasoning_effort": "medium",
+      "prompt_template": "simple",
+      "status": "complete",
+      "completed_variants": 5,
+      "missing_variants": [],
+      "variants": {
+        "v1": {
+          "easy": 1.0,
+          "medium": 0.6187943262411347,
+          "hard": 0.4407894736842105,
+          "overall": 0.7388888888888889
+        },
+        "v2": {
+          "easy": 1.0,
+          "medium": 0.5868794326241135,
+          "hard": 0.4407894736842105,
+          "overall": 0.7288888888888889
+        },
+        "v3": {
+          "easy": 1.0,
+          "medium": 0.6347517730496454,
+          "hard": 0.4583333333333333,
+          "overall": 0.7483333333333333
+        },
+        "v4": {
+          "easy": 1.0,
+          "medium": 0.650709219858156,
+          "hard": 0.48026315789473684,
+          "overall": 0.7588888888888888
+        },
+        "v5": {
+          "easy": 1.0,
+          "medium": 0.6081560283687943,
+          "hard": 0.48026315789473684,
+          "overall": 0.7455555555555555
+        }
+      },
+      "stats": {
+        "easy": {
+          "mean": 1.0,
+          "stdev": 0.0,
+          "n": 5
+        },
+        "medium": {
+          "mean": 0.6198581560283688,
+          "stdev": 0.024491200921747516,
+          "n": 5
+        },
+        "hard": {
+          "mean": 0.4600877192982456,
+          "stdev": 0.01976119355450669,
+          "n": 5
+        },
+        "overall": {
+          "mean": 0.7441111111111111,
+          "stdev": 0.01114993218160183,
+          "n": 5
+        }
+      }
+    },
+    {
+      "model": "gpt-6-astra",
+      "reasoning_effort": "medium",
+      "prompt_template": "detailed",
+      "status": "complete",
+      "completed_variants": 5,
+      "missing_variants": [],
+      "variants": {
+        "v1": {
+          "easy": 1.0,
+          "medium": 0.9787234042553191,
+          "hard": 0.8421052631578947,
+          "overall": 0.9533333333333334
+        },
+        "v2": {
+          "easy": 1.0,
+          "medium": 0.9787234042553191,
+          "hard": 0.868421052631579,
+          "overall": 0.96
+        },
+        "v3": {
+          "easy": 1.0,
+          "medium": 0.950354609929078,
+          "hard": 0.8421052631578947,
+          "overall": 0.9444444444444444
+        },
+        "v4": {
+          "easy": 0.9846153846153847,
+          "medium": 0.9645390070921985,
+          "hard": 0.8552631578947368,
+          "overall": 0.9455555555555556
+        },
+        "v5": {
+          "easy": 1.0,
+          "medium": 0.9574468085106383,
+          "hard": 0.8026315789473685,
+          "overall": 0.9366666666666666
+        }
+      },
+      "stats": {
+        "easy": {
+          "mean": 0.9969230769230769,
+          "stdev": 0.00688020916153779,
+          "n": 5
+        },
+        "medium": {
+          "mean": 0.9659574468085106,
+          "stdev": 0.01268691051063707,
+          "n": 5
+        },
+        "hard": {
+          "mean": 0.8421052631578947,
+          "stdev": 0.0246161670182496,
+          "n": 5
+        },
+        "overall": {
+          "mean": 0.948,
+          "stdev": 0.008937367800973423,
+          "n": 5
+        }
+      }
+    },
+    {
+      "model": "gpt-6-astra",
+      "reasoning_effort": "medium",
+      "prompt_template": "step_by_step",
+      "status": "complete",
+      "completed_variants": 5,
+      "missing_variants": [],
+      "variants": {
+        "v1": {
+          "easy": 0.9846153846153847,
+          "medium": 0.9219858156028369,
+          "hard": 0.9210526315789473,
+          "overall": 0.9488888888888889
+        },
+        "v2": {
+          "easy": 1.0,
+          "medium": 0.950354609929078,
+          "hard": 0.8947368421052632,
+          "overall": 0.9577777777777777
+        },
+        "v3": {
+          "easy": 1.0,
+          "medium": 0.9716312056737588,
+          "hard": 0.8947368421052632,
+          "overall": 0.9644444444444444
+        },
+        "v4": {
+          "easy": 1.0,
+          "medium": 0.950354609929078,
+          "hard": 0.9473684210526315,
+          "overall": 0.9711111111111111
+        },
+        "v5": {
+          "easy": 0.9846153846153847,
+          "medium": 0.950354609929078,
+          "hard": 0.868421052631579,
+          "overall": 0.9444444444444444
+        }
+      },
+      "stats": {
+        "easy": {
+          "mean": 0.9938461538461538,
+          "stdev": 0.008426500884694833,
+          "n": 5
+        },
+        "medium": {
+          "mean": 0.948936170212766,
+          "stdev": 0.017659432053884715,
+          "n": 5
+        },
+        "hard": {
+          "mean": 0.9052631578947369,
+          "stdev": 0.030004616449977282,
+          "n": 5
+        },
+        "overall": {
+          "mean": 0.9573333333333334,
+          "stdev": 0.010931887889998989,
+          "n": 5
+        }
+      }
+    }
+  ]
+}
