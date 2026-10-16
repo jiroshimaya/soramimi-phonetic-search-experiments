@@ -12,3 +12,8 @@ __pycache__/
 # OS / derived caches
 .DS_Store
 analytics/results/baseball_with_subset.json
+
+# Claude Code local preferences and isolated sessions
+CLAUDE.local.md
+.claude/settings.local.json
+.claude/worktrees/
