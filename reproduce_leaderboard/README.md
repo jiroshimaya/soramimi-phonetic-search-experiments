@@ -157,3 +157,11 @@ uv run reproduce_leaderboard/methods/common/daily_free_reranker.py \
 ```
 
 実行中のリクエストの最大出力量も含めて日次枠を確保し、残量に収まる分だけ送信します。残量が少なくなると同時実行数も減ります。並列数を変更しても、入力文・候補順・評価条件と完了済みの結果は引き継がれます。個別の出力不備は記録して、ほかの項目を続けます。重複などで上位10件を取得できない場合は未実行の項目を優先し、同じ入力で最大2回再試行します。応答と使用量は試行ごとに保存し、再試行分も日次枠と結果の使用量に含めます。成否が不明なリクエストや再試行上限に達した項目は保留にし、ほかの項目の実行を妨げません。保留を含む試行は完了結果として保存しません。
+
+## 017: Filler tokens in phonetic reranking
+
+[Protocol and results](results/017_filler_tokens/README.md): GPT-5.4 on all 150
+queries, comparing no filler, consecutive dots, spaced dots, and counting 1–300.
+The structured-output comparison found no improvement. Saved request hashes and
+replicate slots support resuming runs and reusing unchanged control responses;
+`--replay` recomputes published summaries without API calls.

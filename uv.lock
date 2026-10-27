@@ -1792,7 +1792,7 @@ wheels = [
 
 [[package]]
 name = "soramimi-phonetic-search-dataset"
-version = "0.0.20.dev25+g6072e13be"
+version = "0.1.dev141+g6072e13be"
 source = { git = "https://github.com/jiroshimaya/soramimi-phonetic-search-dataset.git?rev=6072e13bed37dd2f8eb780e61b6154d21cff2e31#6072e13bed37dd2f8eb780e61b6154d21cff2e31" }
 dependencies = [
     { name = "editdistance" },
@@ -1810,13 +1810,16 @@ name = "soramimi-phonetic-search-experiments"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "httpx" },
     { name = "kanasim" },
     { name = "litellm" },
+    { name = "numpy" },
     { name = "openai" },
     { name = "pydantic" },
     { name = "pyopenjtalk-plus" },
     { name = "python-dotenv" },
     { name = "soramimi-phonetic-search-dataset" },
+    { name = "tiktoken" },
     { name = "tqdm" },
 ]
 
@@ -1829,13 +1832,16 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "httpx", specifier = ">=0.28.1" },
     { name = "kanasim", specifier = ">=0.0.11" },
     { name = "litellm", specifier = ">=1.83.0" },
+    { name = "numpy", specifier = ">=2.0.0" },
     { name = "openai", specifier = ">=2.30.0" },
     { name = "pydantic", specifier = ">=2.11.4" },
     { name = "pyopenjtalk-plus", specifier = ">=0.4.1.post8" },
     { name = "python-dotenv", specifier = ">=1.0.1" },
     { name = "soramimi-phonetic-search-dataset", git = "https://github.com/jiroshimaya/soramimi-phonetic-search-dataset.git?rev=6072e13bed37dd2f8eb780e61b6154d21cff2e31" },
+    { name = "tiktoken", specifier = ">=0.13.0" },
     { name = "tqdm", specifier = ">=4.67.1" },
 ]
 
