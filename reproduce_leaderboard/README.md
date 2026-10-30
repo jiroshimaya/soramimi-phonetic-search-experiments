@@ -165,3 +165,13 @@ queries, comparing no filler, consecutive dots, spaced dots, and counting 1–30
 The structured-output comparison found no improvement. Saved request hashes and
 replicate slots support resuming runs and reusing unchanged control responses;
 `--replay` recomputes published summaries without API calls.
+
+## 018: Arithmetic validation and phonetic transfer
+
+[Protocol and results](results/018_luna_math_transfer/README.md): source-aligned
+10-shot arithmetic validation on 600 fixed problems, followed by phonetic
+reranking on 150 queries. GPT-6.1 Terra improves on arithmetic (82.33%→95.00%)
+with counting filler 1–100; neither tested model shows a confirmed phonetic gain.
+All 4,500 first responses and offline replay are included.
+The [Japanese article outline](../articles/filler_tokens_outline_ja.md) distinguishes
+the cross-model validation from a full reproduction of the original studies.

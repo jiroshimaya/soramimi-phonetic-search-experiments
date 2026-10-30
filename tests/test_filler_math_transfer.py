@@ -211,3 +211,17 @@ def test_summary_and_export_replay_do_not_call_api(tmp_path, monkeypatch):
     assert json.loads((tmp_path / "replay/summary.json").read_text()) == original
     with pytest.raises(ValueError, match="Incomplete"):
         study.summarize(manifest, tmp_path / "missing", records[:-1])
+
+
+def test_followup_subset_preserves_each_request_and_all_cases(manifest):
+    selected = study.build_manifest(
+        "test-model", "math", conditions=["baseline", "counting_100"]
+    )
+    original = {r["request_id"]: r for r in manifest["requests"]}
+    assert len(selected["requests"]) == 1200
+    assert selected["data"] == manifest["data"]
+    assert all(r == original[r["request_id"]] for r in selected["requests"])
+    with pytest.raises(ValueError, match="including baseline and counting_100"):
+        study.build_manifest(
+            "test-model", "math", conditions=["baseline", "counting_300"]
+        )
