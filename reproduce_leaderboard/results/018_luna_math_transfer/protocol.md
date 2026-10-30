@@ -65,3 +65,11 @@ format must remain explicit in the article.
 
 The article's conclusion follows the measured outcomes; successful arithmetic
 validation is not a predetermined conclusion.
+
+## Follow-up model comparison
+
+GPT-6.1 Terra is an additional model evaluated on the same 600 arithmetic cases,
+10 demonstrations, and baseline/counting-100 pair, with all parameters preserved
+except model ID. This follow-up is analyzed separately from the original Luna
+protocol; its model was selected after observing Luna's results. Both model
+results are retained. No conditions or cases are tuned on Terra's answers.

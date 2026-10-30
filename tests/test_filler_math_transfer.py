@@ -145,3 +145,69 @@ def test_phonetic_target_and_example_both_receive_filler():
     for message in messages:
         assert "Filler: " + study.filler_text("counting_100") in message["content"]
     assert "Filler:" not in study.phonetic_messages(case, "baseline")[0]["content"]
+
+
+def test_summary_and_export_replay_do_not_call_api(tmp_path, monkeypatch):
+    cases = [{"source_index": 1, "answer": 1}, {"source_index": 2, "answer": -1}]
+    manifest = {
+        "task": "math",
+        "model": "test",
+        "data": {"cases": cases},
+        "conditions": list(study.CONDITIONS),
+        "dataset_sha256": "fixed",
+        "primary_comparison": "counting_100 versus baseline",
+        "requests": [],
+    }
+    records = []
+    for condition in study.CONDITIONS:
+        for case in cases:
+            identifier = f"{condition}__q{case['source_index']}"
+            manifest["requests"].append(
+                {
+                    "request_id": identifier,
+                    "condition": condition,
+                    "source_index": case["source_index"],
+                    "body_sha256": "same",
+                }
+            )
+            content = str(case["answer"])
+            if condition == "baseline" and case["source_index"] == 2:
+                content = "invalid"
+            records.append(
+                {
+                    "request_id": identifier,
+                    "body_sha256": "same",
+                    "content": content,
+                    "model": "test-snapshot",
+                    "finish_reason": "stop",
+                    "usage": {
+                        "prompt_tokens": 10,
+                        "completion_tokens": 1,
+                        "total_tokens": 11,
+                    },
+                }
+            )
+    original = study.summarize(manifest, tmp_path / "original", records)
+    assert original["cells"]["baseline"]["mean"] == 0.5
+    assert original["cells"]["baseline"]["invalid_outputs"] == 1
+    assert original["cells"]["counting_100"]["mean"] == 1
+    assert original["cells"]["counting_100"]["usage"]["prompt_tokens"] == 20
+    monkeypatch.setattr(
+        study, "build_manifest", lambda model, task, conditions=None: manifest
+    )
+    monkeypatch.setattr(
+        study.asyncio, "run", lambda coro: pytest.fail("Replay must not call API")
+    )
+    study.main(
+        [
+            "--model",
+            "test",
+            "--output",
+            str(tmp_path / "replay"),
+            "--replay",
+            str(tmp_path / "original/results.json"),
+        ]
+    )
+    assert json.loads((tmp_path / "replay/summary.json").read_text()) == original
+    with pytest.raises(ValueError, match="Incomplete"):
+        study.summarize(manifest, tmp_path / "missing", records[:-1])

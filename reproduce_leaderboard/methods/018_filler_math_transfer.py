@@ -179,10 +179,19 @@ def phonetic_messages(case, condition):
     )[0]
 
 
-def build_manifest(model, task):
+def build_manifest(model, task, conditions=None):
+    selected = list(CONDITIONS) if conditions is None else list(conditions)
+    if (
+        len(selected) != len(set(selected))
+        or not {"baseline", "counting_100"}.issubset(selected)
+        or not set(selected).issubset(CONDITIONS)
+    ):
+        raise ValueError(
+            "Select distinct known conditions including baseline and counting_100"
+        )
     data = math_data() if task == "math" else phonetic_data()
     requests = []
-    for condition in CONDITIONS:
+    for condition in selected:
         for case in data["cases"]:
             body = {
                 "model": model,
@@ -213,7 +222,7 @@ def build_manifest(model, task):
         "model": model,
         "data": data,
         "dataset_sha256": digest(data),
-        "conditions": list(CONDITIONS),
+        "conditions": selected,
         "primary_comparison": "counting_100 versus baseline",
         "schedule_seed": SEED,
         "replicates": 1,
@@ -404,6 +413,11 @@ def summarize(manifest, output, records=None):
         usage[condition]["cached_input_tokens"] += (
             record["usage"].get("prompt_tokens_details", {}).get("cached_tokens", 0)
         )
+        usage[condition]["cache_write_input_tokens"] += (
+            record["usage"]
+            .get("prompt_tokens_details", {})
+            .get("cache_write_tokens", 0)
+        )
         models.add(record["model"])
     order = sorted(cases)
     cells = {}
@@ -454,6 +468,7 @@ def main(argv=None):
     parser.add_argument("--task", choices=["math", "phonetic"], default="math")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--concurrency", type=int, default=8)
+    parser.add_argument("--conditions", nargs="+", choices=list(CONDITIONS))
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--prepare-only", action="store_true")
     mode.add_argument("--summarize-only", action="store_true")
@@ -461,7 +476,7 @@ def main(argv=None):
     args = parser.parse_args(argv)
     if args.concurrency < 1:
         parser.error("concurrency must be positive")
-    manifest = build_manifest(args.model, args.task)
+    manifest = build_manifest(args.model, args.task, conditions=args.conditions)
     path = args.output / "manifest.json"
     if path.exists() and json.loads(path.read_text()) != manifest:
         raise ValueError("Existing manifest differs; use a new output directory")
