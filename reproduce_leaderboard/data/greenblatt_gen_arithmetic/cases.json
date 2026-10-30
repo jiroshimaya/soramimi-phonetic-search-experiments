@@ -1,0 +1,4891 @@
+{
+  "source_repository": "https://github.com/rgreenblatt/no_cot_math_public",
+  "source_commit": "7f4d3e4e2f775db1ef45986c4996be9d7a34c7e1",
+  "source_file": "arithmetic_problems.jsonl",
+  "source_sha256": "4523c36233251369c51433b7a8fe5cedf49ad0691cbf1e485a23726dba8f35bf",
+  "selection": "10 demonstrations from source selector (seed 42); first 300 and last 300 non-demonstration problems",
+  "few_shot": [
+    {
+      "source_index": 2333,
+      "problem": "Evaluate this Python expression. (((((11 + 16) + 51) - 38) // 57) - 49) * (17 + -95)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2333,
+      "answer": 3822
+    },
+    {
+      "source_index": 1000,
+      "problem": "Evaluate this Python expression. (-63 + (34 // 76)) // ((33 + 55) + ((19 - -46) + -15))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 1000,
+      "answer": -1
+    },
+    {
+      "source_index": 667,
+      "problem": "Evaluate this Python expression. (58 * -16) + ((83 + -85) * ((-74 * -18) - (6 + -17)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 667,
+      "answer": -3614
+    },
+    {
+      "source_index": 2667,
+      "problem": "Evaluate this Python expression. (24 + ((-53 - -79) - -32)) // (-79 - 18)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2667,
+      "answer": -1
+    },
+    {
+      "source_index": 1667,
+      "problem": "Evaluate this Python expression. 55 * ((13 + 67) + ((18 + -13) - 79))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 1667,
+      "answer": 330
+    },
+    {
+      "source_index": 2000,
+      "problem": "Evaluate this Python expression. ((70 + -17) - -34) // ((-88 * -18) + (92 - 43))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2000,
+      "answer": 0
+    },
+    {
+      "source_index": 2999,
+      "problem": "Evaluate this Python expression. ((59 * 29) // 32) + (((60 + -23) // (77 + 39)) // -62)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2999,
+      "answer": 53
+    },
+    {
+      "source_index": 1333,
+      "problem": "Evaluate this Python expression. (((-19 - 19) + -78) - (-75 + (52 - -65))) + 22",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 1333,
+      "answer": -136
+    },
+    {
+      "source_index": 0,
+      "problem": "Evaluate this Python expression. -93 + (((-42 % (89 - -73)) + (52 - (-91 * -92))) + -76)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 0,
+      "answer": -8369
+    },
+    {
+      "source_index": 333,
+      "problem": "Evaluate this Python expression. (-72 // 94) % ((63 + (98 - (18 + 69))) * 51)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 333,
+      "answer": 3773
+    }
+  ],
+  "cases": [
+    {
+      "source_index": 1,
+      "problem": "Evaluate this Python expression. (44 // -49) % (((15 - 51) * -28) + -98)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 1,
+      "answer": 909
+    },
+    {
+      "source_index": 2,
+      "problem": "Evaluate this Python expression. ((-60 * -44) + (-73 + -76)) + (-75 + -8)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2,
+      "answer": 2408
+    },
+    {
+      "source_index": 3,
+      "problem": "Evaluate this Python expression. ((87 - (38 - -68)) - (-79 + 42)) + (61 + 59)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 3,
+      "answer": 138
+    },
+    {
+      "source_index": 4,
+      "problem": "Evaluate this Python expression. ((-88 - 70) + (98 * (-79 - -40))) - (-2 - -28)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 4,
+      "answer": -4006
+    },
+    {
+      "source_index": 5,
+      "problem": "Evaluate this Python expression. ((-5 - (-46 + 72)) % ((56 + 63) + -56)) % 37",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 5,
+      "answer": 32
+    },
+    {
+      "source_index": 6,
+      "problem": "Evaluate this Python expression. (19 * -2) - ((76 + (97 + 99)) + (-41 - (-19 * 3)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 6,
+      "answer": -326
+    },
+    {
+      "source_index": 7,
+      "problem": "Evaluate this Python expression. -45 - (((68 // (2 + 65)) - (-63 + -32)) + -64)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 7,
+      "answer": -77
+    },
+    {
+      "source_index": 8,
+      "problem": "Evaluate this Python expression. (((-7 - -43) + -64) * (-76 % 94)) // -87",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 8,
+      "answer": 5
+    },
+    {
+      "source_index": 9,
+      "problem": "Evaluate this Python expression. (75 // 9) + ((-1 // (53 - 20)) + 36)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 9,
+      "answer": 43
+    },
+    {
+      "source_index": 10,
+      "problem": "Evaluate this Python expression. (75 + ((75 + (97 + 65)) - -12)) - (-24 * 12)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 10,
+      "answer": 612
+    },
+    {
+      "source_index": 11,
+      "problem": "Evaluate this Python expression. (85 + ((30 + -72) - 61)) + (64 * 30)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 11,
+      "answer": 1902
+    },
+    {
+      "source_index": 12,
+      "problem": "Evaluate this Python expression. (-4 % 96) * ((54 * -17) * ((-71 + -7) * (-38 + -85)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 12,
+      "answer": -810270864
+    },
+    {
+      "source_index": 13,
+      "problem": "Evaluate this Python expression. (-78 + (((95 * 37) + 97) - -67)) // -67",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 13,
+      "answer": -54
+    },
+    {
+      "source_index": 14,
+      "problem": "Evaluate this Python expression. ((-32 + (-45 - 39)) + 94) - ((83 + (3 + 72)) * 67)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 14,
+      "answer": -10608
+    },
+    {
+      "source_index": 15,
+      "problem": "Evaluate this Python expression. (((-36 // -42) - -83) + -13) - (51 * (51 * -43))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 15,
+      "answer": 111913
+    },
+    {
+      "source_index": 16,
+      "problem": "Evaluate this Python expression. 82 + (-41 - (-91 - ((32 * -39) - -28)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 16,
+      "answer": -1088
+    },
+    {
+      "source_index": 17,
+      "problem": "Evaluate this Python expression. (39 - (86 + (-37 + 22))) + ((-75 + -75) // (-9 - 9))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 17,
+      "answer": -24
+    },
+    {
+      "source_index": 18,
+      "problem": "Evaluate this Python expression. ((73 * (-84 - 4)) + 87) + ((-36 + -50) + -51)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 18,
+      "answer": -6474
+    },
+    {
+      "source_index": 19,
+      "problem": "Evaluate this Python expression. (9 - (-28 * (-36 // -80))) // ((-87 // 67) + (-76 * 93))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 19,
+      "answer": -1
+    },
+    {
+      "source_index": 20,
+      "problem": "Evaluate this Python expression. (25 - 24) + (3 + (-57 // (17 + -26)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 20,
+      "answer": 10
+    },
+    {
+      "source_index": 21,
+      "problem": "Evaluate this Python expression. (((-51 // ((-85 - 49) * 89)) + 39) - -84) - 92",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 21,
+      "answer": 31
+    },
+    {
+      "source_index": 22,
+      "problem": "Evaluate this Python expression. -87 - ((((-85 + (-52 + -82)) - 53) // -82) + 73)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 22,
+      "answer": -163
+    },
+    {
+      "source_index": 23,
+      "problem": "Evaluate this Python expression. (46 % (49 - (59 * -79))) + (69 % 50)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 23,
+      "answer": 65
+    },
+    {
+      "source_index": 24,
+      "problem": "Evaluate this Python expression. (((72 - 84) + -19) + (-32 + 2)) + (72 - (18 - -19))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 24,
+      "answer": -26
+    },
+    {
+      "source_index": 25,
+      "problem": "Evaluate this Python expression. 18 - (-81 + ((30 // (-66 + -10)) + -82))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 25,
+      "answer": 182
+    },
+    {
+      "source_index": 26,
+      "problem": "Evaluate this Python expression. ((13 % 40) + 81) + ((71 * 42) * -23)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 26,
+      "answer": -68492
+    },
+    {
+      "source_index": 27,
+      "problem": "Evaluate this Python expression. -65 // ((-72 - (-30 * -27)) + ((84 - (-47 - 76)) - 63))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 27,
+      "answer": 0
+    },
+    {
+      "source_index": 28,
+      "problem": "Evaluate this Python expression. (((-76 + 63) + (-29 + -88)) - -99) + (98 * -66)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 28,
+      "answer": -6499
+    },
+    {
+      "source_index": 29,
+      "problem": "Evaluate this Python expression. (90 + (42 - 81)) // (((-71 + (77 - -61)) * 40) - -90)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 29,
+      "answer": 0
+    },
+    {
+      "source_index": 30,
+      "problem": "Evaluate this Python expression. ((-67 + -89) // ((-89 - -8) + -46)) + (71 // -73)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 30,
+      "answer": 0
+    },
+    {
+      "source_index": 31,
+      "problem": "Evaluate this Python expression. (((-39 * (-54 - 6)) - -93) - -54) + (6 + 72)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 31,
+      "answer": 2565
+    },
+    {
+      "source_index": 32,
+      "problem": "Evaluate this Python expression. ((-59 // 80) * (-2 - (21 - (-48 - (-10 // -21))))) // -41",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 32,
+      "answer": -2
+    },
+    {
+      "source_index": 33,
+      "problem": "Evaluate this Python expression. 69 + ((-15 // -28) + (98 - (-10 * 65)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 33,
+      "answer": 817
+    },
+    {
+      "source_index": 34,
+      "problem": "Evaluate this Python expression. (((-70 // -33) - -54) + 49) + ((-72 + 53) + (-11 - 87))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 34,
+      "answer": -12
+    },
+    {
+      "source_index": 35,
+      "problem": "Evaluate this Python expression. ((-1 * (-34 - -88)) - 82) + ((34 + 38) * 76)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 35,
+      "answer": 5336
+    },
+    {
+      "source_index": 36,
+      "problem": "Evaluate this Python expression. ((11 + -82) - (((70 * -68) - 85) // -23)) + (71 - 5)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 36,
+      "answer": -215
+    },
+    {
+      "source_index": 37,
+      "problem": "Evaluate this Python expression. (((-50 - 8) + 71) + -2) // (58 - (4 % 41))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 37,
+      "answer": 0
+    },
+    {
+      "source_index": 38,
+      "problem": "Evaluate this Python expression. ((11 - 49) * 56) - ((14 - 14) - 73)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 38,
+      "answer": -2055
+    },
+    {
+      "source_index": 39,
+      "problem": "Evaluate this Python expression. (((69 * (-27 + 32)) + 70) + 63) - 59",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 39,
+      "answer": 419
+    },
+    {
+      "source_index": 40,
+      "problem": "Evaluate this Python expression. 93 // ((-42 + -49) + (-93 - (-37 % (17 // 7))))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 40,
+      "answer": -1
+    },
+    {
+      "source_index": 41,
+      "problem": "Evaluate this Python expression. ((27 - 3) // (-62 % (93 % 98))) // (9 - (-54 + 79))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 41,
+      "answer": 0
+    },
+    {
+      "source_index": 42,
+      "problem": "Evaluate this Python expression. (43 - (-68 + (-65 + 19))) + (((57 // 85) * 30) - 10)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 42,
+      "answer": 147
+    },
+    {
+      "source_index": 43,
+      "problem": "Evaluate this Python expression. (91 + ((-33 - 93) % -36)) * (((61 - -38) // -29) * 13)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 43,
+      "answer": -3796
+    },
+    {
+      "source_index": 44,
+      "problem": "Evaluate this Python expression. (-30 - (-18 * 39)) * (-64 * (-40 + -1))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 44,
+      "answer": 1763328
+    },
+    {
+      "source_index": 45,
+      "problem": "Evaluate this Python expression. (-83 // 7) * (((7 // -84) - (8 - 0)) - (96 * 48))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 45,
+      "answer": 55404
+    },
+    {
+      "source_index": 46,
+      "problem": "Evaluate this Python expression. (-9 - ((8 * 38) // 92)) - (25 + (-30 - 12))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 46,
+      "answer": 5
+    },
+    {
+      "source_index": 47,
+      "problem": "Evaluate this Python expression. 0 + (((20 + -67) - 60) - (1 + (-78 - 65)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 47,
+      "answer": 35
+    },
+    {
+      "source_index": 48,
+      "problem": "Evaluate this Python expression. (-53 + -87) * (((-45 * 17) - -16) - (95 + -2))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 48,
+      "answer": 117880
+    },
+    {
+      "source_index": 49,
+      "problem": "Evaluate this Python expression. ((21 + -95) + (-10 - -42)) - (67 - (94 + -92))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 49,
+      "answer": -107
+    },
+    {
+      "source_index": 50,
+      "problem": "Evaluate this Python expression. (60 - -60) + (-67 - ((45 * -44) % 20))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 50,
+      "answer": 53
+    },
+    {
+      "source_index": 51,
+      "problem": "Evaluate this Python expression. ((56 * 56) + 92) // (-58 % ((49 - -93) + (48 + 74)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 51,
+      "answer": 15
+    },
+    {
+      "source_index": 52,
+      "problem": "Evaluate this Python expression. ((-80 - (-73 * 79)) + 98) - ((45 + -89) + -11)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 52,
+      "answer": 5840
+    },
+    {
+      "source_index": 53,
+      "problem": "Evaluate this Python expression. (((30 * 66) - -12) + -96) - ((-72 % 11) - (63 * 18))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 53,
+      "answer": 3025
+    },
+    {
+      "source_index": 54,
+      "problem": "Evaluate this Python expression. (-54 - 88) + ((((12 + 88) - 52) + (-17 * -37)) + -77)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 54,
+      "answer": 458
+    },
+    {
+      "source_index": 55,
+      "problem": "Evaluate this Python expression. (93 * ((-13 + -92) // 27)) - ((25 - -45) + -9)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 55,
+      "answer": -433
+    },
+    {
+      "source_index": 56,
+      "problem": "Evaluate this Python expression. ((43 - -97) + 33) - (-78 - (85 - (26 - 43)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 56,
+      "answer": 353
+    },
+    {
+      "source_index": 57,
+      "problem": "Evaluate this Python expression. (((-95 + -76) - -24) - -43) // (78 - -37)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 57,
+      "answer": -1
+    },
+    {
+      "source_index": 58,
+      "problem": "Evaluate this Python expression. ((((9 - 91) + 41) - (-9 + 80)) + 17) - -30",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 58,
+      "answer": -65
+    },
+    {
+      "source_index": 59,
+      "problem": "Evaluate this Python expression. (-69 - (-19 // -69)) - ((-50 - (90 - 24)) - -29)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 59,
+      "answer": 18
+    },
+    {
+      "source_index": 60,
+      "problem": "Evaluate this Python expression. ((-50 - (-41 // -7)) // (-22 % -96)) + (-29 + (-86 + 42))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 60,
+      "answer": -71
+    },
+    {
+      "source_index": 61,
+      "problem": "Evaluate this Python expression. ((-73 + -96) + (((23 + 13) * -12) + -52)) // -86",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 61,
+      "answer": 7
+    },
+    {
+      "source_index": 62,
+      "problem": "Evaluate this Python expression. (-83 + ((-81 + 48) * 62)) - (-61 * (45 + -22))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 62,
+      "answer": -726
+    },
+    {
+      "source_index": 63,
+      "problem": "Evaluate this Python expression. (43 // 96) + ((99 * 34) + (16 * 14))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 63,
+      "answer": 3590
+    },
+    {
+      "source_index": 64,
+      "problem": "Evaluate this Python expression. (((57 * 90) % (96 * -46)) - 61) * (-32 - 70)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 64,
+      "answer": 383826
+    },
+    {
+      "source_index": 65,
+      "problem": "Evaluate this Python expression. (-55 - 42) * (-59 - (5 // (77 // 53)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 65,
+      "answer": 6208
+    },
+    {
+      "source_index": 66,
+      "problem": "Evaluate this Python expression. (-40 + (81 * -27)) + (((76 // -40) - -32) * 61)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 66,
+      "answer": -397
+    },
+    {
+      "source_index": 67,
+      "problem": "Evaluate this Python expression. ((-70 // 40) + (66 // (-31 + (-81 - -84)))) % (-21 + 53)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 67,
+      "answer": 27
+    },
+    {
+      "source_index": 68,
+      "problem": "Evaluate this Python expression. ((((20 % 77) - -22) - (-30 - 29)) + (13 + -79)) * 54",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 68,
+      "answer": 1890
+    },
+    {
+      "source_index": 69,
+      "problem": "Evaluate this Python expression. (((-93 * -76) * -41) * 73) - (96 + 73)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 69,
+      "answer": -21154693
+    },
+    {
+      "source_index": 70,
+      "problem": "Evaluate this Python expression. (96 // (21 - ((-53 + 50) - 12))) + (-76 - 21)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 70,
+      "answer": -95
+    },
+    {
+      "source_index": 71,
+      "problem": "Evaluate this Python expression. ((72 + -73) - (-15 * 6)) * ((70 + 3) + 95)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 71,
+      "answer": 14952
+    },
+    {
+      "source_index": 72,
+      "problem": "Evaluate this Python expression. 17 - (-19 % (((98 + 4) * 32) + (69 + (6 * -86))))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 72,
+      "answer": -2781
+    },
+    {
+      "source_index": 73,
+      "problem": "Evaluate this Python expression. (((95 - -86) * -47) % (41 % -66)) * -26",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 73,
+      "answer": 182
+    },
+    {
+      "source_index": 74,
+      "problem": "Evaluate this Python expression. ((-92 * (82 + (-20 - 42))) - (42 - 5)) // -76",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 74,
+      "answer": 24
+    },
+    {
+      "source_index": 75,
+      "problem": "Evaluate this Python expression. 19 + (66 - (28 + ((7 + 24) - 21)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 75,
+      "answer": 47
+    },
+    {
+      "source_index": 76,
+      "problem": "Evaluate this Python expression. ((-1 + (54 + 31)) - 92) - (-82 * -29)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 76,
+      "answer": -2386
+    },
+    {
+      "source_index": 77,
+      "problem": "Evaluate this Python expression. ((-27 % 86) - -23) % (((15 + 38) // 24) + -11)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 77,
+      "answer": -8
+    },
+    {
+      "source_index": 78,
+      "problem": "Evaluate this Python expression. (((-51 + 79) + (47 % -1)) // -40) % (-88 - -18)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 78,
+      "answer": -1
+    },
+    {
+      "source_index": 79,
+      "problem": "Evaluate this Python expression. (((70 + 67) - -61) % 27) - (-67 * ((13 - -74) - 35))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 79,
+      "answer": 3493
+    },
+    {
+      "source_index": 80,
+      "problem": "Evaluate this Python expression. 85 % ((68 - -60) + (21 + ((60 - 78) // 2)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 80,
+      "answer": 85
+    },
+    {
+      "source_index": 81,
+      "problem": "Evaluate this Python expression. -15 - (((((39 // -90) - (-39 - 62)) + 76) + -26) - -41)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 81,
+      "answer": -206
+    },
+    {
+      "source_index": 82,
+      "problem": "Evaluate this Python expression. 12 * (95 * (14 + ((-92 - -88) % ((-37 * 36) - 6))))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 82,
+      "answer": 11400
+    },
+    {
+      "source_index": 83,
+      "problem": "Evaluate this Python expression. ((-55 + -79) * (((28 // 50) * -63) % -40)) - (64 - -34)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 83,
+      "answer": -98
+    },
+    {
+      "source_index": 84,
+      "problem": "Evaluate this Python expression. (20 // (74 // 40)) * (-81 - ((51 + -23) + 64))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 84,
+      "answer": -3460
+    },
+    {
+      "source_index": 85,
+      "problem": "Evaluate this Python expression. (((-49 % -1) + 24) % (-39 - (47 - -8))) // 48",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 85,
+      "answer": -2
+    },
+    {
+      "source_index": 86,
+      "problem": "Evaluate this Python expression. ((69 - (-29 // -97)) + (56 + (-26 - 99))) // -41",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 86,
+      "answer": 0
+    },
+    {
+      "source_index": 87,
+      "problem": "Evaluate this Python expression. ((63 % (59 * -35)) % ((-91 // 49) - (88 + -66))) + -76",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 87,
+      "answer": -86
+    },
+    {
+      "source_index": 88,
+      "problem": "Evaluate this Python expression. ((-48 % -66) - 39) - ((-57 + -34) - (-24 * 92))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 88,
+      "answer": -2204
+    },
+    {
+      "source_index": 89,
+      "problem": "Evaluate this Python expression. 20 // (-63 - ((43 + -6) * (2 - (-32 * 38))))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 89,
+      "answer": -1
+    },
+    {
+      "source_index": 90,
+      "problem": "Evaluate this Python expression. ((50 - -2) // (-72 - 73)) + (21 - -93)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 90,
+      "answer": 113
+    },
+    {
+      "source_index": 91,
+      "problem": "Evaluate this Python expression. ((66 * (63 + 19)) * (67 - 5)) + (-64 + (-90 + -22))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 91,
+      "answer": 335368
+    },
+    {
+      "source_index": 92,
+      "problem": "Evaluate this Python expression. -75 - ((0 - 17) // ((51 - 91) - (7 - 68)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 92,
+      "answer": -74
+    },
+    {
+      "source_index": 93,
+      "problem": "Evaluate this Python expression. (((-91 - 77) * -5) - -44) // (14 - -39)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 93,
+      "answer": 16
+    },
+    {
+      "source_index": 94,
+      "problem": "Evaluate this Python expression. 76 - (((2 % -29) + -51) + (17 - (70 // -45)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 94,
+      "answer": 135
+    },
+    {
+      "source_index": 95,
+      "problem": "Evaluate this Python expression. ((-87 - ((-67 % 45) + (-82 - 96))) + 42) + (51 + -44)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 95,
+      "answer": 117
+    },
+    {
+      "source_index": 96,
+      "problem": "Evaluate this Python expression. (53 + (-29 + -62)) + (39 - (-55 + -71))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 96,
+      "answer": 127
+    },
+    {
+      "source_index": 97,
+      "problem": "Evaluate this Python expression. (-66 + (-8 + ((-95 - -55) * ((-67 // 90) - 8)))) + 35",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 97,
+      "answer": 321
+    },
+    {
+      "source_index": 98,
+      "problem": "Evaluate this Python expression. 22 + (((16 + 29) + (58 + -88)) + 87)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 98,
+      "answer": 124
+    },
+    {
+      "source_index": 99,
+      "problem": "Evaluate this Python expression. (((-84 - 23) + 3) - (76 - -72)) * ((-81 * -79) + -17)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 99,
+      "answer": -1608264
+    },
+    {
+      "source_index": 100,
+      "problem": "Evaluate this Python expression. (-67 - -29) * ((((17 + 30) // 55) + (-74 // 80)) + -70)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 100,
+      "answer": 2698
+    },
+    {
+      "source_index": 101,
+      "problem": "Evaluate this Python expression. (((16 * -41) - ((17 + 3) + 7)) - 87) - (-19 - 10)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 101,
+      "answer": -741
+    },
+    {
+      "source_index": 102,
+      "problem": "Evaluate this Python expression. (((76 - 22) * -82) * (-78 + (11 + -75))) // 91",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 102,
+      "answer": 6909
+    },
+    {
+      "source_index": 103,
+      "problem": "Evaluate this Python expression. (43 - (51 - 44)) + ((6 - (71 + 93)) + (85 - -86))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 103,
+      "answer": 49
+    },
+    {
+      "source_index": 104,
+      "problem": "Evaluate this Python expression. (((48 - 30) + -45) + (69 + 24)) + (-72 + -10)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 104,
+      "answer": -16
+    },
+    {
+      "source_index": 105,
+      "problem": "Evaluate this Python expression. (96 - (47 // -42)) - (((56 * (-92 * -53)) - -30) + 80)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 105,
+      "answer": -273068
+    },
+    {
+      "source_index": 106,
+      "problem": "Evaluate this Python expression. ((-53 - -63) * 45) - (((-63 - 90) + 63) + -92)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 106,
+      "answer": 632
+    },
+    {
+      "source_index": 107,
+      "problem": "Evaluate this Python expression. ((8 - 17) % ((-5 - -20) - 85)) - -16",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 107,
+      "answer": 7
+    },
+    {
+      "source_index": 108,
+      "problem": "Evaluate this Python expression. (-86 + (-59 + (73 + (-30 + 14)))) + ((56 + 14) + 7)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 108,
+      "answer": -11
+    },
+    {
+      "source_index": 109,
+      "problem": "Evaluate this Python expression. (-11 + 11) % (-27 - (((-88 // -43) + 2) - 54))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 109,
+      "answer": 0
+    },
+    {
+      "source_index": 110,
+      "problem": "Evaluate this Python expression. -47 * ((97 - (96 + -34)) // (-16 % -69))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 110,
+      "answer": 141
+    },
+    {
+      "source_index": 111,
+      "problem": "Evaluate this Python expression. (((-66 + -2) + 37) * 81) - (29 // 44)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 111,
+      "answer": -2511
+    },
+    {
+      "source_index": 112,
+      "problem": "Evaluate this Python expression. ((2 + (12 - -95)) - ((-19 * 48) + (47 + 4))) - 82",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 112,
+      "answer": 888
+    },
+    {
+      "source_index": 113,
+      "problem": "Evaluate this Python expression. ((4 + -94) - (-56 + 59)) - ((-77 + 12) + (-37 - 12))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 113,
+      "answer": 21
+    },
+    {
+      "source_index": 114,
+      "problem": "Evaluate this Python expression. ((2 + (91 - -13)) - -43) + ((-80 + 31) % (36 + 31))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 114,
+      "answer": 167
+    },
+    {
+      "source_index": 115,
+      "problem": "Evaluate this Python expression. ((-39 * -73) + -62) - ((-55 * 55) * -60)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 115,
+      "answer": -178715
+    },
+    {
+      "source_index": 116,
+      "problem": "Evaluate this Python expression. -54 + ((((75 - 45) - (61 - -19)) * (13 // -82)) % 21)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 116,
+      "answer": -46
+    },
+    {
+      "source_index": 117,
+      "problem": "Evaluate this Python expression. (((-9 * 30) // -81) * ((16 + -90) + -85)) - -5",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 117,
+      "answer": -472
+    },
+    {
+      "source_index": 118,
+      "problem": "Evaluate this Python expression. 66 + (58 + (((16 // 47) * (-17 + 55)) + 22))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 118,
+      "answer": 146
+    },
+    {
+      "source_index": 119,
+      "problem": "Evaluate this Python expression. (16 * -73) * ((30 - (-89 - -36)) - ((35 - 34) // 57))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 119,
+      "answer": -96944
+    },
+    {
+      "source_index": 120,
+      "problem": "Evaluate this Python expression. ((0 - 5) - 99) * ((62 - 66) + -14)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 120,
+      "answer": 1872
+    },
+    {
+      "source_index": 121,
+      "problem": "Evaluate this Python expression. (43 + (-27 - -35)) - (-14 - (50 // 70))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 121,
+      "answer": 65
+    },
+    {
+      "source_index": 122,
+      "problem": "Evaluate this Python expression. ((-66 // 53) - 82) - (-20 // (65 + -15))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 122,
+      "answer": -83
+    },
+    {
+      "source_index": 123,
+      "problem": "Evaluate this Python expression. (66 - (((-95 - -7) + -20) * -53)) - -45",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 123,
+      "answer": -5613
+    },
+    {
+      "source_index": 124,
+      "problem": "Evaluate this Python expression. (-42 + (-60 * (-24 // -74))) * (70 + (97 + 59))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 124,
+      "answer": -9492
+    },
+    {
+      "source_index": 125,
+      "problem": "Evaluate this Python expression. ((-58 * (78 - (85 + 13))) // -88) - 6",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 125,
+      "answer": -20
+    },
+    {
+      "source_index": 126,
+      "problem": "Evaluate this Python expression. ((57 * -27) - (((37 + -38) // -20) + 21)) * -50",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 126,
+      "answer": 78000
+    },
+    {
+      "source_index": 127,
+      "problem": "Evaluate this Python expression. ((((-2 + 29) * (-58 + -48)) * 55) - -64) * -35",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 127,
+      "answer": 5507110
+    },
+    {
+      "source_index": 128,
+      "problem": "Evaluate this Python expression. ((83 - 33) - (-27 + -78)) // (-30 + 16)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 128,
+      "answer": -12
+    },
+    {
+      "source_index": 129,
+      "problem": "Evaluate this Python expression. (-76 - -43) - (((7 - -86) % (29 - -4)) - (-1 + -79))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 129,
+      "answer": -140
+    },
+    {
+      "source_index": 130,
+      "problem": "Evaluate this Python expression. (-18 - -74) * ((-64 // (-26 + 21)) - (95 // 81))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 130,
+      "answer": 616
+    },
+    {
+      "source_index": 131,
+      "problem": "Evaluate this Python expression. ((-79 * (-34 // -44)) + -61) - ((99 - -26) - -39)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 131,
+      "answer": -225
+    },
+    {
+      "source_index": 132,
+      "problem": "Evaluate this Python expression. -87 % ((64 * 60) + ((-71 // 28) - (62 // 32)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 132,
+      "answer": 3749
+    },
+    {
+      "source_index": 133,
+      "problem": "Evaluate this Python expression. (-25 // 10) - (58 - ((47 // (-52 + 71)) - (35 // -7)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 133,
+      "answer": -54
+    },
+    {
+      "source_index": 134,
+      "problem": "Evaluate this Python expression. (0 + ((63 + 0) * (-35 - 92))) - -95",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 134,
+      "answer": -7906
+    },
+    {
+      "source_index": 135,
+      "problem": "Evaluate this Python expression. -11 * ((98 - 49) - (((-88 - -9) // 40) - -13))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 135,
+      "answer": -418
+    },
+    {
+      "source_index": 136,
+      "problem": "Evaluate this Python expression. (79 - 23) - ((-83 + 84) - ((-24 - -48) + (-48 + -89)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 136,
+      "answer": -58
+    },
+    {
+      "source_index": 137,
+      "problem": "Evaluate this Python expression. ((-35 // -90) - 93) - ((-26 - (-87 - 68)) + -15)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 137,
+      "answer": -207
+    },
+    {
+      "source_index": 138,
+      "problem": "Evaluate this Python expression. -5 % (((-1 + -13) + (28 % 78)) + (-5 - 33))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 138,
+      "answer": -5
+    },
+    {
+      "source_index": 139,
+      "problem": "Evaluate this Python expression. 87 // ((11 + (40 - (-17 - -73))) + (-16 * 70))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 139,
+      "answer": -1
+    },
+    {
+      "source_index": 140,
+      "problem": "Evaluate this Python expression. ((-57 + 77) + 14) + ((-89 + 87) - (58 - 12))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 140,
+      "answer": -14
+    },
+    {
+      "source_index": 141,
+      "problem": "Evaluate this Python expression. (-80 - (((-92 * -63) - (-91 - -67)) - -82)) - -39",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 141,
+      "answer": -5943
+    },
+    {
+      "source_index": 142,
+      "problem": "Evaluate this Python expression. ((46 + -91) + 55) - ((-5 // -4) + ((47 % -64) - 36))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 142,
+      "answer": 62
+    },
+    {
+      "source_index": 143,
+      "problem": "Evaluate this Python expression. ((-36 - -70) + (89 + -52)) + ((44 * -69) - -32)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 143,
+      "answer": -2933
+    },
+    {
+      "source_index": 144,
+      "problem": "Evaluate this Python expression. ((57 * ((-48 + -68) + -65)) + (16 + -55)) * 83",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 144,
+      "answer": -859548
+    },
+    {
+      "source_index": 145,
+      "problem": "Evaluate this Python expression. 75 * (((41 + 39) - -25) + ((83 + 82) + 80))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 145,
+      "answer": 26250
+    },
+    {
+      "source_index": 146,
+      "problem": "Evaluate this Python expression. (31 // -42) // (-48 + ((27 * -93) + ((20 - 42) * -66)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 146,
+      "answer": 0
+    },
+    {
+      "source_index": 147,
+      "problem": "Evaluate this Python expression. -83 - (((35 + 6) + 97) - ((-67 + -18) + (16 + 20)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 147,
+      "answer": -270
+    },
+    {
+      "source_index": 148,
+      "problem": "Evaluate this Python expression. ((42 * (97 // -66)) + (29 - -85)) + (33 - (-22 - -57))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 148,
+      "answer": 28
+    },
+    {
+      "source_index": 149,
+      "problem": "Evaluate this Python expression. (-11 - (-79 - -35)) + (63 - (-67 - 61))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 149,
+      "answer": 224
+    },
+    {
+      "source_index": 150,
+      "problem": "Evaluate this Python expression. (29 // ((52 * (-56 % 69)) + 60)) // (45 - -89)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 150,
+      "answer": 0
+    },
+    {
+      "source_index": 151,
+      "problem": "Evaluate this Python expression. -88 - ((97 - (59 * 64)) + (28 + 61))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 151,
+      "answer": 3502
+    },
+    {
+      "source_index": 152,
+      "problem": "Evaluate this Python expression. ((-37 - 76) + 4) + (((77 + -84) // -59) - (7 % 24))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 152,
+      "answer": -116
+    },
+    {
+      "source_index": 153,
+      "problem": "Evaluate this Python expression. (56 + -63) + (((3 + -66) // 95) - (32 + 44))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 153,
+      "answer": -84
+    },
+    {
+      "source_index": 154,
+      "problem": "Evaluate this Python expression. (20 - (-31 - 16)) + (-63 + (-87 * -25))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 154,
+      "answer": 2179
+    },
+    {
+      "source_index": 155,
+      "problem": "Evaluate this Python expression. ((-59 // ((-51 + 96) // -59)) - 28) - (28 - -21)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 155,
+      "answer": -18
+    },
+    {
+      "source_index": 156,
+      "problem": "Evaluate this Python expression. -76 + ((((-44 + 50) // -9) - -87) - (-27 - 27))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 156,
+      "answer": 64
+    },
+    {
+      "source_index": 157,
+      "problem": "Evaluate this Python expression. ((((-72 + 11) + (-32 * 87)) + (96 - 4)) - -6) + -88",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 157,
+      "answer": -2835
+    },
+    {
+      "source_index": 158,
+      "problem": "Evaluate this Python expression. 46 - (((42 - -26) - (-1 + (96 * 41))) - -28)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 158,
+      "answer": 3885
+    },
+    {
+      "source_index": 159,
+      "problem": "Evaluate this Python expression. ((-67 + (1 + ((43 // -6) * 94))) + -63) + (55 - 31)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 159,
+      "answer": -857
+    },
+    {
+      "source_index": 160,
+      "problem": "Evaluate this Python expression. (-88 * (-64 - ((33 - 17) - -61))) + (-16 + 57)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 160,
+      "answer": 12449
+    },
+    {
+      "source_index": 161,
+      "problem": "Evaluate this Python expression. (58 * 90) * (((82 - 45) * -23) + (-95 - -5))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 161,
+      "answer": -4912020
+    },
+    {
+      "source_index": 162,
+      "problem": "Evaluate this Python expression. (7 - ((53 * (-32 * 68)) - (85 + -86))) + 50",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 162,
+      "answer": 115384
+    },
+    {
+      "source_index": 163,
+      "problem": "Evaluate this Python expression. (-62 // 75) - ((47 + 80) + (-51 - (13 % -19)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 163,
+      "answer": -83
+    },
+    {
+      "source_index": 164,
+      "problem": "Evaluate this Python expression. (77 // -47) // ((((81 * -64) * 33) - -46) * 44)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 164,
+      "answer": 0
+    },
+    {
+      "source_index": 165,
+      "problem": "Evaluate this Python expression. ((((-55 + 18) - 37) + -12) // (74 % 98)) + 85",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 165,
+      "answer": 83
+    },
+    {
+      "source_index": 166,
+      "problem": "Evaluate this Python expression. (((-36 * -28) // 43) // ((-23 + 98) - -26)) * (77 + 81)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 166,
+      "answer": 0
+    },
+    {
+      "source_index": 167,
+      "problem": "Evaluate this Python expression. ((44 + 85) // -29) // ((47 % 74) - (2 // -11))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 167,
+      "answer": -1
+    },
+    {
+      "source_index": 168,
+      "problem": "Evaluate this Python expression. (-26 + (-11 // 14)) - ((-45 * -48) + 38)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 168,
+      "answer": -2225
+    },
+    {
+      "source_index": 169,
+      "problem": "Evaluate this Python expression. ((-72 + (-37 + -87)) * (64 + -40)) * (-74 - 6)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 169,
+      "answer": 376320
+    },
+    {
+      "source_index": 170,
+      "problem": "Evaluate this Python expression. ((75 - (-98 + (5 + 68))) + (23 * 67)) - -48",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 170,
+      "answer": 1689
+    },
+    {
+      "source_index": 171,
+      "problem": "Evaluate this Python expression. ((97 // -77) - 67) + ((37 + (-55 + 7)) // -54)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 171,
+      "answer": -69
+    },
+    {
+      "source_index": 172,
+      "problem": "Evaluate this Python expression. ((92 // -25) // (-97 - -23)) % (-14 * -27)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 172,
+      "answer": 0
+    },
+    {
+      "source_index": 173,
+      "problem": "Evaluate this Python expression. (((30 - ((-50 - -71) * -15)) - -58) - 88) // 18",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 173,
+      "answer": 17
+    },
+    {
+      "source_index": 174,
+      "problem": "Evaluate this Python expression. (-96 * (-24 % 46)) + ((57 - 64) + ((32 - -16) * -77))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 174,
+      "answer": -5815
+    },
+    {
+      "source_index": 175,
+      "problem": "Evaluate this Python expression. (-52 + ((-17 - -36) + (-33 + (-39 + 15)))) + 93",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 175,
+      "answer": 3
+    },
+    {
+      "source_index": 176,
+      "problem": "Evaluate this Python expression. ((-33 % 68) - -7) % ((-84 * (20 - -21)) + -59)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 176,
+      "answer": -3461
+    },
+    {
+      "source_index": 177,
+      "problem": "Evaluate this Python expression. (((64 + (-5 * 58)) // (-43 - -65)) % 23) - -60",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 177,
+      "answer": 72
+    },
+    {
+      "source_index": 178,
+      "problem": "Evaluate this Python expression. ((((94 - 38) + 71) + (96 % -36)) // 75) - 94",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 178,
+      "answer": -93
+    },
+    {
+      "source_index": 179,
+      "problem": "Evaluate this Python expression. (35 + ((((45 - -71) - -84) + 41) + (47 + 38))) * -61",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 179,
+      "answer": -22021
+    },
+    {
+      "source_index": 180,
+      "problem": "Evaluate this Python expression. ((75 - -47) + 84) // ((31 % 15) // -85)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 180,
+      "answer": -206
+    },
+    {
+      "source_index": 181,
+      "problem": "Evaluate this Python expression. (17 % 45) + (44 * ((86 + -94) * (-34 - -99)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 181,
+      "answer": -22863
+    },
+    {
+      "source_index": 182,
+      "problem": "Evaluate this Python expression. (-88 * 9) + ((39 + (-82 + 21)) - (-26 - (-53 - 97)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 182,
+      "answer": -938
+    },
+    {
+      "source_index": 183,
+      "problem": "Evaluate this Python expression. ((15 // -3) + (-79 + 75)) % (68 // -10)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 183,
+      "answer": -2
+    },
+    {
+      "source_index": 184,
+      "problem": "Evaluate this Python expression. (36 // -67) + ((-99 - (-23 * 19)) - 73)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 184,
+      "answer": 264
+    },
+    {
+      "source_index": 185,
+      "problem": "Evaluate this Python expression. ((((-36 - 18) - -11) + -60) * -29) + (86 + (-91 - 70))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 185,
+      "answer": 2912
+    },
+    {
+      "source_index": 186,
+      "problem": "Evaluate this Python expression. (-38 - (-82 // (53 + (15 * 54)))) - (-37 - 90)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 186,
+      "answer": 90
+    },
+    {
+      "source_index": 187,
+      "problem": "Evaluate this Python expression. ((39 * -44) * (-64 - 29)) + (-40 - 88)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 187,
+      "answer": 159460
+    },
+    {
+      "source_index": 188,
+      "problem": "Evaluate this Python expression. ((-22 // -63) * 70) - ((-23 - -29) // (-11 * (35 * -18)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 188,
+      "answer": 0
+    },
+    {
+      "source_index": 189,
+      "problem": "Evaluate this Python expression. ((-23 * -3) // (94 + 38)) + ((-42 // -23) * (19 + -85))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 189,
+      "answer": -66
+    },
+    {
+      "source_index": 190,
+      "problem": "Evaluate this Python expression. ((0 - -37) + (-47 * -15)) + ((16 * (-76 * 38)) - 86)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 190,
+      "answer": -45552
+    },
+    {
+      "source_index": 191,
+      "problem": "Evaluate this Python expression. -31 + (((-81 - (95 + 51)) % 86) - 72)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 191,
+      "answer": -72
+    },
+    {
+      "source_index": 192,
+      "problem": "Evaluate this Python expression. (-46 - -14) % ((-45 * (90 - -69)) - ((79 + 55) * 81))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 192,
+      "answer": -32
+    },
+    {
+      "source_index": 193,
+      "problem": "Evaluate this Python expression. (42 // ((-2 - 20) - 37)) // (-21 + -33)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 193,
+      "answer": 0
+    },
+    {
+      "source_index": 194,
+      "problem": "Evaluate this Python expression. (((85 * 21) + (-47 + -5)) * -19) - (-88 + 45)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 194,
+      "answer": -32884
+    },
+    {
+      "source_index": 195,
+      "problem": "Evaluate this Python expression. (-33 - 42) % ((28 % 41) + (-34 * 96))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 195,
+      "answer": -75
+    },
+    {
+      "source_index": 196,
+      "problem": "Evaluate this Python expression. (((88 * -9) + (-64 + 85)) - (-52 + 39)) * 65",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 196,
+      "answer": -49270
+    },
+    {
+      "source_index": 197,
+      "problem": "Evaluate this Python expression. (-80 % ((96 - (6 * -64)) + 62)) - -40",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 197,
+      "answer": 502
+    },
+    {
+      "source_index": 198,
+      "problem": "Evaluate this Python expression. (-44 - 30) + ((-84 + 59) * (69 * 25))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 198,
+      "answer": -43199
+    },
+    {
+      "source_index": 199,
+      "problem": "Evaluate this Python expression. 37 % ((-95 - ((-95 + 29) * 79)) + 73)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 199,
+      "answer": 37
+    },
+    {
+      "source_index": 200,
+      "problem": "Evaluate this Python expression. (-75 + 35) - ((-50 - 59) - ((-31 // 2) - -79))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 200,
+      "answer": 132
+    },
+    {
+      "source_index": 201,
+      "problem": "Evaluate this Python expression. ((79 + -42) - (76 % -79)) + (-76 + (-2 // -3))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 201,
+      "answer": -36
+    },
+    {
+      "source_index": 202,
+      "problem": "Evaluate this Python expression. (64 - (80 - (-78 + 28))) + ((45 // -75) % (-41 - -45))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 202,
+      "answer": -63
+    },
+    {
+      "source_index": 203,
+      "problem": "Evaluate this Python expression. (((-80 // 76) * (40 * 45)) // 69) + (-54 - (-95 * -46))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 203,
+      "answer": -4477
+    },
+    {
+      "source_index": 204,
+      "problem": "Evaluate this Python expression. (-80 + -23) + ((46 // 74) + (((94 - 90) * -64) - 77))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 204,
+      "answer": -436
+    },
+    {
+      "source_index": 205,
+      "problem": "Evaluate this Python expression. 29 + (((-74 - (-40 * -80)) + ((99 + -16) - -92)) - 63)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 205,
+      "answer": -3133
+    },
+    {
+      "source_index": 206,
+      "problem": "Evaluate this Python expression. ((-8 * 42) - (11 + -52)) - ((98 + 59) + -24)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 206,
+      "answer": -428
+    },
+    {
+      "source_index": 207,
+      "problem": "Evaluate this Python expression. -78 // ((-2 - (90 - 0)) * (-7 + -72))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 207,
+      "answer": -1
+    },
+    {
+      "source_index": 208,
+      "problem": "Evaluate this Python expression. -21 + (((-73 * -66) - (-52 + 11)) + 15)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 208,
+      "answer": 4853
+    },
+    {
+      "source_index": 209,
+      "problem": "Evaluate this Python expression. ((-93 - (-9 + (53 % 54))) - -16) + ((-25 * 6) - 0)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 209,
+      "answer": -271
+    },
+    {
+      "source_index": 210,
+      "problem": "Evaluate this Python expression. ((76 + -2) - (-64 + (-22 - -31))) + 27",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 210,
+      "answer": 156
+    },
+    {
+      "source_index": 211,
+      "problem": "Evaluate this Python expression. -57 * (((-23 + 24) + (-7 - -35)) - -36)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 211,
+      "answer": -3705
+    },
+    {
+      "source_index": 212,
+      "problem": "Evaluate this Python expression. (((18 + (-65 * -22)) + -98) - (-14 + 59)) + (-15 * 13)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 212,
+      "answer": 1110
+    },
+    {
+      "source_index": 213,
+      "problem": "Evaluate this Python expression. ((-23 + (55 // 78)) - -48) * ((-54 * 2) // -18)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 213,
+      "answer": 150
+    },
+    {
+      "source_index": 214,
+      "problem": "Evaluate this Python expression. (((-16 - (-28 * 1)) * -6) // (45 + -48)) - 52",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 214,
+      "answer": -28
+    },
+    {
+      "source_index": 215,
+      "problem": "Evaluate this Python expression. (87 * 19) + ((-25 - 78) + (5 * ((63 - -22) - -38)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 215,
+      "answer": 2165
+    },
+    {
+      "source_index": 216,
+      "problem": "Evaluate this Python expression. ((-3 + -81) % ((50 + 3) + (40 // -90))) - -7",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 216,
+      "answer": 27
+    },
+    {
+      "source_index": 217,
+      "problem": "Evaluate this Python expression. ((-72 - (69 - ((66 + 57) * -88))) * (93 - -15)) + 11",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 217,
+      "answer": -1184209
+    },
+    {
+      "source_index": 218,
+      "problem": "Evaluate this Python expression. -74 * ((31 % (15 % -4)) + (19 - 98))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 218,
+      "answer": 5846
+    },
+    {
+      "source_index": 219,
+      "problem": "Evaluate this Python expression. ((-93 + 24) - (-24 + (-78 + -70))) * (-10 * (-12 // 17))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 219,
+      "answer": 1030
+    },
+    {
+      "source_index": 220,
+      "problem": "Evaluate this Python expression. (((-75 - 13) - (-18 - -82)) % -23) + -88",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 220,
+      "answer": -102
+    },
+    {
+      "source_index": 221,
+      "problem": "Evaluate this Python expression. -94 // ((74 - (90 // -37)) // ((42 * (-15 - 44)) - 10))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 221,
+      "answer": 94
+    },
+    {
+      "source_index": 222,
+      "problem": "Evaluate this Python expression. (62 - -52) - ((2 + -92) + (16 // (0 - -98)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 222,
+      "answer": 204
+    },
+    {
+      "source_index": 223,
+      "problem": "Evaluate this Python expression. (-28 - 93) + (48 + (38 // (-6 * ((18 * -70) + -32))))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 223,
+      "answer": -73
+    },
+    {
+      "source_index": 224,
+      "problem": "Evaluate this Python expression. ((((57 % 1) + 51) // -70) // ((18 - 59) + -55)) - 73",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 224,
+      "answer": -73
+    },
+    {
+      "source_index": 225,
+      "problem": "Evaluate this Python expression. ((73 - (-19 - -69)) % (-21 - (-53 + (78 - -63)))) + 31",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 225,
+      "answer": -55
+    },
+    {
+      "source_index": 226,
+      "problem": "Evaluate this Python expression. ((48 + (9 - -52)) * 25) + (43 % (-52 - -19))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 226,
+      "answer": 2702
+    },
+    {
+      "source_index": 227,
+      "problem": "Evaluate this Python expression. (-8 - (25 - (-50 + (44 + 30)))) - (5 * 76)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 227,
+      "answer": -389
+    },
+    {
+      "source_index": 228,
+      "problem": "Evaluate this Python expression. (((-57 + -78) - 45) * -92) + (-25 + (-29 + -42))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 228,
+      "answer": 16464
+    },
+    {
+      "source_index": 229,
+      "problem": "Evaluate this Python expression. (18 - (41 * 31)) // (47 - (-31 * ((95 - 85) // 13)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 229,
+      "answer": -27
+    },
+    {
+      "source_index": 230,
+      "problem": "Evaluate this Python expression. (-73 + 89) + ((-91 + 16) // ((-77 + 13) - (99 + -39)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 230,
+      "answer": 16
+    },
+    {
+      "source_index": 231,
+      "problem": "Evaluate this Python expression. (((58 + -64) - -47) + (-84 // 46)) - -10",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 231,
+      "answer": 49
+    },
+    {
+      "source_index": 232,
+      "problem": "Evaluate this Python expression. (-17 + (-25 + 47)) - ((-65 % (-84 % -29)) % (80 + -66))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 232,
+      "answer": 4
+    },
+    {
+      "source_index": 233,
+      "problem": "Evaluate this Python expression. (-36 // 95) * (((-63 - 48) - 62) - -31)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 233,
+      "answer": 142
+    },
+    {
+      "source_index": 234,
+      "problem": "Evaluate this Python expression. ((-80 + 63) + (4 + 32)) % (((17 * 25) + -16) * 49)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 234,
+      "answer": 19
+    },
+    {
+      "source_index": 235,
+      "problem": "Evaluate this Python expression. 88 + ((((37 + 2) * -44) - 10) // -45)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 235,
+      "answer": 126
+    },
+    {
+      "source_index": 236,
+      "problem": "Evaluate this Python expression. ((-13 * 41) // 48) - (45 - ((75 % 96) * -87))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 236,
+      "answer": -6582
+    },
+    {
+      "source_index": 237,
+      "problem": "Evaluate this Python expression. 61 * ((-68 + (13 - (-99 // 10))) // -48)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 237,
+      "answer": 0
+    },
+    {
+      "source_index": 238,
+      "problem": "Evaluate this Python expression. (-59 * -29) - (68 + (((-4 + 71) - 67) - (-86 - 2)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 238,
+      "answer": 1555
+    },
+    {
+      "source_index": 239,
+      "problem": "Evaluate this Python expression. (10 + (81 % -75)) - (-45 * ((-66 % 52) // (33 - 75)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 239,
+      "answer": -104
+    },
+    {
+      "source_index": 240,
+      "problem": "Evaluate this Python expression. -97 * ((9 // (23 * -81)) * (-1 + (88 - -73)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 240,
+      "answer": 15520
+    },
+    {
+      "source_index": 241,
+      "problem": "Evaluate this Python expression. ((-64 * -2) * 99) + (65 * (-82 - 36))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 241,
+      "answer": 5002
+    },
+    {
+      "source_index": 242,
+      "problem": "Evaluate this Python expression. 57 - (((-10 - 85) - (61 - (6 + (-44 + -77)))) * -74)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 242,
+      "answer": -19997
+    },
+    {
+      "source_index": 243,
+      "problem": "Evaluate this Python expression. 51 + (((-19 - -64) - (-29 + 66)) + -78)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 243,
+      "answer": -19
+    },
+    {
+      "source_index": 244,
+      "problem": "Evaluate this Python expression. ((69 * (-47 - 33)) - (92 - 1)) - -24",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 244,
+      "answer": -5587
+    },
+    {
+      "source_index": 245,
+      "problem": "Evaluate this Python expression. -38 - (((-38 // 28) - (36 - -96)) - ((-66 + 0) - 46))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 245,
+      "answer": -16
+    },
+    {
+      "source_index": 246,
+      "problem": "Evaluate this Python expression. (96 - (98 - -81)) * (51 * (-96 * (-44 - -89)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 246,
+      "answer": 18286560
+    },
+    {
+      "source_index": 247,
+      "problem": "Evaluate this Python expression. (((9 % 80) + 3) + -78) - (-28 + -78)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 247,
+      "answer": 40
+    },
+    {
+      "source_index": 248,
+      "problem": "Evaluate this Python expression. 31 - ((38 // -16) // ((-20 + 79) + (87 // -38)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 248,
+      "answer": 32
+    },
+    {
+      "source_index": 249,
+      "problem": "Evaluate this Python expression. (12 + -70) + ((-20 - 71) + (-69 + -96))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 249,
+      "answer": -314
+    },
+    {
+      "source_index": 250,
+      "problem": "Evaluate this Python expression. (-58 * 28) - (((-4 - -67) + 92) + ((98 - -92) * -14))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 250,
+      "answer": 881
+    },
+    {
+      "source_index": 251,
+      "problem": "Evaluate this Python expression. (-32 + (28 + 17)) * (((28 * 46) + -57) - -5)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 251,
+      "answer": 16068
+    },
+    {
+      "source_index": 252,
+      "problem": "Evaluate this Python expression. (47 - (-41 + 90)) - (-88 % (-37 + -88))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 252,
+      "answer": 86
+    },
+    {
+      "source_index": 253,
+      "problem": "Evaluate this Python expression. ((-54 * -90) - 42) - (((-17 + -36) - 7) % 85)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 253,
+      "answer": 4793
+    },
+    {
+      "source_index": 254,
+      "problem": "Evaluate this Python expression. (47 // (-69 * 29)) - ((-54 + (33 + -88)) - 3)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 254,
+      "answer": 111
+    },
+    {
+      "source_index": 255,
+      "problem": "Evaluate this Python expression. ((-16 // -77) - (-97 // -5)) * (-25 + 45)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 255,
+      "answer": -380
+    },
+    {
+      "source_index": 256,
+      "problem": "Evaluate this Python expression. (((-5 + 52) * ((88 * 40) - 95)) + -37) - -61",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 256,
+      "answer": 160999
+    },
+    {
+      "source_index": 257,
+      "problem": "Evaluate this Python expression. (-40 + ((-14 - -99) - 95)) // (89 * 87)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 257,
+      "answer": -1
+    },
+    {
+      "source_index": 258,
+      "problem": "Evaluate this Python expression. -47 - (((26 + -84) - (83 + (-76 + -88))) - -40)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 258,
+      "answer": -110
+    },
+    {
+      "source_index": 259,
+      "problem": "Evaluate this Python expression. (((92 + -78) - 49) - -75) * ((64 % (-80 - 52)) + 46)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 259,
+      "answer": -880
+    },
+    {
+      "source_index": 260,
+      "problem": "Evaluate this Python expression. ((-39 - (-33 - -19)) * 1) % (-18 * 16)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 260,
+      "answer": -25
+    },
+    {
+      "source_index": 261,
+      "problem": "Evaluate this Python expression. (-48 + -65) + (-60 + (-57 - ((-19 + 5) * -69)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 261,
+      "answer": -1196
+    },
+    {
+      "source_index": 262,
+      "problem": "Evaluate this Python expression. (16 // (19 + -32)) + (-76 - (76 + ((-44 + -16) + -62)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 262,
+      "answer": -32
+    },
+    {
+      "source_index": 263,
+      "problem": "Evaluate this Python expression. (2 - 32) - (74 + ((-55 + -92) * 4))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 263,
+      "answer": 484
+    },
+    {
+      "source_index": 264,
+      "problem": "Evaluate this Python expression. ((19 // -73) + (-68 - (-84 - -43))) * (-49 + 3)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 264,
+      "answer": 1288
+    },
+    {
+      "source_index": 265,
+      "problem": "Evaluate this Python expression. (50 - ((-94 - (-49 % 66)) * (-67 - -76))) + -15",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 265,
+      "answer": 1034
+    },
+    {
+      "source_index": 266,
+      "problem": "Evaluate this Python expression. 19 + (-56 * (((28 - -92) % -2) + 75))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 266,
+      "answer": -4181
+    },
+    {
+      "source_index": 267,
+      "problem": "Evaluate this Python expression. (-45 - -52) - (((-61 + -91) - 58) - (66 * -24))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 267,
+      "answer": -1367
+    },
+    {
+      "source_index": 268,
+      "problem": "Evaluate this Python expression. (((-77 * -28) // -1) + -64) % ((65 - 35) + -36)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 268,
+      "answer": 0
+    },
+    {
+      "source_index": 269,
+      "problem": "Evaluate this Python expression. ((-2 - (((40 // 25) - -11) // 45)) + (0 - -30)) * -53",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 269,
+      "answer": -1484
+    },
+    {
+      "source_index": 270,
+      "problem": "Evaluate this Python expression. (-92 * (-85 + 21)) + ((-59 * -74) * -36)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 270,
+      "answer": -151288
+    },
+    {
+      "source_index": 271,
+      "problem": "Evaluate this Python expression. (37 + 89) + (96 - ((-9 + -55) // (-39 + (89 - 79))))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 271,
+      "answer": 220
+    },
+    {
+      "source_index": 272,
+      "problem": "Evaluate this Python expression. (81 - (((45 - -51) - 27) - 39)) - (-55 // 26)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 272,
+      "answer": 54
+    },
+    {
+      "source_index": 273,
+      "problem": "Evaluate this Python expression. -85 + ((-94 % 35) // ((-15 // 58) + -48))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 273,
+      "answer": -86
+    },
+    {
+      "source_index": 274,
+      "problem": "Evaluate this Python expression. (-17 - (-94 * -62)) * (99 // (35 // -6))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 274,
+      "answer": 99365
+    },
+    {
+      "source_index": 275,
+      "problem": "Evaluate this Python expression. ((-13 * -22) + -17) + (-59 - (64 + 25))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 275,
+      "answer": 121
+    },
+    {
+      "source_index": 276,
+      "problem": "Evaluate this Python expression. (82 - (-42 * 71)) // ((-21 % 88) + ((-54 - 87) * -99))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 276,
+      "answer": 0
+    },
+    {
+      "source_index": 277,
+      "problem": "Evaluate this Python expression. (((-53 - (57 // -43)) - 64) * 45) - (28 - (-15 + 91))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 277,
+      "answer": -5127
+    },
+    {
+      "source_index": 278,
+      "problem": "Evaluate this Python expression. (-18 + -57) + ((82 + (15 - -97)) + -32)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 278,
+      "answer": 87
+    },
+    {
+      "source_index": 279,
+      "problem": "Evaluate this Python expression. (-10 % -34) + (85 - (-87 % (13 - 88)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 279,
+      "answer": 87
+    },
+    {
+      "source_index": 280,
+      "problem": "Evaluate this Python expression. (27 - -3) - (((23 - 48) + 67) + (-58 - 16))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 280,
+      "answer": 62
+    },
+    {
+      "source_index": 281,
+      "problem": "Evaluate this Python expression. -24 - (-18 * ((-81 - -12) + (-3 + -58)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 281,
+      "answer": -2364
+    },
+    {
+      "source_index": 282,
+      "problem": "Evaluate this Python expression. 41 + (-13 + ((((11 % (56 + 12)) + -59) * -86) % -74))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 282,
+      "answer": 12
+    },
+    {
+      "source_index": 283,
+      "problem": "Evaluate this Python expression. (5 + 79) - (((-39 + -75) + -87) + (47 * 41))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 283,
+      "answer": -1642
+    },
+    {
+      "source_index": 284,
+      "problem": "Evaluate this Python expression. (-7 % -99) - ((-24 + ((-75 * -93) - -47)) - -56)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 284,
+      "answer": -7061
+    },
+    {
+      "source_index": 285,
+      "problem": "Evaluate this Python expression. (22 + (-21 - 2)) - (((-76 // 65) + (-52 - -5)) - -2)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 285,
+      "answer": 46
+    },
+    {
+      "source_index": 286,
+      "problem": "Evaluate this Python expression. (-88 * -32) - (((-42 * -31) + (-61 * 93)) - 79)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 286,
+      "answer": 7266
+    },
+    {
+      "source_index": 287,
+      "problem": "Evaluate this Python expression. -78 + ((((42 + -84) + 0) - ((47 * -39) + 22)) + -23)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 287,
+      "answer": 1668
+    },
+    {
+      "source_index": 288,
+      "problem": "Evaluate this Python expression. ((29 % (-69 + 94)) * 15) - (-57 % -45)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 288,
+      "answer": 72
+    },
+    {
+      "source_index": 289,
+      "problem": "Evaluate this Python expression. (9 + -79) + (((61 - -62) - 53) // -33)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 289,
+      "answer": -73
+    },
+    {
+      "source_index": 290,
+      "problem": "Evaluate this Python expression. (-77 - ((((-29 - 34) + 18) + -96) * 80)) - 60",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 290,
+      "answer": 11143
+    },
+    {
+      "source_index": 291,
+      "problem": "Evaluate this Python expression. ((7 * (-62 - (-72 - 45))) // -74) + ((6 % -32) * -1)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 291,
+      "answer": 20
+    },
+    {
+      "source_index": 292,
+      "problem": "Evaluate this Python expression. (((-55 * -29) - 4) + -63) - (((2 // -15) + 77) // -39)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 292,
+      "answer": 1530
+    },
+    {
+      "source_index": 293,
+      "problem": "Evaluate this Python expression. ((-94 - -13) // (-20 - -28)) - (79 - 76)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 293,
+      "answer": -14
+    },
+    {
+      "source_index": 294,
+      "problem": "Evaluate this Python expression. (-23 + 91) - ((-31 - 87) * (55 + 66))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 294,
+      "answer": 14346
+    },
+    {
+      "source_index": 295,
+      "problem": "Evaluate this Python expression. (-45 * 5) + (((-85 + 32) + -59) * -83)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 295,
+      "answer": 9071
+    },
+    {
+      "source_index": 296,
+      "problem": "Evaluate this Python expression. (((35 % (-55 + (-48 + -85))) * -36) - -91) + 17",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 296,
+      "answer": 5616
+    },
+    {
+      "source_index": 297,
+      "problem": "Evaluate this Python expression. (-29 * (19 - 30)) + ((75 - -92) + -38)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 297,
+      "answer": 448
+    },
+    {
+      "source_index": 298,
+      "problem": "Evaluate this Python expression. (((22 + 51) - 42) * -10) + ((-33 + 92) + 77)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 298,
+      "answer": -174
+    },
+    {
+      "source_index": 299,
+      "problem": "Evaluate this Python expression. (-1 + (-58 % 47)) - (-43 - (74 * -47))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 299,
+      "answer": -3400
+    },
+    {
+      "source_index": 300,
+      "problem": "Evaluate this Python expression. (((97 + (22 + -66)) - 66) - (54 * -97)) - -42",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 300,
+      "answer": 5267
+    },
+    {
+      "source_index": 2699,
+      "problem": "Evaluate this Python expression. (-12 + (67 - -38)) - (((45 // 82) - 62) + -78)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2699,
+      "answer": 233
+    },
+    {
+      "source_index": 2700,
+      "problem": "Evaluate this Python expression. -23 * ((((44 - -42) + 60) + (-58 - 77)) - -19)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2700,
+      "answer": -690
+    },
+    {
+      "source_index": 2701,
+      "problem": "Evaluate this Python expression. (-84 - (72 - 99)) + (99 + (1 + 67))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2701,
+      "answer": 110
+    },
+    {
+      "source_index": 2702,
+      "problem": "Evaluate this Python expression. -82 - (((-23 - -4) + ((82 - -24) % -18)) - -61)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2702,
+      "answer": -122
+    },
+    {
+      "source_index": 2703,
+      "problem": "Evaluate this Python expression. (71 - -65) * ((96 // 60) + (19 + -48))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2703,
+      "answer": -3808
+    },
+    {
+      "source_index": 2704,
+      "problem": "Evaluate this Python expression. ((-85 - -51) + ((-55 + 86) + -76)) - -56",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2704,
+      "answer": -23
+    },
+    {
+      "source_index": 2705,
+      "problem": "Evaluate this Python expression. ((89 + 80) - -55) % ((-40 - -25) + (48 % (-76 - -54)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2705,
+      "answer": -7
+    },
+    {
+      "source_index": 2706,
+      "problem": "Evaluate this Python expression. 42 - (-7 // ((-65 + (-60 + -16)) + ((-97 - -77) // 42)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2706,
+      "answer": 42
+    },
+    {
+      "source_index": 2707,
+      "problem": "Evaluate this Python expression. -70 * ((90 * 87) - ((29 * 82) % ((-82 - -48) - -45)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2707,
+      "answer": -547960
+    },
+    {
+      "source_index": 2708,
+      "problem": "Evaluate this Python expression. (((((19 * (40 - 7)) + -77) + -52) * 27) - -38) * -25",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2708,
+      "answer": -337100
+    },
+    {
+      "source_index": 2709,
+      "problem": "Evaluate this Python expression. 97 + (-61 - (98 - (59 - (79 + 82))))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2709,
+      "answer": -164
+    },
+    {
+      "source_index": 2710,
+      "problem": "Evaluate this Python expression. (-42 + (-76 + ((44 * -91) * -58))) - 59",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2710,
+      "answer": 232055
+    },
+    {
+      "source_index": 2711,
+      "problem": "Evaluate this Python expression. (43 - ((49 * (74 * 6)) * -22)) + ((-51 - -70) + 47)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2711,
+      "answer": 478741
+    },
+    {
+      "source_index": 2712,
+      "problem": "Evaluate this Python expression. (32 * (-82 // (-50 + (1 * 44)))) // 87",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2712,
+      "answer": 4
+    },
+    {
+      "source_index": 2713,
+      "problem": "Evaluate this Python expression. (14 // -61) + ((61 - 3) * ((-23 // 83) + (24 + -78)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2713,
+      "answer": -3191
+    },
+    {
+      "source_index": 2714,
+      "problem": "Evaluate this Python expression. (59 % -70) * (((-90 * -17) * -92) + -71)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2714,
+      "answer": 1549141
+    },
+    {
+      "source_index": 2715,
+      "problem": "Evaluate this Python expression. (-94 + 96) + (-30 * ((11 // -92) + 27))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2715,
+      "answer": -778
+    },
+    {
+      "source_index": 2716,
+      "problem": "Evaluate this Python expression. ((-11 + -85) - 84) + ((-11 + 93) * 81)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2716,
+      "answer": 6462
+    },
+    {
+      "source_index": 2717,
+      "problem": "Evaluate this Python expression. ((-42 - -80) - -3) * (-69 - (-93 + -49))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2717,
+      "answer": 2993
+    },
+    {
+      "source_index": 2718,
+      "problem": "Evaluate this Python expression. ((-76 + (-19 + 98)) + 77) * ((-51 - 95) - (98 - -47))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2718,
+      "answer": -23280
+    },
+    {
+      "source_index": 2719,
+      "problem": "Evaluate this Python expression. ((-94 + -96) - (53 - 56)) % (4 - 53)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2719,
+      "answer": -40
+    },
+    {
+      "source_index": 2720,
+      "problem": "Evaluate this Python expression. ((84 % (97 - -36)) + -44) - ((-92 + 27) + -72)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2720,
+      "answer": 177
+    },
+    {
+      "source_index": 2721,
+      "problem": "Evaluate this Python expression. ((-93 + (-83 + -29)) + (44 - (-49 - -36))) // (-44 + -23)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2721,
+      "answer": 2
+    },
+    {
+      "source_index": 2722,
+      "problem": "Evaluate this Python expression. 93 + (((-24 + -26) - (60 * 67)) - -56)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2722,
+      "answer": -3921
+    },
+    {
+      "source_index": 2723,
+      "problem": "Evaluate this Python expression. ((48 - 27) - (-63 - 35)) + (39 + 78)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2723,
+      "answer": 236
+    },
+    {
+      "source_index": 2724,
+      "problem": "Evaluate this Python expression. ((-8 // -19) - -71) // (59 - (48 - 8))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2724,
+      "answer": 3
+    },
+    {
+      "source_index": 2725,
+      "problem": "Evaluate this Python expression. (33 - -57) + (10 * ((41 - 82) // 26))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2725,
+      "answer": 70
+    },
+    {
+      "source_index": 2726,
+      "problem": "Evaluate this Python expression. ((-62 * (37 + -95)) // -91) - (78 - -39)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2726,
+      "answer": -157
+    },
+    {
+      "source_index": 2727,
+      "problem": "Evaluate this Python expression. ((33 - -20) - 6) * ((33 * 11) % (83 + -31))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2727,
+      "answer": 2397
+    },
+    {
+      "source_index": 2728,
+      "problem": "Evaluate this Python expression. (26 + (-66 + (3 - -41))) - (18 - -14)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2728,
+      "answer": -28
+    },
+    {
+      "source_index": 2729,
+      "problem": "Evaluate this Python expression. (24 - 3) - (-68 + ((32 - -22) * (32 - -73)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2729,
+      "answer": -5581
+    },
+    {
+      "source_index": 2730,
+      "problem": "Evaluate this Python expression. ((-5 * 13) - -54) % (81 - (83 - -45))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2730,
+      "answer": -11
+    },
+    {
+      "source_index": 2731,
+      "problem": "Evaluate this Python expression. (-81 + ((-69 + -73) - -21)) % ((-49 + -3) + (-77 - 33))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2731,
+      "answer": -40
+    },
+    {
+      "source_index": 2732,
+      "problem": "Evaluate this Python expression. (92 % 92) + (-14 - (((-2 - -10) - -33) * (90 - 2)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2732,
+      "answer": -3622
+    },
+    {
+      "source_index": 2733,
+      "problem": "Evaluate this Python expression. (30 * 93) - ((28 - (-77 * -31)) - (-49 // (74 // -30)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2733,
+      "answer": 5165
+    },
+    {
+      "source_index": 2734,
+      "problem": "Evaluate this Python expression. (((46 % -9) + 73) // ((-92 + -97) + -40)) + (-77 * -76)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2734,
+      "answer": 5851
+    },
+    {
+      "source_index": 2735,
+      "problem": "Evaluate this Python expression. ((-61 * (99 % -61)) // -43) - (((-31 + 76) - -67) * 77)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2735,
+      "answer": -8657
+    },
+    {
+      "source_index": 2736,
+      "problem": "Evaluate this Python expression. ((0 * (37 - -5)) - 69) + (49 // -16)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2736,
+      "answer": -73
+    },
+    {
+      "source_index": 2737,
+      "problem": "Evaluate this Python expression. ((50 - (-33 + (84 + 55))) * (5 - 75)) - (-91 - 40)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2737,
+      "answer": 4051
+    },
+    {
+      "source_index": 2738,
+      "problem": "Evaluate this Python expression. -51 - ((((-38 - -29) + 36) + 61) - -35)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2738,
+      "answer": -174
+    },
+    {
+      "source_index": 2739,
+      "problem": "Evaluate this Python expression. (91 - (19 * -91)) - (77 + ((25 * 47) % (83 * 70)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2739,
+      "answer": 568
+    },
+    {
+      "source_index": 2740,
+      "problem": "Evaluate this Python expression. (-21 % (53 - -9)) + (((10 + 48) - -15) - (-64 - -78))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2740,
+      "answer": 100
+    },
+    {
+      "source_index": 2741,
+      "problem": "Evaluate this Python expression. (((((-66 + 22) - -12) - -56) + (-96 + -71)) + 7) % 91",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2741,
+      "answer": 46
+    },
+    {
+      "source_index": 2742,
+      "problem": "Evaluate this Python expression. (66 - ((-30 - ((49 - 70) * -27)) - (50 // -52))) - -40",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2742,
+      "answer": 702
+    },
+    {
+      "source_index": 2743,
+      "problem": "Evaluate this Python expression. (5 - ((-58 * 9) + ((84 - -76) + 76))) - 75",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2743,
+      "answer": 216
+    },
+    {
+      "source_index": 2744,
+      "problem": "Evaluate this Python expression. -76 + ((20 - (-67 - (63 + 68))) * -13)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2744,
+      "answer": -2910
+    },
+    {
+      "source_index": 2745,
+      "problem": "Evaluate this Python expression. (89 - (-89 * (45 - -22))) - ((79 + -26) // -55)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2745,
+      "answer": 6053
+    },
+    {
+      "source_index": 2746,
+      "problem": "Evaluate this Python expression. ((83 - -10) + (39 - (64 % (24 % -56)))) + (83 + -8)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2746,
+      "answer": 207
+    },
+    {
+      "source_index": 2747,
+      "problem": "Evaluate this Python expression. (((69 - (-87 + -64)) // 7) - (-3 // -29)) - 64",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2747,
+      "answer": -33
+    },
+    {
+      "source_index": 2748,
+      "problem": "Evaluate this Python expression. ((-78 + ((87 + 87) + -83)) + (-90 * 73)) // 34",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2748,
+      "answer": -193
+    },
+    {
+      "source_index": 2749,
+      "problem": "Evaluate this Python expression. (85 + (25 - 87)) - (-70 - ((-80 + -23) // (83 * 67)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2749,
+      "answer": 92
+    },
+    {
+      "source_index": 2750,
+      "problem": "Evaluate this Python expression. 50 - ((95 + 48) - ((-22 % -55) * 88))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2750,
+      "answer": -2029
+    },
+    {
+      "source_index": 2751,
+      "problem": "Evaluate this Python expression. (88 + ((-38 - 28) - 85)) - ((44 - 73) // 87)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2751,
+      "answer": -62
+    },
+    {
+      "source_index": 2752,
+      "problem": "Evaluate this Python expression. (-85 + ((62 + -62) // -12)) - (-55 + (-75 + -59))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2752,
+      "answer": 104
+    },
+    {
+      "source_index": 2753,
+      "problem": "Evaluate this Python expression. (41 + (94 * (4 - (47 - 50)))) * -84",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2753,
+      "answer": -58716
+    },
+    {
+      "source_index": 2754,
+      "problem": "Evaluate this Python expression. (((87 + -95) * -62) - 39) + ((85 * -47) * (47 - 66))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2754,
+      "answer": 76362
+    },
+    {
+      "source_index": 2755,
+      "problem": "Evaluate this Python expression. (5 + ((95 // 72) + 36)) + (-72 * (-96 - -51))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2755,
+      "answer": 3282
+    },
+    {
+      "source_index": 2756,
+      "problem": "Evaluate this Python expression. ((94 - (15 % (-37 // 25))) * (36 - 62)) - (83 + 81)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2756,
+      "answer": -2634
+    },
+    {
+      "source_index": 2757,
+      "problem": "Evaluate this Python expression. ((-90 // 28) + (47 // (53 + -60))) - (26 + 85)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2757,
+      "answer": -122
+    },
+    {
+      "source_index": 2758,
+      "problem": "Evaluate this Python expression. (((58 + 5) - (-84 - 22)) * -26) * (-12 * 2)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2758,
+      "answer": 105456
+    },
+    {
+      "source_index": 2759,
+      "problem": "Evaluate this Python expression. (10 * ((-7 + 74) + -29)) + (98 - (29 - -73))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2759,
+      "answer": 376
+    },
+    {
+      "source_index": 2760,
+      "problem": "Evaluate this Python expression. (((48 + -10) - -99) // (-50 // -21)) - (96 - -66)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2760,
+      "answer": -94
+    },
+    {
+      "source_index": 2761,
+      "problem": "Evaluate this Python expression. -52 * ((2 - (-85 - (-67 * 91))) // 70)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2761,
+      "answer": 4472
+    },
+    {
+      "source_index": 2762,
+      "problem": "Evaluate this Python expression. (-4 + (-42 // -38)) * (57 + (19 // (99 - 95)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2762,
+      "answer": -183
+    },
+    {
+      "source_index": 2763,
+      "problem": "Evaluate this Python expression. (-14 - (11 * (-62 + 66))) - (-30 + 20)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2763,
+      "answer": -48
+    },
+    {
+      "source_index": 2764,
+      "problem": "Evaluate this Python expression. (((-67 * -12) - (24 - 95)) - (-84 // 85)) - -8",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2764,
+      "answer": 884
+    },
+    {
+      "source_index": 2765,
+      "problem": "Evaluate this Python expression. (((-50 + -65) // 27) + 12) * (-44 - -33)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2765,
+      "answer": -77
+    },
+    {
+      "source_index": 2766,
+      "problem": "Evaluate this Python expression. (79 + 3) - (98 * (20 + (-43 - 28)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2766,
+      "answer": 5080
+    },
+    {
+      "source_index": 2767,
+      "problem": "Evaluate this Python expression. (-13 // 93) - (((-90 // -40) - (84 * (97 - 88))) - 79)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2767,
+      "answer": 832
+    },
+    {
+      "source_index": 2768,
+      "problem": "Evaluate this Python expression. -98 - (((68 - (-35 // -91)) - (91 + 15)) + (-31 - -49))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2768,
+      "answer": -78
+    },
+    {
+      "source_index": 2769,
+      "problem": "Evaluate this Python expression. (75 - -68) // ((37 - (-6 - 3)) - 63)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2769,
+      "answer": -9
+    },
+    {
+      "source_index": 2770,
+      "problem": "Evaluate this Python expression. (66 % 25) * ((-31 + (-43 - 13)) % -74)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2770,
+      "answer": -208
+    },
+    {
+      "source_index": 2771,
+      "problem": "Evaluate this Python expression. ((23 + (47 - 69)) + (39 + -95)) - ((-5 + 81) // -8)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2771,
+      "answer": -45
+    },
+    {
+      "source_index": 2772,
+      "problem": "Evaluate this Python expression. (-75 * (26 * 71)) - ((19 // (12 * -25)) % -92)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2772,
+      "answer": -138449
+    },
+    {
+      "source_index": 2773,
+      "problem": "Evaluate this Python expression. (62 % 16) // ((34 * 36) * ((-32 + 86) * -66))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2773,
+      "answer": -1
+    },
+    {
+      "source_index": 2774,
+      "problem": "Evaluate this Python expression. ((-43 - 55) + ((74 - 73) + 33)) * (74 - (-79 + 78))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2774,
+      "answer": -4800
+    },
+    {
+      "source_index": 2775,
+      "problem": "Evaluate this Python expression. -39 + ((53 + 31) - ((-11 - -7) + (75 + 76)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2775,
+      "answer": -102
+    },
+    {
+      "source_index": 2776,
+      "problem": "Evaluate this Python expression. -67 - ((2 + (12 - 89)) + (((4 + 66) - 18) - -42))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2776,
+      "answer": -86
+    },
+    {
+      "source_index": 2777,
+      "problem": "Evaluate this Python expression. ((-76 // -23) + (-36 * -63)) + ((88 - -99) * -40)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2777,
+      "answer": -5209
+    },
+    {
+      "source_index": 2778,
+      "problem": "Evaluate this Python expression. (-20 // (21 // -2)) * ((-73 // -16) - ((-38 * 74) * 14))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2778,
+      "answer": 39372
+    },
+    {
+      "source_index": 2779,
+      "problem": "Evaluate this Python expression. (-41 * 53) + (((-98 - -48) + 43) // (-17 - 91))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2779,
+      "answer": -2173
+    },
+    {
+      "source_index": 2780,
+      "problem": "Evaluate this Python expression. ((70 * 68) * (-49 % -80)) + ((32 % 26) * -44)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2780,
+      "answer": -233504
+    },
+    {
+      "source_index": 2781,
+      "problem": "Evaluate this Python expression. -61 + (-95 + ((89 + (-47 * -2)) - 72))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2781,
+      "answer": -45
+    },
+    {
+      "source_index": 2782,
+      "problem": "Evaluate this Python expression. (-10 - 89) + ((((85 - 81) - -52) * -56) + 87)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2782,
+      "answer": -3148
+    },
+    {
+      "source_index": 2783,
+      "problem": "Evaluate this Python expression. ((45 * -45) * 54) // (10 + (-98 // -75))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2783,
+      "answer": -9941
+    },
+    {
+      "source_index": 2784,
+      "problem": "Evaluate this Python expression. -91 - ((-22 - (((85 - 87) - -94) + 92)) + (-46 + 91))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2784,
+      "answer": 70
+    },
+    {
+      "source_index": 2785,
+      "problem": "Evaluate this Python expression. ((94 * 15) - (71 * 21)) - (58 - -7)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2785,
+      "answer": -146
+    },
+    {
+      "source_index": 2786,
+      "problem": "Evaluate this Python expression. (24 - (-85 % 58)) + (54 - (27 - (7 + (98 + 82))))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2786,
+      "answer": 207
+    },
+    {
+      "source_index": 2787,
+      "problem": "Evaluate this Python expression. ((-96 * (-10 * 93)) - ((84 - -30) + 8)) // (48 // -23)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2787,
+      "answer": -29720
+    },
+    {
+      "source_index": 2788,
+      "problem": "Evaluate this Python expression. (77 - (39 + (97 + 41))) % (91 * (-66 - 29))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2788,
+      "answer": -100
+    },
+    {
+      "source_index": 2789,
+      "problem": "Evaluate this Python expression. 69 // (((-11 - -77) + 42) - (14 % ((14 // -76) + 52)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2789,
+      "answer": 0
+    },
+    {
+      "source_index": 2790,
+      "problem": "Evaluate this Python expression. (((-29 + -37) - ((-88 + 56) - 4)) % (59 + -45)) * 29",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2790,
+      "answer": 348
+    },
+    {
+      "source_index": 2791,
+      "problem": "Evaluate this Python expression. (92 * ((-61 - -38) + -88)) - (-28 * 1)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2791,
+      "answer": -10184
+    },
+    {
+      "source_index": 2792,
+      "problem": "Evaluate this Python expression. ((-43 // -23) * (-8 + ((53 + -15) + -54))) + (-52 - -73)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2792,
+      "answer": -3
+    },
+    {
+      "source_index": 2793,
+      "problem": "Evaluate this Python expression. ((-39 + 30) + 16) // (-98 + ((-46 - (-20 + 8)) + 60))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2793,
+      "answer": -1
+    },
+    {
+      "source_index": 2794,
+      "problem": "Evaluate this Python expression. ((-23 - 51) + (-45 * 23)) + ((13 - -29) - 18)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2794,
+      "answer": -1085
+    },
+    {
+      "source_index": 2795,
+      "problem": "Evaluate this Python expression. ((69 + ((10 // (-52 + -54)) // -70)) - -13) % -88",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2795,
+      "answer": -6
+    },
+    {
+      "source_index": 2796,
+      "problem": "Evaluate this Python expression. ((((42 + 5) - 82) % 29) % 83) - 80",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2796,
+      "answer": -57
+    },
+    {
+      "source_index": 2797,
+      "problem": "Evaluate this Python expression. (-89 // ((-19 + 34) // (-44 + -44))) - -4",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2797,
+      "answer": 93
+    },
+    {
+      "source_index": 2798,
+      "problem": "Evaluate this Python expression. ((((-74 * -42) * 32) - -19) * -19) * 92",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2798,
+      "answer": -173882300
+    },
+    {
+      "source_index": 2799,
+      "problem": "Evaluate this Python expression. -57 + (((33 - -97) + -72) - (-82 * -52))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2799,
+      "answer": -4263
+    },
+    {
+      "source_index": 2800,
+      "problem": "Evaluate this Python expression. ((39 * -76) * -4) + ((-1 + (54 // -24)) - 56)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2800,
+      "answer": 11796
+    },
+    {
+      "source_index": 2801,
+      "problem": "Evaluate this Python expression. ((-51 * ((-90 // -8) - (-69 + 48))) % (72 - 90)) // 52",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2801,
+      "answer": -1
+    },
+    {
+      "source_index": 2802,
+      "problem": "Evaluate this Python expression. ((((29 + 11) + 70) + 27) + -80) // 24",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2802,
+      "answer": 2
+    },
+    {
+      "source_index": 2803,
+      "problem": "Evaluate this Python expression. (65 - ((53 % -47) - (93 + 43))) + 84",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2803,
+      "answer": 326
+    },
+    {
+      "source_index": 2804,
+      "problem": "Evaluate this Python expression. 26 + (54 * ((-60 - (-46 + (-80 - 96))) - -50))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2804,
+      "answer": 11474
+    },
+    {
+      "source_index": 2805,
+      "problem": "Evaluate this Python expression. ((-65 * (45 * 98)) - (-89 // 71)) // (-45 // 23)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2805,
+      "answer": 143324
+    },
+    {
+      "source_index": 2806,
+      "problem": "Evaluate this Python expression. 21 - (((-1 - -60) // (-34 - 39)) * (0 // (-72 * -82)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2806,
+      "answer": 21
+    },
+    {
+      "source_index": 2807,
+      "problem": "Evaluate this Python expression. (90 + -66) * (67 * ((0 + 52) + ((10 % -18) + 26)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2807,
+      "answer": 112560
+    },
+    {
+      "source_index": 2808,
+      "problem": "Evaluate this Python expression. -56 // (-69 + (((65 - (39 + (-68 + 71))) + 87) * -66))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2808,
+      "answer": 0
+    },
+    {
+      "source_index": 2809,
+      "problem": "Evaluate this Python expression. ((-49 * -84) - (-16 - ((49 - 85) + -65))) // (10 - -61)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2809,
+      "answer": 56
+    },
+    {
+      "source_index": 2810,
+      "problem": "Evaluate this Python expression. -27 % (((-94 - 50) * 81) + (63 + -72))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2810,
+      "answer": -27
+    },
+    {
+      "source_index": 2811,
+      "problem": "Evaluate this Python expression. (((-26 - (-92 - -11)) - -58) + (-83 * (94 + -87))) - -44",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2811,
+      "answer": -424
+    },
+    {
+      "source_index": 2812,
+      "problem": "Evaluate this Python expression. 33 + (4 - ((77 // (-35 - -34)) + (-89 - 39)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2812,
+      "answer": 242
+    },
+    {
+      "source_index": 2813,
+      "problem": "Evaluate this Python expression. 78 * (((-34 - (99 + (-30 + 9))) + 45) // (-32 - -28))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2813,
+      "answer": 1248
+    },
+    {
+      "source_index": 2814,
+      "problem": "Evaluate this Python expression. (4 + (52 + 75)) - ((6 // (78 * 17)) * (-12 + 2))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2814,
+      "answer": 131
+    },
+    {
+      "source_index": 2815,
+      "problem": "Evaluate this Python expression. ((47 - 68) // (25 * (-63 % 56))) - (-79 - -21)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2815,
+      "answer": 57
+    },
+    {
+      "source_index": 2816,
+      "problem": "Evaluate this Python expression. (-25 + (((67 - 14) + 11) - -54)) + -19",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2816,
+      "answer": 74
+    },
+    {
+      "source_index": 2817,
+      "problem": "Evaluate this Python expression. (((93 - 0) * 55) - (54 // -11)) - -50",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2817,
+      "answer": 5170
+    },
+    {
+      "source_index": 2818,
+      "problem": "Evaluate this Python expression. 1 * (((35 + 62) // 3) * (21 - -24))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2818,
+      "answer": 1440
+    },
+    {
+      "source_index": 2819,
+      "problem": "Evaluate this Python expression. ((((-65 + 76) - 0) % -66) * (0 + -78)) + (95 % -64)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2819,
+      "answer": 4257
+    },
+    {
+      "source_index": 2820,
+      "problem": "Evaluate this Python expression. (((97 // -51) * (53 // 34)) + -67) * ((41 - 53) + 62)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2820,
+      "answer": -3450
+    },
+    {
+      "source_index": 2821,
+      "problem": "Evaluate this Python expression. ((-68 // 2) - (-3 - -59)) // ((76 + -24) * (-59 * -83))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2821,
+      "answer": -1
+    },
+    {
+      "source_index": 2822,
+      "problem": "Evaluate this Python expression. (-47 * (84 * (-17 * -62))) // ((-48 - -12) - -61)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2822,
+      "answer": -166448
+    },
+    {
+      "source_index": 2823,
+      "problem": "Evaluate this Python expression. ((-99 + ((54 - 0) - -83)) - (-53 + -72)) + -7",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2823,
+      "answer": 156
+    },
+    {
+      "source_index": 2824,
+      "problem": "Evaluate this Python expression. (-97 - (88 + -41)) - ((97 + -77) * -51)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2824,
+      "answer": 876
+    },
+    {
+      "source_index": 2825,
+      "problem": "Evaluate this Python expression. 32 + (((-95 - -15) + 57) * ((-26 - (-37 + -61)) * -67))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2825,
+      "answer": 110984
+    },
+    {
+      "source_index": 2826,
+      "problem": "Evaluate this Python expression. (-98 - (-62 % (((91 - -42) + 86) % -72))) * (79 * 65)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2826,
+      "answer": -184860
+    },
+    {
+      "source_index": 2827,
+      "problem": "Evaluate this Python expression. (38 * (32 * -43)) - ((75 % 63) - 20)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2827,
+      "answer": -52280
+    },
+    {
+      "source_index": 2828,
+      "problem": "Evaluate this Python expression. ((-88 // 94) + (-75 * (10 * 36))) + (-41 - -76)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2828,
+      "answer": -26966
+    },
+    {
+      "source_index": 2829,
+      "problem": "Evaluate this Python expression. ((29 - (68 - -96)) % -89) * (-61 - -20)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2829,
+      "answer": 1886
+    },
+    {
+      "source_index": 2830,
+      "problem": "Evaluate this Python expression. ((33 - 98) - (-44 * 74)) + (-7 * 30)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2830,
+      "answer": 2981
+    },
+    {
+      "source_index": 2831,
+      "problem": "Evaluate this Python expression. ((-67 - 7) - (97 - 80)) % ((-49 // 92) // 94)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2831,
+      "answer": 0
+    },
+    {
+      "source_index": 2832,
+      "problem": "Evaluate this Python expression. ((-20 * -24) - ((-67 * (-48 % -16)) + -70)) + -82",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2832,
+      "answer": 468
+    },
+    {
+      "source_index": 2833,
+      "problem": "Evaluate this Python expression. ((-15 + -88) * (-35 + (-6 + -41))) + (31 - 21)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2833,
+      "answer": 8456
+    },
+    {
+      "source_index": 2834,
+      "problem": "Evaluate this Python expression. -32 - (((12 * -2) % (82 * -88)) - 37)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2834,
+      "answer": 29
+    },
+    {
+      "source_index": 2835,
+      "problem": "Evaluate this Python expression. (((81 + 79) + (-79 + 86)) - 71) % -66",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2835,
+      "answer": -36
+    },
+    {
+      "source_index": 2836,
+      "problem": "Evaluate this Python expression. ((-81 + 76) + (84 + 0)) - (55 * -51)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2836,
+      "answer": 2884
+    },
+    {
+      "source_index": 2837,
+      "problem": "Evaluate this Python expression. (2 + (-75 - 69)) - (24 + (83 - -78))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2837,
+      "answer": -327
+    },
+    {
+      "source_index": 2838,
+      "problem": "Evaluate this Python expression. (-99 * (-96 + 0)) - (-28 - ((-63 - 52) * 53))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2838,
+      "answer": 3437
+    },
+    {
+      "source_index": 2839,
+      "problem": "Evaluate this Python expression. ((-20 + -30) - -47) * (-82 * ((-68 - 75) - -7))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2839,
+      "answer": -33456
+    },
+    {
+      "source_index": 2840,
+      "problem": "Evaluate this Python expression. (-29 * 49) * ((60 + 11) + (-92 - -76))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2840,
+      "answer": -78155
+    },
+    {
+      "source_index": 2841,
+      "problem": "Evaluate this Python expression. 92 - ((-42 - -24) - ((-6 + 90) // 83))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2841,
+      "answer": 111
+    },
+    {
+      "source_index": 2842,
+      "problem": "Evaluate this Python expression. (((88 + 36) - 35) % (22 - (-86 // 82))) - (-70 + -6)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2842,
+      "answer": 93
+    },
+    {
+      "source_index": 2843,
+      "problem": "Evaluate this Python expression. ((56 * -34) - (17 + (-43 - 32))) * (26 * (50 - -88))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2843,
+      "answer": -6623448
+    },
+    {
+      "source_index": 2844,
+      "problem": "Evaluate this Python expression. (-58 * -57) * (-41 - ((43 - -89) + 13))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2844,
+      "answer": -614916
+    },
+    {
+      "source_index": 2845,
+      "problem": "Evaluate this Python expression. ((76 % -69) + -20) + (2 + (-20 - 18))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2845,
+      "answer": -118
+    },
+    {
+      "source_index": 2846,
+      "problem": "Evaluate this Python expression. (((18 - -95) + (4 - -1)) * (96 * -9)) % 3",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2846,
+      "answer": 0
+    },
+    {
+      "source_index": 2847,
+      "problem": "Evaluate this Python expression. 73 - (((-58 + 41) - (-69 - -53)) - 76)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2847,
+      "answer": 150
+    },
+    {
+      "source_index": 2848,
+      "problem": "Evaluate this Python expression. ((49 * -45) * ((24 + 43) % -33)) - ((10 * -33) * 82)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2848,
+      "answer": 97620
+    },
+    {
+      "source_index": 2849,
+      "problem": "Evaluate this Python expression. ((-97 * -23) + ((46 - -57) // 70)) + 95",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2849,
+      "answer": 2327
+    },
+    {
+      "source_index": 2850,
+      "problem": "Evaluate this Python expression. ((-91 - -30) - (-40 + -75)) // (-48 - -35)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2850,
+      "answer": -5
+    },
+    {
+      "source_index": 2851,
+      "problem": "Evaluate this Python expression. (-12 - (49 - 44)) + (-71 * (((-10 + -74) - -60) - -33))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2851,
+      "answer": -656
+    },
+    {
+      "source_index": 2852,
+      "problem": "Evaluate this Python expression. -92 * (((20 - (22 + 94)) - 82) - -95)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2852,
+      "answer": 7636
+    },
+    {
+      "source_index": 2853,
+      "problem": "Evaluate this Python expression. ((-35 + 61) + (-78 - (87 - -13))) - (-7 * 89)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2853,
+      "answer": 471
+    },
+    {
+      "source_index": 2854,
+      "problem": "Evaluate this Python expression. ((((-81 - 60) * -36) - ((-73 + -46) // 96)) - 5) // -50",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2854,
+      "answer": -102
+    },
+    {
+      "source_index": 2855,
+      "problem": "Evaluate this Python expression. ((-54 * 26) * (19 - 10)) + (((25 - -6) - 46) + -46)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2855,
+      "answer": -12697
+    },
+    {
+      "source_index": 2856,
+      "problem": "Evaluate this Python expression. ((-46 + ((25 * -34) + 53)) * -81) + (-43 + 99)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2856,
+      "answer": 68339
+    },
+    {
+      "source_index": 2857,
+      "problem": "Evaluate this Python expression. 41 - ((((11 - (-66 - -50)) - (56 * 56)) - -96) * 74)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2857,
+      "answer": 223003
+    },
+    {
+      "source_index": 2858,
+      "problem": "Evaluate this Python expression. (-6 - (-91 // (-80 - -79))) - (57 + (-14 - -21))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2858,
+      "answer": -161
+    },
+    {
+      "source_index": 2859,
+      "problem": "Evaluate this Python expression. -21 + ((92 - (6 + -35)) * ((95 * -80) + (50 - 55)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2859,
+      "answer": -920226
+    },
+    {
+      "source_index": 2860,
+      "problem": "Evaluate this Python expression. -99 + ((-1 + ((81 * 56) - -95)) // -20)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2860,
+      "answer": -331
+    },
+    {
+      "source_index": 2861,
+      "problem": "Evaluate this Python expression. (((-12 + ((36 % 70) + (-2 + 17))) + 57) * 47) * -2",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2861,
+      "answer": -9024
+    },
+    {
+      "source_index": 2862,
+      "problem": "Evaluate this Python expression. ((16 * -53) - (50 - ((-88 + -53) - 95))) * -50",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2862,
+      "answer": 56700
+    },
+    {
+      "source_index": 2863,
+      "problem": "Evaluate this Python expression. (-21 - -42) + ((-6 + 31) - ((-59 * -31) * -7))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2863,
+      "answer": 12849
+    },
+    {
+      "source_index": 2864,
+      "problem": "Evaluate this Python expression. (71 + ((75 + 14) - 59)) - (-59 - ((-98 + -69) * -70))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2864,
+      "answer": 11850
+    },
+    {
+      "source_index": 2865,
+      "problem": "Evaluate this Python expression. ((20 + 74) // 28) % ((87 + 6) * (51 % (31 * -12)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2865,
+      "answer": -29850
+    },
+    {
+      "source_index": 2866,
+      "problem": "Evaluate this Python expression. ((-91 + ((-48 - -11) + 29)) + -3) * (52 + -24)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2866,
+      "answer": -2856
+    },
+    {
+      "source_index": 2867,
+      "problem": "Evaluate this Python expression. (-29 + -30) % ((-56 * -2) - (-61 - 26))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2867,
+      "answer": 140
+    },
+    {
+      "source_index": 2868,
+      "problem": "Evaluate this Python expression. (((53 + 1) * -32) * 89) - ((68 + 90) - 0)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2868,
+      "answer": -153950
+    },
+    {
+      "source_index": 2869,
+      "problem": "Evaluate this Python expression. (((91 * -79) - -10) * (61 - 89)) * (-29 + 14)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2869,
+      "answer": -3015180
+    },
+    {
+      "source_index": 2870,
+      "problem": "Evaluate this Python expression. (84 // (-38 * 14)) - ((54 - 66) - (44 % 86))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2870,
+      "answer": 55
+    },
+    {
+      "source_index": 2871,
+      "problem": "Evaluate this Python expression. ((((65 + 60) * (-14 % -93)) * -39) + 13) * -10",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2871,
+      "answer": -682630
+    },
+    {
+      "source_index": 2872,
+      "problem": "Evaluate this Python expression. (98 - ((-4 * -41) + (-49 * 87))) - (4 + 49)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2872,
+      "answer": 4144
+    },
+    {
+      "source_index": 2873,
+      "problem": "Evaluate this Python expression. (-36 + 5) + (((90 - 35) + -89) + 79)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2873,
+      "answer": 14
+    },
+    {
+      "source_index": 2874,
+      "problem": "Evaluate this Python expression. 22 // ((-46 // -85) - ((-9 - -99) - (-44 - -54)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2874,
+      "answer": -1
+    },
+    {
+      "source_index": 2875,
+      "problem": "Evaluate this Python expression. (-19 + (-88 + 89)) + ((-7 % 33) + (37 + (62 - 49)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2875,
+      "answer": 58
+    },
+    {
+      "source_index": 2876,
+      "problem": "Evaluate this Python expression. (-25 % 2) + (((-31 + 78) % (-36 - -44)) + -65)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2876,
+      "answer": -57
+    },
+    {
+      "source_index": 2877,
+      "problem": "Evaluate this Python expression. (-32 - -71) - ((-86 - (-82 - -86)) // (-94 - -54))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2877,
+      "answer": 37
+    },
+    {
+      "source_index": 2878,
+      "problem": "Evaluate this Python expression. ((24 * 37) + (75 // 53)) - ((1 + -23) + (52 + 19))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2878,
+      "answer": 840
+    },
+    {
+      "source_index": 2879,
+      "problem": "Evaluate this Python expression. ((33 % (-39 - (10 + -77))) + -32) + (-44 - -17)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2879,
+      "answer": -54
+    },
+    {
+      "source_index": 2880,
+      "problem": "Evaluate this Python expression. (((36 + 52) - -46) + ((-11 % 72) - 94)) - 97",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2880,
+      "answer": 4
+    },
+    {
+      "source_index": 2881,
+      "problem": "Evaluate this Python expression. ((-91 + -52) - ((86 + 4) + (-14 - 11))) - (-84 - 24)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2881,
+      "answer": -100
+    },
+    {
+      "source_index": 2882,
+      "problem": "Evaluate this Python expression. (-59 * ((-38 % (-75 + -44)) - 46)) + -71",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2882,
+      "answer": 4885
+    },
+    {
+      "source_index": 2883,
+      "problem": "Evaluate this Python expression. (19 - -35) - ((73 - -73) + (-36 - 28))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2883,
+      "answer": -28
+    },
+    {
+      "source_index": 2884,
+      "problem": "Evaluate this Python expression. ((-14 + (26 * (95 // -88))) - 61) * (65 // -6)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2884,
+      "answer": 1397
+    },
+    {
+      "source_index": 2885,
+      "problem": "Evaluate this Python expression. 10 - ((27 // (17 + 36)) - (95 + 38))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2885,
+      "answer": 143
+    },
+    {
+      "source_index": 2886,
+      "problem": "Evaluate this Python expression. (((32 // -49) // -97) // (-34 + (19 // -45))) + (-15 + 69)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2886,
+      "answer": 54
+    },
+    {
+      "source_index": 2887,
+      "problem": "Evaluate this Python expression. (-25 // ((23 - (32 - -85)) - (-51 - -69))) + 16",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2887,
+      "answer": 16
+    },
+    {
+      "source_index": 2888,
+      "problem": "Evaluate this Python expression. (((-34 + -37) - (10 + (91 // 33))) - (92 * 60)) * 29",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2888,
+      "answer": -162487
+    },
+    {
+      "source_index": 2889,
+      "problem": "Evaluate this Python expression. ((42 + 44) // 69) - (((-93 + -48) - -52) + 61)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2889,
+      "answer": 29
+    },
+    {
+      "source_index": 2890,
+      "problem": "Evaluate this Python expression. (((-98 * 83) // -12) * -60) // (59 - 60)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2890,
+      "answer": 40620
+    },
+    {
+      "source_index": 2891,
+      "problem": "Evaluate this Python expression. 91 // ((-47 - (-66 - 56)) - (-2 - -49))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2891,
+      "answer": 3
+    },
+    {
+      "source_index": 2892,
+      "problem": "Evaluate this Python expression. 54 // ((-8 + 3) // ((-99 - -37) * -92))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2892,
+      "answer": -54
+    },
+    {
+      "source_index": 2893,
+      "problem": "Evaluate this Python expression. (-9 - ((-53 - 75) - (-46 - -58))) // (-69 // -62)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2893,
+      "answer": 131
+    },
+    {
+      "source_index": 2894,
+      "problem": "Evaluate this Python expression. ((-76 + (-98 // -94)) % (-67 // -48)) * (71 - (80 - -90))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2894,
+      "answer": 0
+    },
+    {
+      "source_index": 2895,
+      "problem": "Evaluate this Python expression. (((-85 % (36 - -68)) - 78) - (46 * (-85 * -11))) // -23",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2895,
+      "answer": 1872
+    },
+    {
+      "source_index": 2896,
+      "problem": "Evaluate this Python expression. ((33 - -8) - 14) + ((((51 + 35) - 92) * -61) // -30)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2896,
+      "answer": 14
+    },
+    {
+      "source_index": 2897,
+      "problem": "Evaluate this Python expression. ((35 - -73) + -4) - (38 - (25 - (74 % (96 * 32))))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2897,
+      "answer": 17
+    },
+    {
+      "source_index": 2898,
+      "problem": "Evaluate this Python expression. ((51 + -9) - (30 * -12)) // (-7 - -6)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2898,
+      "answer": -402
+    },
+    {
+      "source_index": 2899,
+      "problem": "Evaluate this Python expression. (((-13 * -13) * 52) // -89) - (-86 + (48 - (87 % 87)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2899,
+      "answer": -61
+    },
+    {
+      "source_index": 2900,
+      "problem": "Evaluate this Python expression. ((90 * 29) + 17) - ((73 * ((82 + 96) + -24)) - 32)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2900,
+      "answer": -8583
+    },
+    {
+      "source_index": 2901,
+      "problem": "Evaluate this Python expression. (83 * (89 + -92)) - ((-26 + 5) - ((-39 + -14) - -93))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2901,
+      "answer": -188
+    },
+    {
+      "source_index": 2902,
+      "problem": "Evaluate this Python expression. (((-9 - 54) + 79) * 99) * (-5 + (31 + 31))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2902,
+      "answer": 90288
+    },
+    {
+      "source_index": 2903,
+      "problem": "Evaluate this Python expression. 30 * ((15 * 13) // ((15 + 97) + 16))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2903,
+      "answer": 30
+    },
+    {
+      "source_index": 2904,
+      "problem": "Evaluate this Python expression. ((-4 + 48) + (-5 - -27)) + ((-67 + (32 - 15)) - -62)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2904,
+      "answer": 78
+    },
+    {
+      "source_index": 2905,
+      "problem": "Evaluate this Python expression. (((53 - 21) + (-95 - (-84 - 82))) - -27) * -15",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2905,
+      "answer": -1950
+    },
+    {
+      "source_index": 2906,
+      "problem": "Evaluate this Python expression. (((19 - -32) * 85) - (12 - 10)) % (-49 - 74)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2906,
+      "answer": -95
+    },
+    {
+      "source_index": 2907,
+      "problem": "Evaluate this Python expression. ((-69 + -60) + -15) - ((-12 % (-56 - 99)) - (11 % 15))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2907,
+      "answer": -121
+    },
+    {
+      "source_index": 2908,
+      "problem": "Evaluate this Python expression. (-3 // ((-60 - 99) - (26 - -62))) - (2 * -7)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2908,
+      "answer": 14
+    },
+    {
+      "source_index": 2909,
+      "problem": "Evaluate this Python expression. -27 + ((78 - (-29 - -73)) - (64 - -87))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2909,
+      "answer": -144
+    },
+    {
+      "source_index": 2910,
+      "problem": "Evaluate this Python expression. ((-13 + 43) - -38) - ((-8 * 60) + -13)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2910,
+      "answer": 561
+    },
+    {
+      "source_index": 2911,
+      "problem": "Evaluate this Python expression. (-68 % ((-47 - -4) + 69)) * ((7 // 31) + -86)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2911,
+      "answer": -860
+    },
+    {
+      "source_index": 2912,
+      "problem": "Evaluate this Python expression. (((-22 % (-92 - 29)) + (95 + 84)) // (-24 - -48)) + -79",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2912,
+      "answer": -73
+    },
+    {
+      "source_index": 2913,
+      "problem": "Evaluate this Python expression. -5 - (((97 * -59) + -76) // ((-42 // 1) + 43))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2913,
+      "answer": 5794
+    },
+    {
+      "source_index": 2914,
+      "problem": "Evaluate this Python expression. 58 - ((72 - 75) + ((35 % 48) - (66 % 74)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2914,
+      "answer": 92
+    },
+    {
+      "source_index": 2915,
+      "problem": "Evaluate this Python expression. -91 * (((53 - -79) - -76) + (-5 - -47))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2915,
+      "answer": -22750
+    },
+    {
+      "source_index": 2916,
+      "problem": "Evaluate this Python expression. -58 * (((-91 * 57) - (76 + 74)) - 88)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2916,
+      "answer": 314650
+    },
+    {
+      "source_index": 2917,
+      "problem": "Evaluate this Python expression. (-37 + 28) * ((-52 + (71 - 72)) - -39)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2917,
+      "answer": 126
+    },
+    {
+      "source_index": 2918,
+      "problem": "Evaluate this Python expression. (((68 + (44 * 37)) - 58) % -45) * ((16 + 34) // -74)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2918,
+      "answer": 27
+    },
+    {
+      "source_index": 2919,
+      "problem": "Evaluate this Python expression. ((-36 * 92) + (-65 + 90)) + (40 - (-23 // 32))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2919,
+      "answer": -3246
+    },
+    {
+      "source_index": 2920,
+      "problem": "Evaluate this Python expression. -52 + ((91 + (12 - -25)) * ((-61 * 87) // (-21 - -29)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2920,
+      "answer": -85044
+    },
+    {
+      "source_index": 2921,
+      "problem": "Evaluate this Python expression. ((97 - 76) * 96) * (95 % (54 - 12))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2921,
+      "answer": 22176
+    },
+    {
+      "source_index": 2922,
+      "problem": "Evaluate this Python expression. (53 + 67) // ((75 + (14 // -22)) * (57 + 46))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2922,
+      "answer": 0
+    },
+    {
+      "source_index": 2923,
+      "problem": "Evaluate this Python expression. ((70 - -77) + -21) + ((57 - -44) - 46)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2923,
+      "answer": 181
+    },
+    {
+      "source_index": 2924,
+      "problem": "Evaluate this Python expression. ((-76 - (-15 + 12)) + ((68 // -63) + -49)) * (-97 // -60)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2924,
+      "answer": -124
+    },
+    {
+      "source_index": 2925,
+      "problem": "Evaluate this Python expression. ((43 + (-31 // 97)) + 51) - ((8 - 71) - (-68 - 70))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2925,
+      "answer": 18
+    },
+    {
+      "source_index": 2926,
+      "problem": "Evaluate this Python expression. (48 + -62) - ((-31 - -1) - (((-52 - -86) - -42) * 20))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2926,
+      "answer": 1536
+    },
+    {
+      "source_index": 2927,
+      "problem": "Evaluate this Python expression. (81 + 43) // ((0 - 73) * (-47 + 32))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2927,
+      "answer": 0
+    },
+    {
+      "source_index": 2928,
+      "problem": "Evaluate this Python expression. ((27 - 29) % (-86 + -32)) - ((50 + -1) + 76)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2928,
+      "answer": -127
+    },
+    {
+      "source_index": 2929,
+      "problem": "Evaluate this Python expression. ((((18 * 29) + -1) - 44) + (-86 - -9)) + -13",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2929,
+      "answer": 387
+    },
+    {
+      "source_index": 2930,
+      "problem": "Evaluate this Python expression. (64 * 92) - ((-33 - 64) + (55 + -32))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2930,
+      "answer": 5962
+    },
+    {
+      "source_index": 2931,
+      "problem": "Evaluate this Python expression. (-57 - ((-5 * 6) - -72)) + (12 + -9)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2931,
+      "answer": -96
+    },
+    {
+      "source_index": 2932,
+      "problem": "Evaluate this Python expression. ((-89 + -84) * -25) * (-77 * (14 - -35))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2932,
+      "answer": -16318225
+    },
+    {
+      "source_index": 2933,
+      "problem": "Evaluate this Python expression. (-5 * ((-36 * -16) % (62 + (47 + 36)))) // -11",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2933,
+      "answer": 64
+    },
+    {
+      "source_index": 2934,
+      "problem": "Evaluate this Python expression. (-12 - (((-39 + -42) * (41 - -18)) + -87)) + (61 - -32)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2934,
+      "answer": 4947
+    },
+    {
+      "source_index": 2935,
+      "problem": "Evaluate this Python expression. (82 + 45) + (((6 + 82) + -47) - -52)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2935,
+      "answer": 220
+    },
+    {
+      "source_index": 2936,
+      "problem": "Evaluate this Python expression. ((-28 - (-46 - (41 // (-99 + 3)))) * -89) // 91",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2936,
+      "answer": -17
+    },
+    {
+      "source_index": 2937,
+      "problem": "Evaluate this Python expression. (89 + ((-90 + -6) - (-67 - 55))) // (36 % (-10 * 18))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2937,
+      "answer": -1
+    },
+    {
+      "source_index": 2938,
+      "problem": "Evaluate this Python expression. (((59 + 54) + -94) * ((22 % -95) + (-10 - 58))) + 59",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2938,
+      "answer": -2620
+    },
+    {
+      "source_index": 2939,
+      "problem": "Evaluate this Python expression. -71 - ((-18 // (-88 + -20)) + (61 + (23 + 88)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2939,
+      "answer": -243
+    },
+    {
+      "source_index": 2940,
+      "problem": "Evaluate this Python expression. ((-43 - (10 + -80)) + (53 // (-64 - -72))) + (41 * 51)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2940,
+      "answer": 2124
+    },
+    {
+      "source_index": 2941,
+      "problem": "Evaluate this Python expression. ((18 * -71) - -27) + ((-60 + -88) + (-37 * -78))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2941,
+      "answer": 1487
+    },
+    {
+      "source_index": 2942,
+      "problem": "Evaluate this Python expression. (-27 - -36) - (-54 - (((-10 - 2) + (-55 + -43)) + -48))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2942,
+      "answer": -95
+    },
+    {
+      "source_index": 2943,
+      "problem": "Evaluate this Python expression. 6 // (((8 + 96) + -62) * ((-16 - -15) * -13))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2943,
+      "answer": 0
+    },
+    {
+      "source_index": 2944,
+      "problem": "Evaluate this Python expression. ((-86 + 73) - (4 % 62)) + (92 % -85)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2944,
+      "answer": -95
+    },
+    {
+      "source_index": 2945,
+      "problem": "Evaluate this Python expression. (((-98 - -98) - -8) - 92) * (41 // 25)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2945,
+      "answer": -84
+    },
+    {
+      "source_index": 2946,
+      "problem": "Evaluate this Python expression. ((-18 - (-80 % 98)) - -81) % (-78 + 79)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2946,
+      "answer": 0
+    },
+    {
+      "source_index": 2947,
+      "problem": "Evaluate this Python expression. -1 + (((-53 * (-6 - -51)) - 48) + (95 // (-95 - 62)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2947,
+      "answer": -2435
+    },
+    {
+      "source_index": 2948,
+      "problem": "Evaluate this Python expression. ((-79 + 8) * -15) - ((14 + 49) + (-51 + -62))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2948,
+      "answer": 1115
+    },
+    {
+      "source_index": 2949,
+      "problem": "Evaluate this Python expression. ((-62 - -30) % (2 % (6 + 92))) + 36",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2949,
+      "answer": 36
+    },
+    {
+      "source_index": 2950,
+      "problem": "Evaluate this Python expression. ((47 - (-63 * 85)) - (-22 + (99 + 68))) - -83",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2950,
+      "answer": 5340
+    },
+    {
+      "source_index": 2951,
+      "problem": "Evaluate this Python expression. ((-19 * (-87 + 56)) + (-51 - (1 - 99))) - -6",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2951,
+      "answer": 642
+    },
+    {
+      "source_index": 2952,
+      "problem": "Evaluate this Python expression. (7 + -48) // ((-19 - 24) * (((-50 * 20) * 80) - -86))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2952,
+      "answer": -1
+    },
+    {
+      "source_index": 2953,
+      "problem": "Evaluate this Python expression. ((4 + (-40 - 16)) + (-91 * 64)) // 66",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2953,
+      "answer": -90
+    },
+    {
+      "source_index": 2954,
+      "problem": "Evaluate this Python expression. 19 // (92 - ((-84 - -71) + (-12 - 81)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2954,
+      "answer": 0
+    },
+    {
+      "source_index": 2955,
+      "problem": "Evaluate this Python expression. (((-45 + 61) - ((15 - 65) // 39)) - (-2 - 36)) - -72",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2955,
+      "answer": 128
+    },
+    {
+      "source_index": 2956,
+      "problem": "Evaluate this Python expression. (((-90 + -9) + 55) - -75) + ((77 // 99) + 45)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2956,
+      "answer": 76
+    },
+    {
+      "source_index": 2957,
+      "problem": "Evaluate this Python expression. 96 + (-85 // (((51 - -78) * 99) + -3))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2957,
+      "answer": 95
+    },
+    {
+      "source_index": 2958,
+      "problem": "Evaluate this Python expression. (((84 // 67) - (25 - (-3 - -26))) + (-92 * 33)) + 55",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2958,
+      "answer": -2982
+    },
+    {
+      "source_index": 2959,
+      "problem": "Evaluate this Python expression. (((-1 - -10) // 81) + (((-61 * 90) - -14) - 47)) // -48",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2959,
+      "answer": 115
+    },
+    {
+      "source_index": 2960,
+      "problem": "Evaluate this Python expression. (70 - ((-5 * -98) - 48)) - ((-53 % -96) // 21)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2960,
+      "answer": -369
+    },
+    {
+      "source_index": 2961,
+      "problem": "Evaluate this Python expression. (((68 - 85) - -53) + ((49 - 70) - -59)) - (-93 - 95)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2961,
+      "answer": 262
+    },
+    {
+      "source_index": 2962,
+      "problem": "Evaluate this Python expression. ((-68 + (32 - -94)) * 90) + (-93 - 56)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2962,
+      "answer": 5071
+    },
+    {
+      "source_index": 2963,
+      "problem": "Evaluate this Python expression. (51 * (51 // (47 - -99))) // (68 + 20)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2963,
+      "answer": 0
+    },
+    {
+      "source_index": 2964,
+      "problem": "Evaluate this Python expression. -49 - ((77 + 4) + (36 + (-11 % 72)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2964,
+      "answer": -227
+    },
+    {
+      "source_index": 2965,
+      "problem": "Evaluate this Python expression. ((((27 - -87) * (-28 - 72)) // 51) - 19) + (79 - -1)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2965,
+      "answer": -163
+    },
+    {
+      "source_index": 2966,
+      "problem": "Evaluate this Python expression. (-73 + 45) - (((-21 - 12) + -92) + ((-48 * 63) - -18))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2966,
+      "answer": 3103
+    },
+    {
+      "source_index": 2967,
+      "problem": "Evaluate this Python expression. ((52 + -57) - -61) + (-9 * (-47 + ((-38 * 87) - 46)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2967,
+      "answer": 30647
+    },
+    {
+      "source_index": 2968,
+      "problem": "Evaluate this Python expression. (((-9 * -88) - (27 - -8)) * (9 // 20)) + (85 + 35)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2968,
+      "answer": 120
+    },
+    {
+      "source_index": 2969,
+      "problem": "Evaluate this Python expression. ((-7 - (42 + (88 // -71))) - (87 * 28)) * -32",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2969,
+      "answer": 79456
+    },
+    {
+      "source_index": 2970,
+      "problem": "Evaluate this Python expression. ((16 * 56) * (-4 * 58)) * (((-44 - 38) - -39) - -4)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2970,
+      "answer": 8107008
+    },
+    {
+      "source_index": 2971,
+      "problem": "Evaluate this Python expression. ((-54 - ((98 // -90) + -79)) // 57) + (-84 - 79)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2971,
+      "answer": -163
+    },
+    {
+      "source_index": 2972,
+      "problem": "Evaluate this Python expression. ((-61 - -2) % 26) // (48 + (46 * (50 * 48)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2972,
+      "answer": 0
+    },
+    {
+      "source_index": 2973,
+      "problem": "Evaluate this Python expression. (-38 - 74) - (-45 + (-37 + (43 // -44)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2973,
+      "answer": -29
+    },
+    {
+      "source_index": 2974,
+      "problem": "Evaluate this Python expression. ((32 + 89) * 86) // ((-40 % -39) * -15)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2974,
+      "answer": 693
+    },
+    {
+      "source_index": 2975,
+      "problem": "Evaluate this Python expression. (77 - -56) - (-65 - (((-35 * 23) // 30) * -68))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2975,
+      "answer": 2034
+    },
+    {
+      "source_index": 2976,
+      "problem": "Evaluate this Python expression. (4 * 52) - ((-25 * (-68 + 16)) % -40)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2976,
+      "answer": 228
+    },
+    {
+      "source_index": 2977,
+      "problem": "Evaluate this Python expression. (-64 * 49) + ((13 * 66) - ((-14 - -97) // (46 - 67)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2977,
+      "answer": -2274
+    },
+    {
+      "source_index": 2978,
+      "problem": "Evaluate this Python expression. (((-19 // -16) // (78 * 70)) + (86 + 24)) // 45",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2978,
+      "answer": 2
+    },
+    {
+      "source_index": 2979,
+      "problem": "Evaluate this Python expression. ((-81 + -67) * (-45 * -22)) + (-47 * -10)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2979,
+      "answer": -146050
+    },
+    {
+      "source_index": 2980,
+      "problem": "Evaluate this Python expression. (-82 - (((-9 * -91) // 51) - -63)) - 18",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2980,
+      "answer": -179
+    },
+    {
+      "source_index": 2981,
+      "problem": "Evaluate this Python expression. 59 * ((88 // (-2 + 52)) % (7 - -52))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2981,
+      "answer": 59
+    },
+    {
+      "source_index": 2982,
+      "problem": "Evaluate this Python expression. (-48 * (5 + 38)) // ((99 + (-31 // -72)) - (84 // -82))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2982,
+      "answer": -21
+    },
+    {
+      "source_index": 2983,
+      "problem": "Evaluate this Python expression. (25 + (-33 - 60)) - (-10 + (50 * -61))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2983,
+      "answer": 2992
+    },
+    {
+      "source_index": 2984,
+      "problem": "Evaluate this Python expression. -72 - (30 - (((-45 * -60) // 96) * 61))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2984,
+      "answer": 1606
+    },
+    {
+      "source_index": 2985,
+      "problem": "Evaluate this Python expression. (15 + -17) - ((29 - 63) + (-74 - (-16 % (-90 + -51))))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2985,
+      "answer": 90
+    },
+    {
+      "source_index": 2986,
+      "problem": "Evaluate this Python expression. ((-86 - 65) + (6 - -26)) + (-1 + (-22 % -14))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2986,
+      "answer": -128
+    },
+    {
+      "source_index": 2987,
+      "problem": "Evaluate this Python expression. ((-99 + -54) - -68) - (-12 - ((60 + 82) + 79))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2987,
+      "answer": 148
+    },
+    {
+      "source_index": 2988,
+      "problem": "Evaluate this Python expression. (46 + -27) - (26 + (93 - (-36 + 71)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2988,
+      "answer": -65
+    },
+    {
+      "source_index": 2989,
+      "problem": "Evaluate this Python expression. (-1 + -1) - (60 + ((21 + 76) + (85 - 70)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2989,
+      "answer": -174
+    },
+    {
+      "source_index": 2990,
+      "problem": "Evaluate this Python expression. (-36 * (-86 * (48 // 99))) % (-72 // 1)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2990,
+      "answer": 0
+    },
+    {
+      "source_index": 2991,
+      "problem": "Evaluate this Python expression. (-80 - (62 * 96)) * (90 + (-99 - -56))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2991,
+      "answer": -283504
+    },
+    {
+      "source_index": 2992,
+      "problem": "Evaluate this Python expression. (25 - (3 % -82)) - ((56 * -13) - 12)",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2992,
+      "answer": 844
+    },
+    {
+      "source_index": 2993,
+      "problem": "Evaluate this Python expression. (36 // (((-50 - -44) - 73) * (12 - 1))) // -7",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2993,
+      "answer": 0
+    },
+    {
+      "source_index": 2994,
+      "problem": "Evaluate this Python expression. (-64 + (((-15 // (79 + 95)) + (42 - -70)) * 13)) + 66",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2994,
+      "answer": 1445
+    },
+    {
+      "source_index": 2995,
+      "problem": "Evaluate this Python expression. 71 // (((45 - -84) * 81) * ((89 + -22) - (-56 - -78)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2995,
+      "answer": 0
+    },
+    {
+      "source_index": 2996,
+      "problem": "Evaluate this Python expression. (65 + (67 * ((47 + (29 - -71)) - (-71 + -27)))) + -98",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2996,
+      "answer": 16382
+    },
+    {
+      "source_index": 2997,
+      "problem": "Evaluate this Python expression. (78 * 81) * ((49 * -69) * (-56 * 6))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2997,
+      "answer": 7177349088
+    },
+    {
+      "source_index": 2998,
+      "problem": "Evaluate this Python expression. (-69 * -58) + (-72 + ((-89 - -61) - (59 % 30)))",
+      "round": "arithmetic",
+      "category": "n/a",
+      "problem_number": 2998,
+      "answer": 3873
+    }
+  ]
+}
