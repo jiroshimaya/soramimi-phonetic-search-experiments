@@ -3,6 +3,7 @@
 Source: commit 7f4d3e4e2f775db1ef45986c4996be9d7a34c7e1,
 eval_math_no_reasoning.py. See data/greenblatt_gen_arithmetic/LICENSE.
 Only self-contained prompt helpers are included; no client setup runs on import.
+Local extension: space-separated single-period filler (``dots``).
 """
 
 import random
@@ -70,6 +71,8 @@ def build_user_message(
             instruction += f" After the problem, there will be filler tokens (counting from 1 to {filler_tokens}) to give you extra space to process the problem before answering."
         elif filler_type == "ellipsis":
             instruction += f" After the problem, there will be filler tokens ({filler_tokens} ellipses) to give you extra space to process the problem before answering."
+        elif filler_type == "dots":
+            instruction += f" After the problem, there will be filler tokens ({filler_tokens} dots) to give you extra space to process the problem before answering."
         elif filler_type == "lorem":
             instruction += f" After the problem, there will be filler tokens ({filler_tokens} lorem ipsum words) to give you extra space to process the problem before answering."
 
@@ -102,6 +105,8 @@ def build_user_message(
             filler = " ".join(str(i) for i in range(1, filler_tokens + 1))
         elif filler_type == "ellipsis":
             filler = " ".join(["..."] * filler_tokens)
+        elif filler_type == "dots":
+            filler = " ".join(["."] * filler_tokens)
         elif filler_type == "lorem":
             # Repeat lorem ipsum words as needed to get the right count
             words = []
