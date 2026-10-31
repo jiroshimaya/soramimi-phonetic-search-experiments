@@ -22,7 +22,7 @@ answers.
   and phonetic one, so total filler/input-token counts differ between tasks.
 - Reuse all baseline and counting-100 first answers from experiment 018 only
   after verifying dataset, model, and complete request hashes. No new baseline
-  or counting requests. Only 600 + 150 dot requests are authorized by this plan.
+  or counting requests. Collect only 600 + 150 new dot responses.
 - Persist every first answer before scoring, including invalid answers. Do not
   regenerate invalid or wrong answers. Resume only missing requests.
 - Compare dots-100 against baseline with unchanged metrics: arithmetic exact
