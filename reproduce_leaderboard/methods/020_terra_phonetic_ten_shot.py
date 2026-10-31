@@ -54,8 +54,8 @@ def demonstration(case, condition):
     return "Example:\n" + text.strip() + " " + json.dumps({"reranked": indices})
 
 
-def build_manifest():
-    original = base.build_manifest(MODEL, "phonetic", CONDITIONS)
+def build_manifest(model=MODEL):
+    original = base.build_manifest(model, "phonetic", CONDITIONS)
     shots = select_demonstrations(original["data"])
     held_out = {case["query"] for case in shots}
     if "タロウ" in {case["query"] for case in original["data"]["cases"]}:
@@ -98,9 +98,20 @@ def build_manifest():
     }
 
 
-def one_shot_subset(manifest, output, source=SOURCE):
+def one_shot_subset(manifest, output, source=None):
+    model = manifest["model"]
+    source_conditions = CONDITIONS
+    if model == "gpt-6-luna":
+        source = (
+            source
+            or PATH.parents[1]
+            / "results/018_luna_math_transfer/luna_phonetic/results.json"
+        )
+        source_conditions = list(base.DEFAULT_CONDITIONS)
+    else:
+        source = source or SOURCE
     exported = json.loads(source.read_text())
-    original = base.build_manifest(MODEL, "phonetic", CONDITIONS)
+    original = base.build_manifest(model, "phonetic", source_conditions)
     if exported["protocol"] != {k: v for k, v in original.items() if k != "requests"}:
         raise ValueError("One-shot source protocol mismatch")
     records = {row["request_id"]: row for row in exported["responses"]}
@@ -110,13 +121,19 @@ def one_shot_subset(manifest, output, source=SOURCE):
     for request in original["requests"]:
         base.validate_record(records[request["request_id"]], request)
     indices = {case["source_index"] for case in manifest["data"]["cases"]}
-    requests = [row for row in original["requests"] if row["source_index"] in indices]
+    selected = [c for c in manifest["conditions"] if c in source_conditions]
+    requests = [
+        row
+        for row in original["requests"]
+        if row["source_index"] in indices and row["condition"] in selected
+    ]
     data = {**original["data"], "cases": manifest["data"]["cases"]}
     plan = {
         **original,
         "data": data,
         "dataset_sha256": base.digest(data),
         "demonstration_count": 1,
+        "conditions": selected,
         "source_export_sha256": base.digest(exported),
         "requests": requests,
     }
@@ -137,6 +154,8 @@ def summarize(manifest, output, records=None):
         raise ValueError("One-shot and ten-shot query order differs")
     effects, interactions = {}, {}
     for condition in CONDITIONS:
+        if condition not in one["cells"]:
+            continue
         old, new = one["cells"][condition]["scores"], ten["cells"][condition]["scores"]
         effects[condition] = base.paired_summary(old, new, False)
         if condition != "baseline":
@@ -159,12 +178,16 @@ def summarize(manifest, output, records=None):
         "change_in_filler_gain": interactions,
         "ci_method": ten["ci_method"],
     }
+    missing = sorted(set(CONDITIONS) - set(one["cells"]))
+    if missing:
+        comparison["unavailable_one_shot_conditions"] = missing
     base.save(output / "comparison.json", comparison)
     return ten, one, comparison
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--model", choices=[MODEL, "gpt-6-luna"], default=MODEL)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--concurrency", type=int, default=8)
     mode = parser.add_mutually_exclusive_group()
@@ -174,7 +197,7 @@ def main(argv=None):
     args = parser.parse_args(argv)
     if args.concurrency < 1:
         parser.error("concurrency must be positive")
-    manifest = build_manifest()
+    manifest = build_manifest(args.model)
     path = args.output / "manifest.json"
     if path.exists() and json.loads(path.read_text()) != manifest:
         raise ValueError("Existing manifest differs; use a new output directory")
