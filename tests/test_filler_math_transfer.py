@@ -53,7 +53,7 @@ def test_source_prompt_format_and_all_demonstrations_receive_filler(manifest):
     assert manifest["primary_comparison"] == "counting_100 versus baseline"
     by_key = {(r["condition"], r["source_index"]): r for r in manifest["requests"]}
     case = manifest["data"]["cases"][0]
-    for condition in study.CONDITIONS:
+    for condition in manifest["conditions"]:
         request = by_key[condition, case["source_index"]]
         assert request["body_sha256"] == study.digest(request["body"])
         body = request["body"]
@@ -225,3 +225,79 @@ def test_followup_subset_preserves_each_request_and_all_cases(manifest):
         study.build_manifest(
             "test-model", "math", conditions=["baseline", "counting_300"]
         )
+
+
+@pytest.mark.parametrize("task,n", [("math", 600), ("phonetic", 150)])
+def test_dot_followup_matches_saved_requests_and_filler_across_tasks(task, n):
+    plan = study.build_manifest(
+        "gpt-6.1-terra", task, ["baseline", "counting_100", "dots_100"]
+    )
+    saved = (
+        SCRIPT.parents[1] / f"results/018_luna_math_transfer/terra_{task}/results.json"
+    )
+    exported = json.loads(saved.read_text())
+    assert plan["data"] == exported["protocol"]["data"]
+    originals = {r["request_id"]: r for r in exported["responses"]}
+    dots = ". " * 99 + "."
+    assert study.filler_text("dots_100") == dots
+    assert len(plan["requests"]) == n * 3
+    for request in plan["requests"]:
+        if request["condition"] != "dots_100":
+            study.validate_record(originals[request["request_id"]], request)
+        else:
+            messages = request["body"]["messages"]
+            texts = [m["content"] for m in messages]
+            assert sum(t.count("Filler: " + dots) for t in texts) == (
+                11 if task == "math" else 2
+            )
+            assert all(
+                ("Filler: " + dots) not in t or "Filler: " + dots + "." not in t
+                for t in texts
+            )
+
+
+def test_reuse_skips_even_invalid_answers_and_rejects_changed_request(tmp_path):
+    request = {
+        "request_id": "baseline__q1",
+        "body_sha256": "original",
+        "body": {"model": "test"},
+    }
+    plan = {
+        "task": "math",
+        "model": "test",
+        "data": {"cases": []},
+        "dataset_sha256": "fixed",
+        "replicates": 1,
+        "requests": [request],
+    }
+    record = {
+        "request_id": request["request_id"],
+        "body_sha256": "original",
+        "content": "invalid",
+        "finish_reason": "stop",
+        "model": "test",
+        "usage": {},
+    }
+    exported = {
+        "protocol": {k: v for k, v in plan.items() if k != "requests"},
+        "responses": [record],
+    }
+    source = tmp_path / "original.json"
+    study.save(source, exported)
+    output = tmp_path / "reused"
+    assert study.reuse_answers(plan, output, source) == 1
+
+    async def exercise():
+        def no_calls(req):
+            pytest.fail("Imported first answers must not be regenerated")
+
+        async with httpx.AsyncClient(transport=httpx.MockTransport(no_calls)) as client:
+            await study.execute_requests(plan, output, client=client)
+
+    asyncio.run(exercise())
+    assert json.loads((output / "responses/baseline__q1.json").read_text()) == record
+    changed = {**plan, "requests": [{**request, "body_sha256": "changed"}]}
+    with pytest.raises(ValueError, match="mismatch"):
+        study.reuse_answers(changed, tmp_path / "changed", source)
+    with pytest.raises(ValueError, match="model"):
+        study.reuse_answers({**plan, "model": "other"}, tmp_path / "other", source)

@@ -37,7 +37,9 @@ CONDITIONS = {
     "counting_100": (100, "numbers"),
     "counting_300": (300, "numbers"),
     "ellipsis_300": (300, "ellipsis"),
+    "dots_100": (100, "dots"),
 }
+DEFAULT_CONDITIONS = tuple(c for c in CONDITIONS if c != "dots_100")
 SEED = 20261030
 
 
@@ -158,7 +160,7 @@ def filler_text(condition):
     return (
         " ".join(map(str, range(1, length + 1)))
         if kind == "numbers"
-        else " ".join(["..."] * length)
+        else " ".join(["." if kind == "dots" else "..."] * length)
     )
 
 
@@ -180,7 +182,7 @@ def phonetic_messages(case, condition):
 
 
 def build_manifest(model, task, conditions=None):
-    selected = list(CONDITIONS) if conditions is None else list(conditions)
+    selected = list(DEFAULT_CONDITIONS) if conditions is None else list(conditions)
     if (
         len(selected) != len(set(selected))
         or not {"baseline", "counting_100"}.issubset(selected)
@@ -216,7 +218,7 @@ def build_manifest(model, task, conditions=None):
                 }
             )
     random.Random(SEED).shuffle(requests)
-    return {
+    manifest = {
         "schema_version": 1,
         "task": task,
         "model": model,
@@ -228,6 +230,9 @@ def build_manifest(model, task, conditions=None):
         "replicates": 1,
         "requests": requests,
     }
+    if "dots_100" in selected:
+        manifest["followup_comparison"] = "dots_100 versus baseline"
+    return manifest
 
 
 def validate_record(record, request):
@@ -241,6 +246,37 @@ def validate_record(record, request):
         != 0
     ):
         raise ValueError("Unexpected reasoning tokens")
+
+
+def reuse_answers(manifest, output, source):
+    """Import exact matching first answers, including invalid ones, without API calls."""
+    exported = json.loads(source.read_text())
+    protocol = exported["protocol"]
+    for key in ("task", "model", "data", "dataset_sha256", "replicates"):
+        if protocol[key] != manifest[key]:
+            raise ValueError(f"Reuse protocol mismatch: {key}")
+    requests = {r["request_id"]: r for r in manifest["requests"]}
+    records = exported["responses"]
+    if len({r["request_id"] for r in records}) != len(records):
+        raise ValueError("Duplicate reused response")
+    matching = [r for r in records if r["request_id"] in requests]
+    for record in matching:
+        validate_record(record, requests[record["request_id"]])
+        path = output / "responses" / (record["request_id"] + ".json")
+        if path.exists() and json.loads(path.read_text()) != record:
+            raise ValueError("Existing answer differs from reused first answer")
+    for record in matching:
+        save(output / "responses" / (record["request_id"] + ".json"), record)
+    save(
+        output / "reuse.json",
+        {
+            "source_sha256": digest(exported),
+            "response_count": len(matching),
+            "request_ids": sorted(r["request_id"] for r in matching),
+        },
+    )
+    print(f"Reused {len(matching)} saved first answers", flush=True)
+    return len(matching)
 
 
 async def execute_requests(manifest, output, concurrency=8, client=None):
@@ -449,6 +485,8 @@ def summarize(manifest, output, records=None):
         "cells": cells,
         "ci_method": "Paired case bootstrap; 20000 draws; seed 20261030; unadjusted exploratory intervals except predeclared primary comparison",
     }
+    if "followup_comparison" in manifest:
+        result["followup_comparison"] = manifest["followup_comparison"]
     save(output / "summary.json", result)
     save(
         output / "results.json",
@@ -469,6 +507,9 @@ def main(argv=None):
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--concurrency", type=int, default=8)
     parser.add_argument("--conditions", nargs="+", choices=list(CONDITIONS))
+    parser.add_argument(
+        "--reuse", type=Path, help="Import matching saved first answers"
+    )
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--prepare-only", action="store_true")
     mode.add_argument("--summarize-only", action="store_true")
@@ -476,6 +517,8 @@ def main(argv=None):
     args = parser.parse_args(argv)
     if args.concurrency < 1:
         parser.error("concurrency must be positive")
+    if args.reuse and args.replay:
+        parser.error("--reuse and --replay cannot be combined")
     manifest = build_manifest(args.model, args.task, conditions=args.conditions)
     path = args.output / "manifest.json"
     if path.exists() and json.loads(path.read_text()) != manifest:
@@ -493,6 +536,8 @@ def main(argv=None):
             raise ValueError("Replay protocol mismatch")
         summarize(manifest, args.output, exported["responses"])
     else:
+        if args.reuse:
+            reuse_answers(manifest, args.output, args.reuse)
         if not args.summarize_only:
             asyncio.run(execute_requests(manifest, args.output, args.concurrency))
         summarize(manifest, args.output)
