@@ -99,3 +99,19 @@ def test_saved_one_shot_subset_is_reused_and_hash_mismatch_rejected(manifest, tm
     study.base.save(source, original)
     with pytest.raises(ValueError, match="mismatch"):
         study.one_shot_subset(manifest, tmp_path / "invalid", source)
+
+
+def test_luna_changes_only_model_and_reuses_only_available_controls(manifest, tmp_path):
+    luna = study.build_manifest("gpt-6-luna")
+    assert luna["data"] == manifest["data"]
+    assert luna["dataset_sha256"] == manifest["dataset_sha256"]
+    assert len(luna["requests"]) == 423
+    for a, b in zip(manifest["requests"], luna["requests"], strict=True):
+        body = deepcopy(b["body"])
+        assert body.pop("model") == "gpt-6-luna"
+        assert body == {k: v for k, v in a["body"].items() if k != "model"}
+        assert a["body_sha256"] != b["body_sha256"]
+    subset = study.one_shot_subset(luna, tmp_path / "luna")
+    assert set(subset["cells"]) == {"baseline", "counting_100"}
+    rows = json.loads((tmp_path / "luna/results.json").read_text())["responses"]
+    assert len(rows) == 282
