@@ -19,6 +19,7 @@ spec.loader.exec_module(base)
 MODEL = "gpt-6.1-terra"
 CONDITIONS = ["baseline", "counting_100", "dots_100"]
 SELECTION_SEED = 20261101
+CI_METHOD = "Paired case bootstrap; 20000 draws; seed 20261030; all intervals unadjusted and exploratory"
 SOURCE = PATH.parents[1] / "results/019_terra_dot_transfer/phonetic/results.json"
 
 
@@ -119,16 +120,17 @@ def one_shot_subset(manifest, output, source=SOURCE):
         "source_export_sha256": base.digest(exported),
         "requests": requests,
     }
-    return base.summarize(
+    result = base.summarize(
         plan, output, [records[row["request_id"]] for row in requests]
     )
+    result["ci_method"] = CI_METHOD
+    base.save(output / "summary.json", result)
+    return result
 
 
 def summarize(manifest, output, records=None):
     ten = base.summarize(manifest, output, records)
-    ten["ci_method"] = (
-        "Paired case bootstrap; 20000 draws; seed 20261030; all intervals unadjusted and exploratory"
-    )
+    ten["ci_method"] = CI_METHOD
     base.save(output / "summary.json", ten)
     one = one_shot_subset(manifest, output / "one_shot_subset")
     if ten["query_order"] != one["query_order"]:
